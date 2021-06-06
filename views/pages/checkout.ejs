@@ -6,8 +6,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title align-left">
-                        <h2>Tu Carrito de compra</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">Añade o elimina productos para empezar tu pedido.
+                        <h2>Confirmar pedido</h2>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">Proporciona los datos soliticitados para realizar
+                            el pedido de tus cursos.
                         </p>
                     </div>
                 </div>
@@ -15,86 +16,99 @@
 
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-9">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Producto</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-2 col-md-4 col-6">
-                                            <img src="assets/images/products/logo-whatsapp.png" alt="#"
-                                                style="height:80px;">
-                                        </div>
-                                        <div class="col-lg-10 col-md-8 col-6">
-                                            <h5 class="product-name">Curso de
-                                                WhatsApp
-                                            </h5>
-                                            <p class="product-des">
-                                                <span><em>Categoria:</em> Social</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>6.99</td>
-                                <td><button type="button" class="btn btn-danger"><i
-                                            class="fas fa-trash-alt"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-2 col-md-4 col-6">
-                                            <img src="assets/images/products/logo-teams.png" alt="#"
-                                                style="height:80px;">
-                                        </div>
-                                        <div class="col-lg-10 col-md-8 col-6">
-                                            <h5 class="product-name">Curso de Microsoft Teams</h5>
-                                            <p class="product-des">
-                                                <span><em>Categoria:</em> Colaborativo</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>6.99</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger"><i
-                                            class="fas fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
 
-                            <tr>
+                    <h4>Datos Personales</h4>
+                    <br>
 
-                                <td>
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-2 col-md-4 col-6">
-                                            <img src="assets/images/products/logo-zoom.png" alt="#"
-                                                style="height:80px;">
-                                        </div>
-                                        <div class="col-lg-10 col-md-8 col-6">
-                                            <h5 class="product-name">Curso de Zoom</h5>
-                                            <p class="product-des">
-                                                <span><em>Categoria:</em> Colaborativo</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>6.99</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger"><i
-                                            class="fas fa-trash-alt"></i></button>
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-
-
+                    <form action="#!">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">
+                                    <b>Nombre</b>
+                                </label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">
+                                    <b>Apellido</b>
+                                </label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Apellido"
+                                        aria-label="Apellido">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">
+                                    <b>Correo Electronico</b>
+                                </label>
+                                <div class="input-group mb-3">
+                                    <input type="email" class="form-control" placeholder="Correo" aria-label="Correo">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label"><b>Numero de
+                                        Celular</b>
+                                </label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Numero de Celular"
+                                        aria-label="Numero de Celular">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <h4>Informacion de Pago</h4>
+                        <br>
+                        <label class="form-label">
+                            <b>Nombre del titular de la tarjeta</b>
+                        </label>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Titular de la tarjeta"
+                                aria-label="Titular">
+                        </div>
+                        <label class="form-label">
+                            <b>Número de la tarjeta</b>
+                        </label>
+                        <div class="input-group mb-3">
+                            <input id="titular" type="number" class="form-control" placeholder="Número"
+                                aria-label="Titular">
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="form-label">
+                                    <b>Expiración</b>
+                                </label>
+                                <div class="input-group mb-3">
+                                    <input type="email" class="form-control" placeholder="Mes" aria-label="Mes">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label class="form-label">
+                                    <b>&nbsp</b>
+                                </label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Año" aria-label="Año">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label class="form-label">
+                                    <b>CCV</b>
+                                </label>
+                                <div class="input-group mb-3">
+                                    <input type="password" class="form-control" placeholder="***" aria-label="***">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button wow fadeInUp text-center">
+                            <button href="#!" class="btn">Pagar ahora</button>
+                        </div>
+                    </form>
                 </div>
+
+                <!-- RESUMEN DE TOTALES -->
                 <div class="col-lg-3 col-md-3 col-3">
                     <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
@@ -107,9 +121,7 @@
                             </p>
                             <br>
                             <div class="button wow fadeInUp">
-                                <a href="#" class="btn">Realizar pedido</a>
-                                <br><br>
-                                <a href="/tienda" class="btn btn-alt">Contiunar Comprando</a>
+                                <a href="/carrito" class="btn">Volver</a>
                             </div>
                         </div>
                     </div>
@@ -119,13 +131,7 @@
             </div>
 
 
-
-
-
-
-
         </div>
     </section>
     <!-- /End Services Area -->
-
     <%- include('../templates/footer') %>
