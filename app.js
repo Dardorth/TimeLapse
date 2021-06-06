@@ -5,9 +5,10 @@ const port = 3000;
 // Motor de plantilla
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
-
 app.use(express.static(__dirname + '/public'));
 
+
+// rutas
 app.get('/',(req,res)=>{
     res.render('index');
 });
