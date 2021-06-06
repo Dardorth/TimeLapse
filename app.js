@@ -21,6 +21,11 @@ app.get('/carrito', (req, res) => {
     res.render('pages/carrito');
 });
 
+app.get('/checkout', (req, res) => {
+    res.render('pages/checkout');
+});
+
+
 app.get('/sobreNosotros', (req, res) => {
     res.render('pages/sobreNosotros');
 });
