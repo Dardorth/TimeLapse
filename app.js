@@ -9,18 +9,21 @@ app.use(express.static(__dirname + '/public'));
 
 
 // rutas
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/tienda',(req,res)=>{
+app.get('/tienda', (req, res) => {
     res.render('pages/tienda');
 });
 
-app.get('/sobreNosotros',(req,res)=>{
+app.get('/carrito', (req, res) => {
+    res.render('pages/carrito');
+});
+
+app.get('/sobreNosotros', (req, res) => {
     res.render('pages/sobreNosotros');
 });
 
 
-
-app.listen(port,()=> console.log('el servidor está corriendo en el puerto', port));
+app.listen(port, () => console.log('el servidor está corriendo en el puerto', port));
