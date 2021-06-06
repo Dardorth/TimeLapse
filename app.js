@@ -17,6 +17,10 @@ app.get('/tienda', (req, res) => {
     res.render('pages/tienda');
 });
 
+app.get('/producto', (req, res) => {
+    res.render('pages/producto');
+});
+
 app.get('/carrito', (req, res) => {
     res.render('pages/carrito');
 });
