@@ -8,7 +8,7 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
 
-// rutas
+// Rutas de página
 app.get('/', (req, res) => {
     res.render('index');
 });
@@ -29,10 +29,20 @@ app.get('/checkout', (req, res) => {
     res.render('pages/checkout');
 });
 
+app.get('/usuarioPerfil',(req,res)=>{
+    res.render('pages/usuarioPerfil');
+});
 
 app.get('/sobreNosotros', (req, res) => {
     res.render('pages/sobreNosotros');
 });
+
+
+// Rutas para cursos 
+app.get('/course-whatsapp',(req,res)=>{
+    res.render('courses/whatsapp');
+});
+
 
 
 app.listen(port, () => console.log('el servidor está corriendo en el puerto', port));
