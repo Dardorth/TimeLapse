@@ -2271,7 +2271,7 @@ ol {
 }
 
 .single-service p {
-  font-size: 13px;
+  font-size: 20px;
   margin-top: 25px;
   transition: all 0.4s ease;
   -webkit-transition: all 0.4s ease;
@@ -2284,7 +2284,7 @@ ol {
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: #3763EB;
+  background-color: #a1a1a5d8;
   content: "";
   z-index: -1;
   border-radius: 10px;
