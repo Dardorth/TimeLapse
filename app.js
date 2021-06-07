@@ -40,7 +40,7 @@ app.get('/sobreNosotros', (req, res) => {
 
 // Rutas para cursos 
 app.get('/course-whatsapp',(req,res)=>{
-    res.render('courses/whatsapp');
+    res.render('courses/whatsapp/seccion1');
 });
 
 
