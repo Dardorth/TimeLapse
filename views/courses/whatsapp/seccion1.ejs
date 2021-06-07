@@ -1,0 +1,113 @@
+<%- include('../templates/head') %>
+
+<div class="col-sm-12 col-md-8 col-lg-9 col-12">
+    <div class="container mt-4">
+        <div class="col-12 mb-4">
+            <div class="text-center">
+                <h2 class="wow fadeInUp" data-wow-delay=".2s">CURSO WHATSAPP</h2>
+                <p class="wow fadeInUp" data-wow-delay=".2s">No tengas miedo a aprendrer, sólo
+                    concéntrate y aprenderás! <i class="far fa-grin-beam"></i></p>
+            </div>
+        </div>
+        <div class="col-12 mb-1">
+            <div class="button d-flex justify-content-end wow fadeInRight mt-5" data-wow-delay=".4s">
+                <button class="btn-video">Cómo se vería en computadora</button>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-12 col-md-12 col-lg-4 mb-5">
+                <div class="">
+                    <h5 class="wow fadeInUp mb-3" data-wow-delay=".1s"> ¿Qué es whatsapp?</h5>
+                    <p class="wow fadeInUp" data-wow-delay=".1s">Lorem ipsum dolor sit, amet consectetur
+                        adipisicing elit. Voluptas, dolore! Sequi magnam ab similique est eum alias quod
+                        nemo nulla, nam numquam excepturi pariatur ad sapiente modi dolorum? Nesciunt,
+                        deserunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
+                        molestias. Atque vero tenetur cumque necessitatibus quos porro rerum delectus
+                        dolore aspernatur fuga quibusdam quasi reprehenderit velit, magnam sapiente.
+                        Sed, vero! Lorem ipsum dolor sit.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-12 col-lg-8 mb-5">
+                <section class="intro-video-area video-whatsapp overlay section">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="intro-video-play">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-10 col-12">
+                                        <div class="play-thumb wow zoomIn" style="margin-top: 120px;"
+                                            data-wow-delay=".2s">
+                                            <a href="https://www.youtube.com/watch?v=qorBzcjfEmc&ab_channel=TBS"
+                                                class="glightbox video"><i class="fas fa-play"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <hr class="w-50 mx-auto mb-5">
+            <div class="col-12">
+                <div class="mb-5">
+                    <h5 class="wow fadeInUp mb-3" data-wow-delay=".1s">Partes importantes</h5>
+                    <p class="wow fadeInUp" data-wow-delay=".1s">Lorem ipsum dolor sit, amet consectetur
+                        adipisicing elit. Voluptas, dolore! Sequi magnam ab similique est eum alias quod
+                        nemo nulla, nam numquam excepturi pariatur ad sapiente modi dolorum? Nesciunt,
+                        deserunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
+                        molestias. Atque vero tenetur cumque necessitatibus quos porro rerum delectus
+                        dolore aspernatur fuga quibusdam quasi reprehenderit velit, magnam sapiente.
+                        Sed, vero!</p>
+                </div>
+                <div class="mb-5">
+                    <h5 class="wow fadeInUp mb-3" data-wow-delay=".1s">Partes importantes</h5>
+                    <p class="wow fadeInUp" data-wow-delay=".1s">Lorem ipsum dolor sit, amet consectetur
+                        adipisicing elit. Voluptas, dolore! Sequi magnam ab similique est eum alias quod
+                        nemo nulla, nam numquam excepturi pariatur ad sapiente modi dolorum? Nesciunt,
+                        deserunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
+                        molestias. Atque vero tenetur cumque necessitatibus quos porro rerum delectus
+                        dolore aspernatur fuga quibusdam quasi reprehenderit velit, magnam sapiente.
+                        Sed, vero!</p>
+                </div>
+                <div class="mb-5">
+                    <h5 class="wow fadeInUp mb-3" data-wow-delay=".1s">Partes importantes</h5>
+                    <p class="wow fadeInUp" data-wow-delay=".1s">Lorem ipsum dolor sit, amet consectetur
+                        adipisicing elit. Voluptas, dolore! Sequi magnam ab similique est eum alias quod
+                        nemo nulla, nam numquam excepturi pariatur ad sapiente modi dolorum? Nesciunt,
+                        deserunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
+                        molestias. Atque vero tenetur cumque necessitatibus quos porro rerum delectus
+                        dolore aspernatur fuga quibusdam quasi reprehenderit velit, magnam sapiente.
+                        Sed, vero!</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="button wow fadeInUp" data-wow-delay=".7s">
+                    <a href="#" class="btn bg-white text-dark border border-1 border-dark">Atrás</a>
+                </div>
+            </div>
+            <div class="col-6 align-right">
+                <div class="button wow fadeInUp" data-wow-delay=".7s">
+                    <a href="#" class="btn">Siguiente</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include('../../templates/footer') %>
+
+<script type="text/javascript">
+    //========= glightbox
+
+    const video_movil = 'https://www.youtube.com/watch?v=qorBzcjfEmc&ab_channel=TBS';
+    const video_desktop = '';
+
+    GLightbox({
+        'href': video_movil,
+        'type': 'video',
+        'source': 'youtube', //vimeo, youtube or local
+        'width': 900,
+        'autoplayVideos': true,
+    });
+</script>
