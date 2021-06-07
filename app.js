@@ -8,7 +8,7 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
 
-// rutas
+// Rutas para páginas
 app.get('/',(req,res)=>{
     res.render('index');
 });
@@ -21,6 +21,14 @@ app.get('/sobreNosotros',(req,res)=>{
     res.render('pages/sobreNosotros');
 });
 
+app.get('/usuarioPerfil',(req,res)=>{
+    res.render('pages/usuarioPerfil');
+});
 
+
+// Rutas para cursos 
+app.get('/course-whatsapp',(req,res)=>{
+    res.render('courses/whatsapp');
+});
 
 app.listen(port,()=> console.log('el servidor está corriendo en el puerto', port));

@@ -1159,6 +1159,19 @@ ol {
   border-radius: 30px;
 }
 
+.button .btn-video {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 10px 25px;
+  background-color: #5176e4;
+  color: #fff;  
+  border: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 3px;
+}
+
 .button .btn:hover {
   background-color: #081828;
   color: #fff;
@@ -2656,6 +2669,10 @@ ol {
   padding-bottom: 130px;
 }
 
+.video-whatsapp {
+  background-image: url("../images/video/video-whatsapp.jpg");
+}
+
 .intro-video-area.overlay::before {
   z-index: 1;
   opacity: 0.9;
@@ -3319,7 +3336,7 @@ blockquote span {
 .sidebar .widget {
   padding: 40px;
   background-color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #eee;
 }
@@ -3345,6 +3362,26 @@ blockquote span {
   height: 100%;
   width: 3px;
   background-color: #3763EB;
+  content: '';
+}
+
+.sidebar .widget .widget-title-post {
+  font-size: 13px;
+  margin-bottom: 2px;
+  line-height: 1;
+  position: relative;
+  padding-left: 18px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.sidebar .widget .widget-title-post::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #cccccc;
   content: '';
 }
 
@@ -3436,7 +3473,7 @@ blockquote span {
 .sidebar .widget.popular-feeds .single-popular-feed .feed-desc .post-title {
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 5px;
   line-height: 1.5;
 }
 
@@ -3501,7 +3538,7 @@ blockquote span {
   color: #3763EB;
 }
 
-.sidebar .widget.categories-widget ul li a:hover span {
+.sidebar .widget.categories-widget ul li a .prueba-calificacion {
   background: #3763EB;
   color: #fff;
   border-color: transparent;
