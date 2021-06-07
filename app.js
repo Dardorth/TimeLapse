@@ -29,7 +29,7 @@ app.get('/checkout', (req, res) => {
     res.render('pages/checkout');
 });
 
-app.get('/usuarioPerfil',(req,res)=>{
+app.get('/perfil',(req,res)=>{
     res.render('pages/usuarioPerfil');
 });
 
