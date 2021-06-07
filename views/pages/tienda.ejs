@@ -1,62 +1,263 @@
 <%- include('../templates/head') %>
 
-<!-- Start Service Area -->
-<section class="services section">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title align-left">
-                    <span class="wow fadeInDown" data-wow-delay=".2s">Core Features</span>
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s">Provide Awesome Service With Our Tools</h2>
-                    <p class="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
-                        Ipsum available, but the majority have suffered alteration in some form.</p>
-                </div>
-            </div>
-        </div>
-        <div class="single-head">
-            <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
-                src="assets/images/service/service-patern.png" alt="#">
+    <!-- Start Service Area -->
+    <section class="services section">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                        <h3><a href="service-single.html">Discover, Explore the Product</a></h3>
-                        <div class="icon">
-                            <i class="lni lni-microscope"></i>
-                        </div>
-                        <p>Discover, Explore & Understanding The Product</p>
+                <div class="col-lg-6 col-md-12">
+                    <div class="section-title align-left" style="padding:0;">
+                        <span class=" wow fadeInDown" data-wow-delay=".2s">Tienda</span>
+                        <h2 class="wow fadeInUp text-wrap" data-wow-delay=".4s">Cursos
+                            Disponibles
+                        </h2>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-service wow fadeInUp" data-wow-delay=".4s">
-                        <h3><a href="service-single.html">Art Direction & Brand Strategy</a></h3>
-                        <div class="icon">
-                            <i class="lni lni-blackboard"></i>
+
+                <div class="col-lg-6 col-md-12" style="margin-top: 35px;">
+                    <div class="container-fluid">
+                        <form class="d-flex" style="float:right;">
+                            <input class="form-control me-2" type="search" placeholder="Escriba el nombre del curso"
+                                aria-label="Search" style="width : 400px; height : 10px">
+                            <button class="btn btn-outline-primary" type="submit">Buscar</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <!-- Herramientas de trabajo -->
+            <center>
+                <h2 class="wow fadeInUp" data-wow-delay=".4s">Herramientas de trabajo</h2>
+            </center>
+            <br>
+            <div class="single-head">
+                <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
+                    src="assets/images/service/service-patern.png" alt="#">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                            <center>
+                                <h3><a href="/producto">Curso de Office</a></h3>
+                            </center>
+                            <div class="image">
+                                <center><a href="/producto"><img src="assets/images/products/logo-office.png" alt="#"
+                                            height="200px" width="200px"></a></center>
+                            </div>
+                            <center>
+                                <p>$ 1.99</p>
+                            </center>
+                            <br>
+                            <div class="button">
+                                <center><a class="btn btn-secondary" data-toggle="modal"
+                                        data-target="#modalConfirmacion">Añadir a carrito</a></center>
+                            </div>
                         </div>
-                        <p>Art Direction & Brand Communication</p>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                            <center>
+                                <h3><a href="/producto">Curso de WhatsApp</a></h3>
+                            </center>
+                            <div class="image">
+                                <center>
+                                    <a href="/producto">
+                                        <img src="assets/images/products/whatsapp.png" alt="#" height="200px"
+                                            width="200px">
+                                    </a>
+                                </center>
+                            </div>
+                            <center>
+                                <p>$ 1.99</p>
+                            </center>
+                            <br>
+                            <div class="button">
+                                <center><a class="btn btn-secondary" data-toggle="modal"
+                                        data-target="#modalConfirmacion">Añadir a carrito</a></center>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-service wow fadeInUp" data-wow-delay=".4s">
+                            <center>
+                                <h3><a href="service-single.html">Curso de Microsoft Teams</a></h3>
+                            </center>
+                            <div class="image">
+                                <center><img src="assets/images/products/logo-teams.png" alt="#" height="200px"
+                                        width="200px"></center>
+                            </div>
+                            <center>
+                                <p>$ 3.99</p>
+                            </center>
+                            <br>
+                            <div class="button">
+                                <center><a class="btn btn-secondary" data-toggle="modal"
+                                        data-target="#modalConfirmacion">Añadir a carrito</a></center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-service wow fadeInUp" data-wow-delay=".6s">
+                            <center>
+                                <h3><a href="service-single.html">Curso de Excel</a></h3>
+                            </center>
+                            <div class="image">
+                                <center><img src="assets/images/products/logo-excel.png" alt="#" height="200px"
+                                        width="200px"></center>
+                            </div>
+                            <center>
+                                <p>$ 1.99</p>
+                            </center>
+                            <br>
+                            <div class="button">
+                                <center><a class="btn btn-secondary" data-toggle="modal"
+                                        data-target="#modalConfirmacion">Añadir a carrito</a></center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-service wow fadeInUp" data-wow-delay=".8s">
+                            <center>
+                                <h3><a href="service-single.html">Curso de Outlook</a></h3>
+                            </center>
+                            <div class="image">
+                                <center><img src="assets/images/products/logo-outlook.png" alt="#" height="200px"
+                                        width="200px"></center>
+                            </div>
+                            <center>
+                                <p>$ 1.99</p>
+                            </center>
+                            <br>
+                            <div class="button">
+                                <center><a class="btn btn-secondary" data-toggle="modal"
+                                        data-target="#modalConfirmacion">Añadir a carrito</a></center>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-service wow fadeInUp" data-wow-delay=".8s">
+                            <center>
+                                <h3><a href="service-single.html">Curso de Word</a></h3>
+                            </center>
+                            <div class="image">
+                                <center><img src="assets/images/products/logo-word.png" alt="#" height="200px"
+                                        width="200px"></center>
+                            </div>
+                            <center>
+                                <p>$ 1.99</p>
+                            </center>
+                            <br>
+                            <div class="button">
+                                <center><a class="btn btn-secondary" data-toggle="modal"
+                                        data-target="#modalConfirmacion">Añadir a carrito</a></center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-service wow fadeInUp" data-wow-delay=".8s">
+                            <center>
+                                <h3><a href="service-single.html">Curso de Zoom</a></h3>
+                            </center>
+                            <div class="image">
+                                <center><img src="assets/images/products/logo-zoom.png" alt="#" height="200px"
+                                        width="200px"></center>
+                            </div>
+                            <center>
+                                <p>$ 1.99</p>
+                            </center>
+                            <br>
+                            <div class="button">
+                                <center><a class="btn btn-secondary" data-toggle="modal"
+                                        data-target="#modalConfirmacion">Añadir a carrito</a></center>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+            <!-- Redes sociales -->
+            <center>
+                <h2 class="wow fadeInUp" data-wow-delay=".4s">Redes Sociales</h2>
+            </center>
+            <br>
+            <div class="single-head">
+                <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
+                    src="assets/images/service/service-patern.png" alt="#">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                            <center>
+                                <h3><a href="service-single.html">Curso de Instagram</a></h3>
+                            </center>
+                            <div class="image">
+                                <center><img src="assets/images/products/logo-instagram.png" alt="#" height="200px"
+                                        width="200px"></center>
+                            </div>
+                            <center>
+                                <p>$ 1.99</p>
+                            </center>
+                            <br>
+                            <div class="button">
+                                <center><a class="btn btn-secondary" data-toggle="modal"
+                                        data-target="#modalConfirmacion">Añadir a carrito</a></center>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-service wow fadeInUp" data-wow-delay=".4s">
+                            <center>
+                                <h3><a href="service-single.html">Curso de Twitter</a></h3>
+                            </center>
+                            <div class="image">
+                                <center><img src="assets/images/products/logo-twitter.png" alt="#" height="200px"
+                                        width="200px"></center>
+                            </div>
+                            <center>
+                                <p>$ 1.99</p>
+                            </center>
+                            <br>
+                            <div class="button">
+                                <center><a class="btn btn-secondary" data-toggle="modal"
+                                        data-target="#modalConfirmacion">Añadir a carrito</a></center>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-service wow fadeInUp" data-wow-delay=".6s">
-                        <h3><a href="service-single.html">Product UX, Design & Development‎‎</a></h3>
-                        <div class="icon">
-                            <i class="lni lni-ux"></i>
-                        </div>
-                        <p>Digital Product UX, Design & Development</p>
+            </div>
+
+        </div>
+
+        <!-- Modal de confirmacion-->
+        <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Curso Agregado al Carrito</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                        <h3><a href="service-single.html">Marketing Strategy & SEO Campaigns</a></h3>
-                        <div class="icon">
-                            <i class="lni lni-graph"></i>
-                        </div>
-                        <p>Marketing Strategy & SEO Campaigns</p>
+                    <div class="modal-body">
+                        Se a agregado este curso al Carrito, para pagar debe dirigirse a la seccion de <b>Carrito</b>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- /End Services Area -->
+        <!-- Final Modal de confirmacion-->
 
-<%- include('../templates/footer') %>
+    </section>
+    <!-- /End Services Area -->
+    <script>
+        var element = document.getElementById('tienda');
+        element.classList.add('active');
+    </script>
+
+    <%- include('../templates/footer') %>

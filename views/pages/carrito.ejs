@@ -1,0 +1,142 @@
+<%- include('../templates/head') %>
+
+
+    <section class="services section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title align-left">
+                        <span class=" wow fadeInDown" data-wow-delay=".2s">Carrito</span>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Tu Carrito de compra</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Carrito de compra -->
+                <div class="col-lg-9 col-md-9 col-9">
+                    <h2 class="wow fadeInUp text-center" data-wow-delay=".4s">Productos seleccionados</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-2 col-md-4 col-6">
+                                                    <img src="assets/images/products/logo-whatsapp.png" alt="#"
+                                                        style="height:80px;">
+                                                </div>
+                                                <div class="col-lg-10 col-md-8 col-6">
+                                                    <h5 class="product-name">Curso de
+                                                        WhatsApp
+                                                    </h5>
+                                                    <p class="product-des">
+                                                        <span><em>Categoria:</em> Social</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>6.99</td>
+                                        <td><button type="button" class="btn btn-danger"><i
+                                                    class="fas fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-2 col-md-4 col-6">
+                                                    <img src="assets/images/products/logo-teams.png" alt="#"
+                                                        style="height:80px;">
+                                                </div>
+                                                <div class="col-lg-10 col-md-8 col-6">
+                                                    <h5 class="product-name">Curso de Microsoft Teams</h5>
+                                                    <p class="product-des">
+                                                        <span><em>Categoria:</em> Colaborativo</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>6.99</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-2 col-md-4 col-6">
+                                                    <img src="assets/images/products/logo-zoom.png" alt="#"
+                                                        style="height:80px;">
+                                                </div>
+                                                <div class="col-lg-10 col-md-8 col-6">
+                                                    <h5 class="product-name">Curso de Zoom</h5>
+                                                    <p class="product-des">
+                                                        <span><em>Categoria:</em> Colaborativo</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>6.99</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /Fin de carrito de compras -->
+
+                <!-- TOTALES-->
+                <div class="col-lg-3 col-md-3 col-3">
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s">&nbsp</h2>
+                    <div class="card text-center" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Totales</h5>
+                            <br>
+                            <p class="card-text">
+                            <h6>Sub Total: $20.97</h6>
+                            <hr>
+                            <h6>Total neto: $20.97</h6>
+                            </p>
+                            <br>
+                            <div class="button wow fadeInUp">
+                                <a href="/checkout" class="btn">Realizar pedido</a>
+                                <br><br>
+                                <a href="/tienda" class="btn btn-alt">Continuar Comprando</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </section>
+    <script>
+        var element = document.getElementById('carrito');
+        element.classList.add('active');
+    </script>
+    <%- include('../templates/footer') %>
