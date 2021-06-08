@@ -42,6 +42,9 @@ app.get('/sobreNosotros', (req, res) => {
 app.get('/curso-whatsapp', (req, res) => {
     res.render('courses/whatsapp/seccion1');
 });
+app.get('/curso-whatsapp-p1',(req,res)=>{
+    res.render('courses/whatsapp/prueba1');
+});
 
 app.get('/prueba', (req, res) => {
     res.render('pages/prueba');
