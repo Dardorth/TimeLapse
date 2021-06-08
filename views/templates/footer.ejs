@@ -1,24 +1,250 @@
-<!-- Start Modals Area -->
+<!------------ AREA DE MODALS ---------------->
+<!-- LOGIN -->
+<div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-5">
+            <div class="modal-body">
+                <button type="button" class="btn-close float-right" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-s-6 wow fadeInUp">
+                        <div class="">
+                            <h2 class="text-primary font-weight-bold">Inicia sesión.</h2>
+                            <p>Comienza tu aventura de aprendizaje en TimeLapse y descubre tus capacidades.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-s-6">
+                        <form>
+                            <div class="mb-3 wow fadeInUp" data-wow-delay=".1s">
+                                <label for="usuario" class="col-form-label"><b>Usuario:</b></label>
+                                <input type="text" class="form-control" id="usuario">
+                            </div>
+                            <div class="mb-3 mb-5 wow fadeInUp" data-wow-delay=".1s">
+                                <label for="contraseña" class="col-form-label"><b>Contraseña:</b></label>
+                                <input type="password" class="form-control" id="contraseña">
+                                <a href="#!" class="float-right">Olvide mi contraseña.</a>
+                            </div>
 
-<div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="button wow fadeInUp text-center" data-wow-delay=".2s">
+                                <a href="/perfil" class="btn mb-2" type="submit">Inicia Sesión</a>
+                                <br> O
+                                <br>
+                                <button class="btn" data-bs-toggle="modal" data-bs-target="#registro"
+                                    data-bs-dismiss="modal">Registrate</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
-<!-- Ends Modals Area -->
+<!-- FIN DE LOGIN -->
+
+<!-- TIPO DE REGISTRO -->
+
+<div class="modal fade" id="registro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content p-5">
+            <div class="modal-body">
+                <button type="button" class="btn-close float-right" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="">
+                            <br>
+                            <h2 class="text-primary font-weight-bold mb-5 text-center wow fadeInUp"
+                                data-wow-delay=".1s">¿Cómo
+                                deseas registrarte?</h2>
+                            <div class="button wow fadeInUp text-center" data-wow-delay=".1s">
+                                <button class="btn mb-3" type="submit" data-bs-toggle="modal"
+                                    data-bs-target="#regmanual" data-bs-dismiss="modal">Por mi cuenta</button>
+
+                                <button class="btn" type="submit" data-bs-toggle="modal" data-bs-target="#regauto"
+                                    data-bs-dismiss="modal">Necesito ayuda</button>
+                            </div>
+                            <hr>
+                            <a class="wow fadeInUp" href="#!" data-bs-toggle="modal" data-bs-target="#login"
+                                data-bs-dismiss="modal" data-wow-delay=".1s">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN DE TIPO DE REGISTRO -->
+
+<!-- PRUEBA DE CONOCIMIENTO -->
+
+<div class="modal fade" id="slctpr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="selectregmodal">Iniciar Sesion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+
+            <div class="login-form">
+                <h6>Seleccione una de las opciones:</h6>
+
+                <div class="button wow fadeInUp" data-wow-delay=".7s">
+                    <button class="btn" type="submit" data-bs-toggle="modal" data-bs-target="#regmanual"
+                        data-bs-dismiss="modal">Omitir</button>
+                    <button class="btn" type="submit" href="/prueba" data-bs-dismiss="modal">Realizar Prueba de
+                        Conocimiento</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- /FIN PRUEBA DE CONOCIMIENTO -->
+
+<!-- REGISTRO MANUAL -->
+
+<div class="modal fade" id="regmanual" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content p-5">
+            <div class="modal-header">
+                <h2 class="modal-title text-primary wow fadeInUp" id="regmanualmodal" data-wow-delay=".1s">Registro
+                </h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form class="wow fadeInUp" data-wow-delay=".2s">
+
+                <div class="row">
+                    <div class="col-md-6 col-12 mb-3">
+                        <label for="nombre" class="col-form-label"><b>Nombre:</b></label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div class="col-md-6 col-12 mb-3">
+                        <label for="apellido" class="col-form-label"><b>Apellido:</b></label>
+                        <input type="text" class="form-control" id="apellido">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="correo" class="col-form-label"><b>Correo Electrónico:</b></label>
+                    <input type="text" class="form-control" id="correo">
+                </div>
+                <div class="mb-3">
+                    <label for="contraseña" class="col-form-label"><b>Contraseña:</b></label>
+                    <input type="password" class="form-control" id="contraseña">
+                </div>
+                <div class="button wow fadeInUp text-center" data-wow-delay=".3s">
+                    <button class="btn" type="submit" data-bs-toggle="modal" data-bs-target="#mensajeManual"
+                        data-bs-dismiss="modal">Registrarse</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- /FIN Registro Manual -->
+
+<!-- REGISTRO AUTOMATICO -->
+
+<div class="modal fade" id="regauto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content p-5">
+            <div class="modal-header">
+                <h2 class="modal-title text-primary wow fadeInUp" id="regmanualmodal" data-wow-delay=".1s">Registro
+                </h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form class="wow fadeInUp" data-wow-delay=".2s">
+
+                <div class="row">
+                    <div class="col-md-6 col-12 mb-3">
+                        <label for="nombre" class="col-form-label"><b>Nombre:</b></label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div class="col-md-6 col-12 mb-3">
+                        <label for="apellido" class="col-form-label"><b>Apellido:</b></label>
+                        <input type="text" class="form-control" id="apellido">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="celular" class="col-form-label"><b>Número de celular:</b></label>
+                    <input type="text" class="form-control" id="celular">
+                </div>
+
+                <div class="button wow fadeInUp text-center" data-wow-delay=".3s">
+                    <button class="btn" type="submit" data-bs-toggle="modal" data-bs-target="#mensajeAuto"
+                        data-bs-dismiss="modal">Registrarse</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- /FIN REGISTRO AUTOMATICO -->
+
+<!-- MENSAJE REGISTRO AUTOMATICO-->
+
+<div class="modal fade" id="mensajeAuto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content p-5">
+            <div class="modal-body">
+                <button type="button" class="btn-close float-right" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <br>
+                        <h2 class="text-primary font-weight-bold mb-3 text-center wow fadeInUp" data-wow-delay=".1s">Tu
+                            cuenta ha sido creada</h2>
+                        <h4 class="mb-5 text-center wow fadeInUp" data-wow-delay=".1s">El sistema procedera a
+                            enviarle su usuario y contraseña por sms al
+                            numero de celular suministrado</h4>
+                        <div class="button wow fadeInUp text-center" data-wow-delay=".1s">
+
+                            <button class="btn mb-3" type="submit" data-bs-toggle="modal" data-bs-target="#login"
+                                data-bs-dismiss="modal">Iniciar Sesión</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /FIN MENSAJE REGISTRO AUTOMATICO-->
+
+<!-- MENSAJE REGISTRO MANUAL-->
+
+<div class="modal fade" id="mensajeManual" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content p-5">
+            <div class="modal-body">
+                <button type="button" class="btn-close float-right" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <br>
+                        <h2 class="text-primary font-weight-bold mb-3 text-center wow fadeInUp" data-wow-delay=".1s">Tu
+                            cuenta ha sido creada</h2>
+                        <h4 class="mb-5 text-center wow fadeInUp" data-wow-delay=".1s">
+                            Accede a tu correo electronico para ver tu usuario y acceder a Timelapse.</h4>
+                        <div class="button wow fadeInUp text-center" data-wow-delay=".1s">
+
+                            <button class="btn mb-3" type="submit" data-bs-toggle="modal" data-bs-target="#login"
+                                data-bs-dismiss="modal">Iniciar Sesión</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /FIN MENSAJE REGISTRO MANUAL-->
+
+<!------------ /FIN AREA DE MODALS ---------------->
 
 <!-- Start Footer Area -->
 <footer class="footer">
@@ -118,6 +344,26 @@
 <script src="assets/js/imagesloaded.min.js"></script>
 <script src="assets/js/isotope.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script type="text/javascript">
+    //========= glightbox
+    GLightbox({
+        'href': 'https://www.youtube.com/watch?v=kKkhVXiA2MM&ab_channel=CriticalMCriticalM',
+        'type': 'video',
+        'source': 'youtube', //vimeo, youtube or local
+        'width': 900,
+        'autoplayVideos': true,
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+    crossorigin="anonymous"></script>
+
 
 </body>
 
