@@ -29,7 +29,7 @@ app.get('/checkout', (req, res) => {
     res.render('pages/checkout');
 });
 
-app.get('/perfil',(req,res)=>{
+app.get('/perfil', (req, res) => {
     res.render('pages/usuarioPerfil');
 });
 
@@ -38,11 +38,13 @@ app.get('/sobreNosotros', (req, res) => {
 });
 
 
-// Rutas para cursos 
-app.get('/curso-whatsapp',(req,res)=>{
+// Rutas para cursos
+app.get('/curso-whatsapp', (req, res) => {
     res.render('courses/whatsapp/seccion1');
 });
 
-
+app.get('/prueba', (req, res) => {
+    res.render('pages/prueba');
+});
 
 app.listen(port, () => console.log('el servidor está corriendo en el puerto', port));
