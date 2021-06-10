@@ -1,4 +1,4 @@
-<%- include('templates/head') %>
+<%- include('templates/head', {tituloWeb: ''}) %>
 
     <!-- Preloader -->
     <!-- <div class="preloader">
@@ -27,7 +27,7 @@
                                     el pasado y obtendrás <br> conocimiento en las aplicaciones de hoy en día.
                                 </p>
                                 <div class="button wow fadeInUp" data-wow-delay=".7s">
-                                    <a href="#" class="btn">Ver Productos</a>
+                                    <a href="/tienda" class="btn">Ver Productos</a>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,9 @@
                         <!-- Table Head -->
                         <div class="table-head">
                             <h4 class="title">Whatsapp</h4>
-                            <img src="assets/images/products/logo-whatsapp.png" alt="" style="height: 100px;">
+                            <div class="image-products">
+                                <img src="assets/images/products/logo-whatsapp.png" alt="">
+                            </div>
                             <div class="price">
                                 <p class="amount">$<span class="price-products">1.99</span><span class="duration">por
                                         producto</span></p>
@@ -249,7 +251,7 @@
                         <p class="wow fadeInUp" data-wow-delay=".6s">Dirigete a la tienda de productos y mira nuestro
                             catálogo...</p>
                         <div class="button wow fadeInUp mt-4" data-wow-delay=".7s">
-                            <a href="#" class="btn">Ver Productos</a>
+                            <a href="/tienda" class="btn">Ver Productos</a>
                         </div>
                     </div>
                 </div>
@@ -277,7 +279,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-10 col-12">
                                 <div class="play-thumb wow zoomIn" data-wow-delay=".2s">
-                                    <a href="https://www.youtube.com/watch?v=kKkhVXiA2MM&ab_channel=CriticalMCriticalM"
+                                    <a href="https://www.youtube.com/watch?v=XDcUDnhKPTQ&ab_channel=TruenoOficialTruenoOficialCanaloficialdelartista"
                                         class="glightbox video"><i class="fas fa-play"></i></a>
                                 </div>
                             </div>
@@ -353,7 +355,7 @@
                     <!-- Single Profile -->
                     <div class="single-news wow fadeInUp" data-wow-delay=".2s">
                         <div class="image">
-                            <img class="rounded-circle" src="assets/images/profiles/author.jpg" alt="#">
+                            <img class="rounded-circle" src="assets/images/profiles/javier.png" alt="#">
                         </div>
                         <div class="content-body text-center">
                             <h4 class="title">Javier Arrue</h4>
@@ -375,11 +377,11 @@
                     <!-- Single Profile -->
                     <div class="single-news wow fadeInUp" data-wow-delay=".2s">
                         <div class="image">
-                            <img class="rounded-circle" src="assets/images/profiles/author.jpg" alt="#">
+                            <img class="rounded-circle" src="assets/images/profiles/RocioUtp.jpg" alt="#">
                         </div>
                         <div class="content-body text-center">
                             <h4 class="title">Rocio Ñañez</h4>
-                            <p>Programadora FrontEnd.</p>
+                            <p>Proyec Manager.</p>
                         </div>
                         <hr class="bg-primary w-50 mx-auto">
                         <!-- <div class="mt-2">
@@ -396,7 +398,7 @@
                     <!-- Single Profile -->
                     <div class="single-news wow fadeInUp" data-wow-delay=".2s">
                         <div class="image">
-                            <img class="rounded-circle" src="assets/images/profiles/author.jpg" alt="#">
+                            <img class="rounded-circle" src="assets/images/profiles/daniel.png" alt="#">
                         </div>
                         <div class="content-body text-center">
                             <h4 class="title">Daniel Ryan</h4>
@@ -418,7 +420,7 @@
                     <!-- Single Profile -->
                     <div class="single-news wow fadeInUp" data-wow-delay=".2s">
                         <div class="image">
-                            <img class="rounded-circle" src="assets/images/profiles/author.jpg" alt="#">
+                            <img class="rounded-circle" src="assets/images/profiles/ricardo.jpg" alt="#">
                         </div>
                         <div class="content-body text-center">
                             <h4 class="title">Ricardiño Ye</h4>
@@ -530,4 +532,18 @@
         var element = document.getElementById('inicio');
         element.classList.add('active');
     </script>
+
+    
     <%- include('templates/footer') %>
+
+    <script type="text/javascript">
+        //========= glightbox
+
+        GLightbox({
+            'href': 'https://www.youtube.com/watch?v=XDcUDnhKPTQ&ab_channel=TruenoOficialTruenoOficialCanaloficialdelartista',
+            'type': 'video',
+            'source': 'youtube', //vimeo, youtube or local
+            'width': 900,
+            'autoplayVideos': true,
+        });
+    </script>
