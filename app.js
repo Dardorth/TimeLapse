@@ -33,6 +33,9 @@ app.get('/sobreNosotros', (req, res) => {
     res.render('pages/sobreNosotros');
 });
 
+app.get('/politicaPrivacidad', (req, res) => {
+    res.render('pages/politicaPrivacidad');
+});
 
 // Rutas usuario
 app.get('/perfil', (req, res) => {
@@ -50,7 +53,7 @@ app.get('/panelControl', (req, res) => {
 app.get('/curso-whatsapp', (req, res) => {
     res.render('courses/whatsapp/seccion1');
 });
-app.get('/curso-whatsapp-p1',(req,res)=>{
+app.get('/curso-whatsapp-p1', (req, res) => {
     res.render('courses/whatsapp/prueba1');
 });
 
