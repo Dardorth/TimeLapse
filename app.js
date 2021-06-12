@@ -29,12 +29,20 @@ app.get('/checkout', (req, res) => {
     res.render('pages/checkout');
 });
 
-app.get('/perfil', (req, res) => {
-    res.render('pages/usuarioPerfil');
-});
-
 app.get('/sobreNosotros', (req, res) => {
     res.render('pages/sobreNosotros');
+});
+
+
+// Rutas usuario
+app.get('/perfil', (req, res) => {
+    res.render('user/perfil');
+});
+
+
+// Rutas admin
+app.get('/panelControl', (req, res) => {
+    res.render('admin/panelControl');
 });
 
 
