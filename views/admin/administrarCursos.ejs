@@ -51,6 +51,11 @@
                             <div class="single-head">
                                 <!-- <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
                                     src="assets/images/service/service-patern.png" alt="#"> -->
+                                    <div class="d-grid gap-2 d-md-block mb-4">
+                                      <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#modalAgregar">
+                                        <i class="fas fa-plus-circle"></i> Agregar un Curso</button>
+                                    </div>
+
                                     <table class="table table-bordered table-hover border-primary text-center" >
                                         <thead>
                                             <tr class="table-primary">
@@ -203,6 +208,56 @@
                                                 </div>
                                               </div>
                                         <!-- Final Modal editar-->
+
+                                             <!-- Modal Agregar curso-->
+                                             <div class="modal fade" id="modalAgregar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                              <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalToggleLabel">Agregar curso</h5>
+                                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                     <form>
+                                                      <div class="row">
+                                                          <label class="form-label">
+                                                              <b>Logo del curso</b>
+                                                          </label>
+                                                          <div class="input-group mb-3">
+                                                              <input type="file" class="form-control" id="inputGroupFile02">
+                                                            </div>
+
+                                                          <div class="col-6">
+                                                              <label class="form-label">
+                                                                  <b>Curso</b>
+                                                              </label>
+                                                              <div class="input-group mb-3">
+                                                                  <input type="text" class="form-control" placeholder="Nombre del curso">
+                                                              </div>
+                                                          </div>
+                                                          <div class="col-6">
+                                                              <label class="form-label">
+                                                                  
+                                                                  <b>Precio</b>
+                                                              </label>
+                                                              <div class="input-group mb-3">
+                                                                  <span class="input-group-text">$</span>
+                                                                  <input type="number" class="form-control" placeholder="Precio"
+                                                                      aria-label="Apellido">
+                                                              </div>
+                                                          </div>
+
+                                                      </div>
+                                                     </form>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                      <button type="button" class="btn btn-primary">Agregar</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                      <!-- Final Modal agregar curso-->                                       
     </section>
     <!-- /End User Profile Area -->
     <script>
