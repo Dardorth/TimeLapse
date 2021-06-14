@@ -1,5 +1,5 @@
 <%- include('../templates/head', {tituloWeb: '- Panel Control' }) %>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js"></script>
     <!-- Start User Profile Area -->
     <section class="about-us section">
         <div class="">
@@ -7,13 +7,13 @@
                 <aside class="col-lg-3 col-md-4 col-12 d-flex justify-content-center mb-5">
                     <div class="sidebar ml-2 border-1 border-right">
                         <div class="mb-3 text-center">
-                            <img class="rounded-circle border border-2 border-primary" src="assets/images/profiles/admin.png" alt="" style="width: 200px; height: 200px;">
+                            <img class="rounded-circle border border-2 border-primary"
+                                src="assets/images/profiles/admin.png" alt="" style="width: 200px; height: 200px;">
                             <p class="mt-4">Hola, <span class="text-primary font-weight-bold">Administrador</span></p>
                             <small>user@user</small>
                         </div>
                         <hr class="w-50 mx-auto">
                         <div class="widget popular-feeds px-5" style="border-style: none;">
-                            <h5 class="widget-title text-primary">Esta es tu sección</h5>
                             <div class="">
                                 <div class="single-popular-feed">
                                     <i class="fas fa-columns fa-lg d-inline mr-2"></i>
@@ -23,16 +23,16 @@
                                     <i class="fas fa-users fa-lg d-inline mr-2"></i>
                                     <h6 class=""><a href="/usuariosRegistrados">Usuarios Registrados</a></h6>
                                 </div>
-                                
+
                                 <div class="single-popular-feed">
                                     <i class="fas fa-book fa-lg d-inline mr-2"></i>
                                     <h6 class=""><a href="/administrarCursos">Administrar Cursos</a></h6>
                                 </div>
-                                <div class="single-popular-feed">
+                                <div class="single-popular-feed text-primary">
                                     <i class="fas fa-dollar-sign fa-lg d-inline mr-2"></i>
-                                    <h6 class=""><a href="/ganancias">Ganancias</a></h6>
+                                    <h6 class="text-primary"><a href="/ganancias">Ganancias</a></h6>
                                 </div>
-    
+
                             </div>
                         </div>
                     </div>
@@ -45,20 +45,20 @@
                                 <p class="wow fadeInUp" data-wow-delay=".6s">Aquí podras ver tus ganancias por mes</p>
                             </div>
                         </div>
-    
+
                         <div class="services">
                             <div class="single-head">
                                 <!-- <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
                                     src="assets/images/service/service-patern.png" alt="#"> -->
 
-                                    <canvas id="myChart" width="400" height="150"></canvas>
+                                <canvas id="myChart" width="400" height="150"></canvas>
 
 
                             </div>
                         </div>
                     </div>
                 </div>
-            
+
             </div>
         </div>
 
@@ -70,11 +70,11 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 
-                'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+                    'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                 datasets: [{
                     label: 'Ganancias',
-                    data: [12, 19, 3, 5, 2, 3,10,10,10,10,10,10],
+                    data: [12, 19, 3, 5, 2, 3, 10, 10, 10, 10, 10, 10],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.5)',
                         'rgba(54, 162, 235, 0.5)',
@@ -102,7 +102,7 @@
                 }
             }
         });
-        </script>
+    </script>
 
 
     <script>
@@ -110,5 +110,3 @@
         element.classList.add('active');
     </script>
     <%- include('../templates/footer') %>
-
-
