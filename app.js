@@ -42,6 +42,10 @@ app.get('/perfil', (req, res) => {
     res.render('user/perfil');
 });
 
+app.get('/editarPerfil', (req, res) => {
+    res.render('user/editarPerfil');
+});
+
 
 // Rutas admin
 app.get('/panelControl', (req, res) => {
@@ -56,7 +60,7 @@ app.get('/ganancias', (req, res) => {
 app.get('/administrarCursos', (req, res) => {
     res.render('admin/administrarCursos');
 });
-//Fin de Rutas admin
+
 
 // Rutas para cursos
 app.get('/curso-whatsapp', (req, res) => {
