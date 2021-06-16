@@ -5181,3 +5181,46 @@ blockquote span {
   background-color: #fff;
   color: #3763EB;
 }
+
+
+/* CSS Franklin - Foto de perfil */
+.image-profile {
+  position: relative;
+  width: 200px;
+  margin: auto;
+  
+}
+
+.profile {
+  display: block;
+  width: 100%;
+  border: 2px solid #3763EB;
+  border-radius: 50%;
+}
+
+.overlay-profile {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.39);
+  color: #fff;
+  border: 2px solid #3763EB;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s;
+  cursor: pointer;
+}
+
+.overlay-profile:hover {
+  opacity: 1;
+}
+
+#profile-image{
+  display: none;
+}
