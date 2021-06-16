@@ -46,6 +46,10 @@ app.get('/editarPerfil', (req, res) => {
     res.render('user/editarPerfil');
 });
 
+app.get('/miProgreso', (req, res) => {
+    res.render('user/progreso');
+});
+
 
 // Rutas admin
 app.get('/panelControl', (req, res) => {
