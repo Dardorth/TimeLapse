@@ -7,7 +7,13 @@
                 <aside class="col-lg-3 col-md-4 col-12 d-flex justify-content-center mb-5">
                     <div class="sidebar ml-2 border-1 border-right">
                         <div class="mb-3 text-center">
-                            <img class="rounded-circle border border-2 border-primary" src="assets/images/profiles/franklin.jpeg" alt="" style="width: 200px; height: 200px;">
+                            <form action="">
+                                <div class="image-profile">
+                                    <img class="profile" src="assets/images/profiles/franklin.jpeg" alt="">
+                                    <input type="file" id="profile-image">
+                                    <label for="profile-image" class="overlay-profile"><i class="fas fa-camera fa-2x mt-1"></i></label>
+                                </div>
+                            </form>
                             <p class="mt-4">Hola, <span class="text-primary font-weight-bold">Franklin alvarado</span></p>
                             <small>user@user</small>
                         </div>
@@ -16,8 +22,8 @@
                             <h5 class="widget-title text-primary">Esta es tu sección</h5>
                             <div class="">
                                 <div class="single-popular-feed">
-                                    <i class="far fa-folder-open fa-lg d-inline mr-2"></i>
-                                    <h6 class=""><a href="/perfil">Mis Cursos</a></h6>
+                                    <i class="far fa-folder-open fa-lg d-inline mr-2 nav-active"></i>
+                                    <h6 class="nav-active"><a href="/perfil">Mis Cursos</a></h6>
                                 </div>
                                 
                                 <div class="single-popular-feed">
@@ -88,7 +94,9 @@
     </section>
     <!-- /End User Profile Area -->
     <script>
-        var element = document.getElementById('perfil');
-        element.classList.add('active');
+        const element = document.querySelectorAll('.nav-active');
+        element.forEach(active => {
+            active.classList.add('text-primary');
+        });
     </script>
     <%- include('../templates/footer') %>

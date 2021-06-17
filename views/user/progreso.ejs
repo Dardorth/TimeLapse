@@ -7,8 +7,13 @@
                 <aside class="col-lg-3 col-md-4 col-12 d-flex justify-content-center mb-5">
                     <div class="sidebar ml-2 border-1 border-right">
                         <div class="mb-3 text-center">
-                            <img class="rounded-circle border border-2 border-primary"
-                                src="assets/images/profiles/franklin.jpeg" alt="" style="width: 200px; height: 200px;">
+                            <form action="">
+                                <div class="image-profile">
+                                    <img class="profile" src="assets/images/profiles/franklin.jpeg" alt="">
+                                    <input type="file" id="profile-image">
+                                    <label for="profile-image" class="overlay-profile"><i class="fas fa-camera fa-2x mt-1"></i></label>
+                                </div>
+                            </form>
                             <p class="mt-4">Hola, <span class="text-primary font-weight-bold">Franklin alvarado</span>
                             </p>
                             <small>user@user</small>
@@ -23,8 +28,8 @@
                                 </div>
 
                                 <div class="single-popular-feed">
-                                    <i class="fas fa-battery-three-quarters fa-lg d-inline mr-2"></i>
-                                    <h6 class=""><a href="/miProgreso">Mi Progreso</a></h6>
+                                    <i class="fas fa-battery-three-quarters fa-lg d-inline mr-2 nav-active"></i>
+                                    <h6 class="nav-active"><a href="/miProgreso">Mi Progreso</a></h6>
                                 </div>
                                 <div class="single-popular-feed">
                                     <i class="far fa-chart-bar fa-lg d-inline mr-2"></i>
@@ -36,6 +41,12 @@
                 </aside>
 
                 <div class="col-lg-9 col-md-8">
+                    <!-- <div class="container">
+                        <button class="switch" id="switch">
+                            <span><i class="fas fa-sun"></i></span>
+                            <span><i class="fas fa-moon"></i></span>
+                        </button>
+                    </div> -->
                     <div class="container mt-4">
                         <div class="about-left mt-4">
                             <div class="section-title">
@@ -53,7 +64,9 @@
     </section>
     <!-- /End User Profile Area -->
     <script>
-        var element = document.getElementById('perfil');
-        element.classList.add('active');
+        const element = document.querySelectorAll('.nav-active');
+        element.forEach(active => {
+            active.classList.add('text-primary');
+        });
     </script>
     <%- include('../templates/footer') %>

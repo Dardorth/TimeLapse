@@ -19,6 +19,7 @@ body {
   color: #6e657e;
   overflow-x: hidden;
   font-size: 14px;
+  transition: .5s ease all;
 }
 
 p {
@@ -2206,9 +2207,9 @@ ol {
 /*======================================
     Servicess CSS
 ========================================*/
-.services {
+/* .services {
   background-color: #fff;
-}
+} */
 
 .services .single-head {
   position: relative;
@@ -3334,7 +3335,6 @@ blockquote span {
 /* News sidebar */
 .sidebar .widget {
   padding: 40px;
-  background-color: #fff;
   margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #eee;
@@ -3451,7 +3451,7 @@ blockquote span {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 1px dashed #eee;
+  border-bottom: 1px solid #eee;
 }
 
 .sidebar .widget.popular-feeds .single-popular-feed:last-child {
@@ -5182,13 +5182,14 @@ blockquote span {
   color: #3763EB;
 }
 
+/*======================================
+	CSS Franklin - Profile image
+========================================*/
 
-/* CSS Franklin - Foto de perfil */
 .image-profile {
   position: relative;
   width: 200px;
   margin: auto;
-  
 }
 
 .profile {
@@ -5204,7 +5205,7 @@ blockquote span {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.39);
+  background: rgba(140, 180, 255, 0.22);
   color: #fff;
   border: 2px solid #3763EB;
   border-radius: 50%;
@@ -5223,4 +5224,107 @@ blockquote span {
 
 #profile-image{
   display: none;
+}
+
+/*======================================
+	CSS Franklin - Dark Mode
+========================================*/
+
+/* Start Btn Mode */
+.switch {
+  background: #112a42;
+  border-radius: 100px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+}
+
+.switch span {
+  width: 30px;
+  height: 25px;
+  line-height: 25px;
+  display: block;
+  color: #fff;
+}
+
+.switch::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 25px;
+  position: absolute;
+  background: #f1f1f1;
+  top: 0;
+  left: 0;
+  right: unset;
+  border-radius: 100px;
+  transition:  .3s ease all;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .2);
+}
+
+.active-mode {
+  background: orange;
+  color: #000;
+}
+
+.active-mode::after {
+  right: 0;
+  left: unset;
+}
+/* End Btn Mode */
+
+
+body.dark-mode {
+  background: #1b1b1b;
+}
+
+body.dark-mode .header-item a,
+body.dark-mode .table-list li,
+body.dark-mode .tab-content ul li,
+body.dark-mode p,
+body.dark-mode a,
+body.dark-mode h6,
+body.dark-mode h5,
+body.dark-mode h4,
+body.dark-mode h3,
+body.dark-mode h2,
+body.dark-mode h1 {
+  color: #dfdfdf !important;
+}
+
+body.dark-mode .about-us .about-left .about-tab .nav li a {
+  background: #000;
+}
+
+body.dark-mode .about-us .about-left .about-tab .nav li a.active {
+  background: #7e7e7e;
+}
+
+body.dark-mode .hero-area,
+body.dark-mode .pricing-table,
+body.dark-mode .services {
+  background: #1b1b1b;
+  transition: .5s ease all;
+}
+
+body.dark-mode .single-table, 
+body.dark-mode .navbar-area,
+body.dark-mode .mini-call-action,
+body.dark-mode .single-service {
+  background: #141414;
+}
+
+body.dark-mode .footer,
+body.dark-mode .single-service::before {
+  background: #0a0a0a;
+}
+
+body.dark-mode .overlay::before {
+  background: #141414;
+}
+
+body.dark-mode .hero-inner::before {
+  background-image: linear-gradient(#141414cb,#2b7bbd33), url('../images/products/portada.jpg');
 }
