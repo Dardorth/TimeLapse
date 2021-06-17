@@ -5280,11 +5280,13 @@ body.dark-mode {
   background: #141414;
 }
 
+body.dark-mode .btn-clos,
 body.dark-mode .header-item a,
 body.dark-mode .table-list li,
 body.dark-mode .tab-content ul li,
 body.dark-mode p,
 body.dark-mode a,
+body.dark-mode label,
 body.dark-mode h6,
 body.dark-mode h5,
 body.dark-mode h4,
@@ -5333,4 +5335,10 @@ body.dark-mode .hero-inner::before {
 /* Course */
 body.dark-mode .pagination li a {
   background: #2e2e2e;
+}
+
+/* Modal */
+
+body.dark-mode .modal-content {
+  background: #1b1b1b;
 }
