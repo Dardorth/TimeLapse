@@ -5296,6 +5296,16 @@ body.dark-mode h1 {
   color: #e2e2e2 !important;
 }
 
+/* Video button style */
+body.dark-mode .intro-video-area .intro-video-play .play-thumb a {
+  background: #fff;
+  color: #3763EB !important;
+}
+body.dark-mode .intro-video-area .intro-video-play .play-thumb a:hover {
+  background-color: #3763EB;
+  color: #fff !important;
+}
+
 body.dark-mode .about-us .about-left .about-tab .nav li a {
   background: #000;
 }
