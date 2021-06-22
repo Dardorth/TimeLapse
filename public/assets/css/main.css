@@ -1176,8 +1176,8 @@ ol {
   color: #fff;
   -webkit-box-shadow: 0 1rem 3rem rgba(35, 38, 45, 0.15) !important;
           box-shadow: 0 1rem 3rem rgba(35, 38, 45, 0.15) !important;
-  -webkit-transform: translate3d(0, -5px, 0);
-          transform: translate3d(0, -5px, 0);
+  -webkit-transform: translate3d(0, -3px, 0);
+          transform: translate3d(0, -3px, 0);
 }
 
 .button .btn-alt {
