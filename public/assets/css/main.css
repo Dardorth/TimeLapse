@@ -5204,7 +5204,7 @@ blockquote span {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(140, 180, 255, 0.22);
+  background: rgba(187, 195, 209, 0.22);
   color: #fff;
   border: 2px solid #3763EB;
   border-radius: 50%;
@@ -5230,7 +5230,7 @@ blockquote span {
 ========================================*/
 
 /* Start Btn Mode */
-.switch {
+/* .switch {
   background: #112a42;
   border-radius: 100px;
   border: none;
@@ -5271,9 +5271,71 @@ blockquote span {
 .active-mode::after {
   right: 0;
   left: unset;
-}
+} */
 /* End Btn Mode */
 
+/* Start Switch Mode */
+.radio-mode {
+  width: 100px;
+  display: flex;
+  text-align: center;
+}
+
+.custom-radio input {
+  display: none;
+}
+
+.radio-btn {
+  margin: 10px;
+  width: 180px;
+  height: 200px;
+  border: 1px solid transparent;
+  display: inline-block;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.radio-btn > i {
+  color: #fff;
+  background: #3763EB;
+  font-size: 20px;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%)-scale(4);
+  border-radius:50px;
+  padding: 5px;
+  transition: .2s;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.radio-btn .mode-icon {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radio-btn .mode-icon i{
+  color: #3763EB;
+  line-height: 80px;
+  font-size: 60px;
+}
+
+.custom-radio input:checked + .radio-btn{
+  border: 3px solid #3763EB;
+}
+
+.custom-radio input:checked + .radio-btn > i {
+  opacity: 1;
+  transform:  translateX(-50%)scale(1);
+}
+/* End Switch Mode */
 
 body.dark-mode {
   background: #141414;

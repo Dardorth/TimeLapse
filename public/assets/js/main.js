@@ -109,7 +109,7 @@ Author: GrayGrids
 	JS Franklin - Dark Mode
 ========================================*/
 
-const btnSwitch = document.querySelector('.switch');
+/* const btnSwitch = document.querySelector('.switch');
 btnSwitch.addEventListener('click',()=>{
     document.body.classList.toggle('dark-mode');
     btnSwitch.classList.toggle('active-mode');
@@ -130,4 +130,30 @@ if(localStorage.getItem('dark-mode') === 'true'){
 }else{
     document.body.classList.remove('dark-mode');
     btnSwitch.classList.remove('active-mode');
+} */
+
+const checkMode = document.querySelectorAll('.radio-mode');
+const lightMode = document.getElementById('light-mode');
+const darkMode = document.getElementById('dark-mode');
+
+checkMode[0].addEventListener('click', ()=>{
+    document.body.classList.remove('dark-mode');
+    document.location.reload();
+    // Localstorage
+    localStorage.setItem('dark-mode','false');
+});
+checkMode[1].addEventListener('click', ()=>{
+    document.body.classList.add('dark-mode');
+    document.location.reload();
+    // Localstorage
+    localStorage.setItem('dark-mode','true');
+});
+
+// Localstorage mode
+if(localStorage.getItem('dark-mode') === 'true'){
+    document.body.classList.add('dark-mode');
+    darkMode.setAttribute('checked','');
+}else{
+    document.body.classList.remove('dark-mode');
+    lightMode.setAttribute('checked','');
 }
