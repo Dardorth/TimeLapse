@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>TimeLapse <%= tituloWeb %></title>
+    <title>TimeLapse <%= tituloWeb %>
+    </title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
@@ -50,24 +51,33 @@
                                     </li>
                                     <li class="nav-item header-item"><a href="/tienda" id="tienda">Tienda</a></li>
                                     <li class="nav-item header-item"><a href="/carrito" id="carrito">Carrito</a></li>
-                                    <li class="nav-item header-item"><a href="/sobreNosotros" id="nosotros">¿Quiénes somos?</a></li>
-                                    <li class="nav-item header-item" style="cursor:pointer;"><a data-bs-toggle="modal"
-                                            data-bs-target="#login"><span class="text-primary font-weight-bold">Iniciar
-                                                Sesión</span></a>
-                                    </li>
-                                    <!-- <li class="nav-item header-item"><a>
+                                    <li class="nav-item header-item"><a href="/sobreNosotros" id="nosotros">¿Quiénes
+                                            somos?</a></li>
+                                    <%if(user){%>
+                                        <li class="nav-item header-item" style="cursor:pointer;">
+                                            <a href="/logout"><span class="text-primary font-weight-bold">Cerrar
+                                                    Sesión</span></a>
+                                        </li>
+                                        <% } else { %>
+                                            <li class="nav-item header-item" style="cursor:pointer;"><a
+                                                    data-bs-toggle="modal" data-bs-target="#login"><span
+                                                        class="text-primary font-weight-bold">Iniciar
+                                                        Sesión</span></a>
+                                            </li>
+                                            <% } %>
+                                                <!-- <li class="nav-item header-item"><a>
                                         <button class="switch" id="switch">
                                         <span><i class="fas fa-sun"></i></span>
                                         <span><i class="fas fa-moon"></i></span>
                                     </button></a></li> -->
-                                    <div style="display: none;">
-                                        <div class="radio-mode">
-                                            <input type="radio" id="light">
-                                        </div>
-                                        <div class="radio-mode">
-                                            <input type="radio" id="dark">
-                                        </div>
-                                    </div>
+                                                <div style="display: none;">
+                                                    <div class="radio-mode">
+                                                        <input type="radio" id="light">
+                                                    </div>
+                                                    <div class="radio-mode">
+                                                        <input type="radio" id="dark">
+                                                    </div>
+                                                </div>
                                 </ul>
                             </div>
                         </nav>

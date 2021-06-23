@@ -4,29 +4,34 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content p-5">
             <div class="modal-body">
-                <button type="button" class="btn btn-clos float-right" data-bs-dismiss="modal" aria-label="Close">X</button>
+                <button type="button" class="btn btn-clos float-right" data-bs-dismiss="modal"
+                    aria-label="Close">X</button>
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-s-6 wow fadeInUp">
                         <div class="">
                             <h2 class="text-primary font-weight-bold">Inicia sesión.</h2>
                             <p>Comienza tu aventura de aprendizaje en TimeLapse y descubre tus capacidades.</p>
+                            <%if(mensajeLogin){%>
+                                <%=mensajeLogin%>
+                                    <% } %>
                         </div>
                     </div>
                     <div class="col-lg-6 col-s-6">
-                        <form>
+                        <form method="POST" action="/login">
                             <div class="mb-3 wow fadeInUp" data-wow-delay=".1s">
                                 <label for="usuario" class="col-form-label"><b>Usuario:</b></label>
-                                <input type="text" class="form-control" id="usuario">
+                                <input type="text" class="form-control" id="usuario" name="user">
                             </div>
                             <div class="mb-3 mb-5 wow fadeInUp" data-wow-delay=".1s">
                                 <label for="contraseña" class="col-form-label"><b>Contraseña:</b></label>
-                                <input type="password" class="form-control" id="contraseña">
+                                <input type="password" class="form-control" id="contraseña" name="password">
+                                <br>
                                 <a href="#!" class="float-right">Olvide mi contraseña.</a>
                             </div>
 
                             <div class="button wow fadeInUp text-center" data-wow-delay=".2s">
-                                <a href="/perfil" class="btn mb-2">Iniciar
-                                    Sesión</a>
+                                <button type="submit" class="btn mb-2">Iniciar
+                                    Sesión</button>
                                 <br> O
                                 <br>
                                 <button class="btn mb-4" data-bs-toggle="modal" data-bs-target="#registro"
@@ -49,7 +54,8 @@
     <div class="modal-dialog modal-md">
         <div class="modal-content p-5">
             <div class="modal-body">
-                <button type="button" class="btn btn-clos float-right" data-bs-dismiss="modal" aria-label="Close">X</button>
+                <button type="button" class="btn btn-clos float-right" data-bs-dismiss="modal"
+                    aria-label="Close">X</button>
                 <div class="row align-items-center">
                     <div class="col-12">
                         <div class="">
@@ -197,7 +203,8 @@
     <div class="modal-dialog modal-md">
         <div class="modal-content p-5">
             <div class="modal-body">
-                <button type="button" class="btn btn-clos float-right" data-bs-dismiss="modal" aria-label="Close">X</button>
+                <button type="button" class="btn btn-clos float-right" data-bs-dismiss="modal"
+                    aria-label="Close">X</button>
                 <div class="row align-items-center">
                     <div class="col-12">
                         <br>
@@ -225,7 +232,8 @@
     <div class="modal-dialog modal-md">
         <div class="modal-content p-5">
             <div class="modal-body">
-                <button type="button" class="btn btn-clos float-right" data-bs-dismiss="modal" aria-label="Close">X</button>
+                <button type="button" class="btn btn-clos float-right" data-bs-dismiss="modal"
+                    aria-label="Close">X</button>
                 <div class="row align-items-center">
                     <div class="col-12">
                         <br>
