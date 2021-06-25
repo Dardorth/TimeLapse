@@ -6,12 +6,37 @@ router.get('/', (req, res) => {
     res.render('index');
 });
 
-router.get('/tienda', (req, res) => {
-    res.render('pages/tienda');
+router.get('/tienda', async (req, res) => {
+    
+    const cursoRedSocial = await Cursos.find({categoria:'red_social'});
+    const cursoTrabajo = await Cursos.find({categoria:'trabajo'});
+    //console.log(curso);
+
+    res.render('pages/tienda',{
+        cursoRedSocial,
+        cursoTrabajo
+    });
+
 });
 
-router.get('/producto', (req, res) => {
-    res.render('pages/producto');
+router.get('/producto', async (req, res) => {
+    //RECIBIMOS LOS DATOS DEL OPRIMIDO DE LA TIENDA
+    var id_curso =req.query.id;
+    var nombre = req.query.nombre;
+    var logo = req.query.logo;
+    var precio =req.query.precio;
+
+    //console.log('ID DEL PRODUCTO SELECCIONADO: '+id_curso);
+    //console.log('NOMBRE DEL PRODUCTO SELECCIONADO: '+nombre);
+    //console.log('LOGO DEL PRODUCTO SELECCIONADO: '+logo);
+    //console.log('PRECIO DEL PRODUCTO SELECCIONADO: '+precio);
+    //const cursoProducto = await Cursos.find({_id:id});
+    //console.log('nombre DEL PRODUCTO SELECCIONADO: '+cursoProducto.nombre);
+    
+    //ENVIAMOS LOS DATOS A LA PAGINA DE PRODUCTO
+    res.render('pages/producto',{
+        id_curso, nombre, logo, precio
+    });
 });
 
 router.get('/carrito', (req, res) => {

@@ -1,4 +1,4 @@
-<%- include('../templates/head', {tituloWeb: '- Tienda'}) %>
+<%- include('../templates/head', {tituloWeb: '- Tienda' }) %>
 
     <!-- Start Service Area -->
     <section class="services section">
@@ -15,201 +15,132 @@
 
                 <div class="col-lg-6 col-md-12" style="margin-top: 35px;">
                     <div class="container-fluid">
-                        <form class="d-flex" style="float:right;">
-                            <input class="form-control me-2" type="search" placeholder="Escriba el nombre del curso"
-                                aria-label="Search" style="width : 400px; height : 10px">
-                            <button class="btn btn-outline-primary" type="submit">Buscar</button>
-                        </form>
+                        <div class="d-flex" style="float:right;">
+                            <input class="form-control me-2" id="buscador" type="search"
+                                placeholder="Escriba el nombre del curso" aria-label="Search"
+                                style="width : 400px; height : 10px">
+                            <button class="btn btn-outline-primary" id="btnBuscar">Buscar</button>
+                        </div>
                     </div>
-
                 </div>
             </div>
             <br>
             <!-- Herramientas de trabajo -->
 
-
-            <h2 class="wow fadeInUp" data-wow-delay=".4s">Herramientas de trabajo</h2>
+            <h2 class="wow fadeInUp text-center" data-wow-delay=".2s">Herramientas de trabajo</h2>
 
             <br>
+
+
             <div class="single-head">
-                <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
-                    src="assets/images/service/service-patern.png" alt="#">
-
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-12 mb-5">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                            <h3 class="text-center"><a href="/producto">Curso de Office</a></h3>
-                            <div class="col text-center">
-                                <a href="/producto"><img src="assets/images/products/logo-office.png"  alt="#"
-                                        height="200px" width="200px"></a>
-                            </div>
-                            <p class="text-center">$ 1.99</p>
-                            <br>
-                            <div class="button text-center" >
-                                <a  class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                            <h3 class="text-center"><a href="/producto">Curso de WhatsApp</a></h3>
-                            <div class="col text-center">
-                                <a href="/producto">
-                                    <img src="assets/images/products/logo-whatsapp.png" alt="#" height="200px"
-                                        width="200px">
-                                </a>
-                            </div>
-                            <p class="text-center">$ 1.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".4s">
-                            <h3 class="text-center"><a href="service-single.html">Curso de MS Teams</a></h3>
-                            <div class="col text-center">
-                                <img src="assets/images/products/logo-teams.png" alt="#" height="200px" width="200px">
-                            </div>
-                            <p class="text-center">$ 3.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".6s">
-                            <h3 class="text-center"><a href="service-single.html">Curso de Excel</a></h3>
-                            <div class="col text-center">
-                                <img src="assets/images/products/logo-excel.png" alt="#" height="200px" width="200px">
-                            </div>
-                            <p class="text-center">$ 1.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <br><br>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                            <h3 class="text-center"><a href="service-single.html">Curso de Outlook</a></h3>
-                            <div class="col text-center">
-                                <img src="assets/images/products/logo-outlook.png" alt="#" height="200px" width="200px">
-                            </div>
-                            <p class="text-center">$ 1.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
-                        </div>
-                    </div>
+                    <% for(var i=0; i < cursoTrabajo.length; i++){ %>
+                        <form action="/producto" method="get" style="width: 330px;"><!-- TAMANO DE LOS FORMS -->
+                            <div class="col-lg-3 col-md-6 col-12 mb-5" style="width: 300px;"> <!-- TAMANO DEL FONDO GRIS -->
 
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                            <h3 class="text-center"><a href="service-single.html">Curso de Word</a></h3>
-                            <div class="col text-center">
-                                <img src="assets/images/products/logo-word.png" alt="#" height="200px" width="200px">
-                            </div>
-                            <p class="text-center">$ 1.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                            <h3 class="text-center"><a href="service-single.html">Curso de Zoom</a></h3>
-                            <div class="col text-center">
-                                <img src="assets/images/products/logo-zoom.png" alt="#" height="200px" width="200px">
-                            </div>
-                            <p class="text-center">$ 1.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
-                        </div>
-                    </div>
-
+                            <!-- ENVIAMOS LOS DATOS DEL CURSOS DE FORMA OCULTA  -->
+                            <input id="id" type="text" value="<%= cursoTrabajo[i]._id %>" name="id" hidden>
+                            <input id="nombre" type="text" value="<%= cursoTrabajo[i].nombre %>" name="nombre" hidden>
+                            <input id="logo" type="text" value="<%= cursoTrabajo[i].logo %>" name="logo" hidden>
+                            <input id="precio" type="text" value="<%= cursoTrabajo[i].precio %>" name="precio" hidden>
+                            <!-- FIN -->
+                                    <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                                        <h3 class="text-center"><a >
+                                                <%= cursoTrabajo[i].nombre %>
+                                            </a></h3>
+                                        <div class="col text-center">
+                                            <!--<a id="logo" type="submit"><img src="<%= cursoTrabajo[i].logo %>"  alt="#"
+                                        height="200px" width="200px"></a>-->
+                                            <input type="image" src="<%= cursoTrabajo[i].logo %>" height="200px"
+                                                width="200px">
+                                        </div>
+                                        <p class="text-center" id="precio">$ <%= cursoTrabajo[i].precio %>
+                                        </p>
+                                        <br>
+                                        <div class="button text-center">
+                                            <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
+                                                a carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </form>
+                        <% } %>
                 </div>
+
             </div>
+
+
             <hr>
             <!-- Redes sociales -->
 
-            <h2 class="wow fadeInUp" data-wow-delay=".4s" class="text-center">Redes Sociales</h2>
+            <h2 class="wow fadeInUp text-center" data-wow-delay=".2s">Redes Sociales</h2>
 
             <br>
             <div class="single-head">
                 <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
                     src="assets/images/service/service-patern.png" alt="#">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                            <h3 class="text-center"><a href="service-single.html">Curso de Instagram</a></h3>
-                            <div class="col text-center">
-                                <img src="assets/images/products/logo-instagram.png" alt="#" height="200px"
-                                    width="200px">
+                    <% for(var e=0; e < cursoRedSocial.length; e++){ %>
+                        <form action="/producto" method="get" style="width: 330px;">
+                            <div class="col-lg-3 col-md-6 col-12 mb-5" style="width: 300px;">
+                                <!-- ENVIAMOS LOS DATOS DEL CUROS DE FORMA OCULTA  -->
+                                <input id="id" type="text" value="<%= cursoRedSocial[e]._id %>" name="id" hidden>
+                                <input id="nombre" type="text" value="<%= cursoRedSocial[e].nombre %>" name="nombre"
+                                    hidden>
+                                <input id="logo" type="text" value="<%= cursoRedSocial[e].logo %>" name="logo" hidden>
+                                <input id="precio" type="text" value="<%= cursoRedSocial[e].precio %>" name="precio"
+                                    hidden>
+                                <!-- FIN -->
+                                <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                                    <h3 class="text-center"><a>
+                                            <%= cursoRedSocial[e].nombre %>
+                                        </a></h3>
+                                    <div class="col text-center">
+                                        <!-- <a href="/producto" id="<%= cursoRedSocial[e]._id %>" type="submit">
+                                    <img src="<%= cursoRedSocial[e].logo %>" alt="#" height="200px"
+                                    width="200px"></a>-->
+                                        <input type="image" src="<%= cursoRedSocial[e].logo %>" height="200px"
+                                            width="200px">
+                                    </div>
+                                    <p class="text-center">$ <%= cursoRedSocial[e].precio %>
+                                    </p>
+                                    <br>
+                                    <div class="button text-center">
+                                        <a class="btn btn-secondary" data-toggle="modal"
+                                            data-target="#modalConfirmacion">Añadir
+                                            a carrito</a>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="text-center">$ 1.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn btn-secondary" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
+                        </form>
+                        <% } %>
+                </div>
+            </div>
+
+
+
+            <!-- Modal de confirmacion-->
+            <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Curso Agregado al Carrito</h5>
+                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".4s">
-                            <h3 class="text-center"><a href="service-single.html">Curso de Twitter</a></h3>
-                            <div class="col text-center">
-                                <img src="assets/images/products/logo-twitter.png" alt="#" height="200px" width="200px">
-                            </div>
-                            <p class="text-center">$ 1.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn btn-secondary" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
+                        <div class="modal-body">
+                            Se a agregado este curso al Carrito, para pagar debe dirigirse a la seccion de
+                            <b>Carrito</b>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <!-- Final Modal de confirmacion-->
         </div>
-
-        <!-- Modal de confirmacion-->
-        <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Curso Agregado al Carrito</h5>
-                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                    </div>
-                    <div class="modal-body">
-                        Se a agregado este curso al Carrito, para pagar debe dirigirse a la seccion de <b>Carrito</b>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Final Modal de confirmacion-->
-
     </section>
     <!-- /End Services Area -->
     <script>
