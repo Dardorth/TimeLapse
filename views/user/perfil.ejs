@@ -11,13 +11,23 @@
                                 <div class="image-profile">
                                     <img class="profile" src="assets/images/profiles/franklin.jpeg" alt="">
                                     <input type="file" id="profile-image">
-                                    <label for="profile-image" class="overlay-profile"><i class="fas fa-camera fa-2x mt-1"></i></label>
+                                    <label for="profile-image" class="overlay-profile"><i
+                                            class="fas fa-camera fa-2x mt-1"></i></label>
                                 </div>
                             </form>
-                            <p class="mt-4">Hola, <span class="text-primary font-weight-bold">Franklin alvarado</span></p>
+                            <p class="mt-4">Hola, <span class="text-primary font-weight-bold">
+                                    <%if(user){%>
+                                        <%= user.user%>
+                                            <% } %>
+                                </span>
+
+                            </p>
+
                             <small>user@user</small>
+
                         </div>
                         <hr class="w-50 mx-auto">
+
                         <div class="widget popular-feeds px-5" style="border-style: none;">
                             <h5 class="widget-title text-primary">Esta es tu sección</h5>
                             <div class="">
@@ -25,7 +35,7 @@
                                     <i class="far fa-folder-open fa-lg d-inline mr-2 nav-active"></i>
                                     <h6 class="nav-active"><a href="/perfil">Mis Cursos</a></h6>
                                 </div>
-                                
+
                                 <div class="single-popular-feed">
                                     <i class="fas fa-battery-three-quarters fa-lg d-inline mr-2"></i>
                                     <h6 class=""><a href="/miProgreso">Mi Progreso</a></h6>
@@ -48,7 +58,7 @@
                                     adquirido, y podrás verlos cuando tú quieras <i class="far fa-smile-wink"></i></p>
                             </div>
                         </div>
-    
+
                         <div class="services">
                             <div class="single-head">
                                 <!-- <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
@@ -56,27 +66,27 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6 col-12">
                                         <div class="single-service wow fadeInUp text-center" data-wow-delay=".2s">
-    
+
                                             <h3><a href="#">Curso de Whatsapp</a></h3>
-    
+
                                             <div class="image mt-3">
-                                                <img src="assets/images/products/logo-whatsapp.png" alt="#" height="200px"
-                                                    width="200px">
+                                                <img src="assets/images/products/logo-whatsapp.png" alt="#"
+                                                    height="200px" width="200px">
                                             </div>
                                             <div class="button mt-5">
                                                 <a href="/curso-whatsapp" class="btn">Vizualizar Curso</a>
                                             </div>
                                         </div>
-    
+
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-12 text-center">
                                         <div class="single-service wow fadeInUp" data-wow-delay=".4s">
-    
+
                                             <h3><a href="#">Curso de Twitter</a></h3>
-    
+
                                             <div class="image mt-3">
-                                                <img src="assets/images/products/logo-twitter.png" alt="#" height="200px"
-                                                    width="200px">
+                                                <img src="assets/images/products/logo-twitter.png" alt="#"
+                                                    height="200px" width="200px">
                                             </div>
                                             <div class="button mt-5">
                                                 <a href="#" class="btn">Vizualizar Curso</a>
