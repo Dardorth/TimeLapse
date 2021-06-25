@@ -9,9 +9,9 @@ const userSchema = new Schema({
 })
 
 //Encriptar contraseña
-/*userSchema.methods.encrypthPassword = (password) =>{
+userSchema.methods.encrypthPassword = (password) =>{
     return bcrypt.hashSync(password,bcrypt.genSaltSync(10));
-}*/
+}
 
 //Comparar contraseña ingresada por el usuario
 userSchema.methods.validatePassword = function (password) {

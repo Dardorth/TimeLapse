@@ -11,7 +11,7 @@ require('./database/database'); //Conexion a base de datos
 require('./passport/local-auth'); //Autenticaciones
 
 //---------------- Middlewares- ------------------
-//Estos son los servicios y funciones para que el login funcione
+//Estos son los servicios y funciones para que el login y registro funcione
 //Configuracion de sesion
 app.use(session({ 
     secret: 'secret',
@@ -19,26 +19,22 @@ app.use(session({
     saveUninitialized: false
 }));
 app.use(express.urlencoded({extended : false}));
-app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
-app.use((req,res,next) => {
-    app.locals.mensajeRegistro = req.flash('mensajeRegistro');
-    app.locals.mensajeLogin = req.flash('mensajeLogin');
-    next();
-});
-
+app.use(flash());
 // Motor de plantilla
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
-//Variables de sesion y mensajes de error
+//Variables de sesion y mensajes de error y exito
 app.use((req,res,next) => {
-    //app.locals.mensajeRegistro = req.flash('mensajeRegistro');
+    app.locals.mensajeRegistro = req.flash('mensajeRegistro');
+    app.locals.mensajeRegistroAuto = req.flash('mensajeRegistroAuto');
     app.locals.mensajeLogin = req.flash('mensajeLogin');
+    app.locals.registroExito = req.flash('registroExito');
     app.locals.user = req.user;
-    console.log(app.locals.user);
     next();
 });
 
@@ -55,6 +51,6 @@ app.use('/', require('./router/rutasAdmin'));
 app.use('/', require('./router/rutasCursos'));
 
 //Rutas Login
-app.use('/', require('./router/rutasLogin'));
+app.use('/', require('./router/rutasLoginRegistro'));
 
 app.listen(port, () => console.log('el servidor está corriendo en el puerto', port));

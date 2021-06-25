@@ -10,6 +10,7 @@
   "author": "Alvarado, Arrue, Ryan, Ñañez, Ye",
   "license": "ISC",
   "dependencies": {
+    "@vonage/server-sdk": "^2.10.10",
     "bcrypt": "^5.0.1",
     "connect-flash": "^0.1.1",
     "ejs": "^3.1.6",
