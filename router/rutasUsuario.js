@@ -16,6 +16,11 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
                 as: 'cursos'
               }
            },
+           {
+            $match: {
+             user: req.user.user
+            }
+          },
            { $unwind : "$cursos" }
         ]);
 
