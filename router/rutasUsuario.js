@@ -1,30 +1,23 @@
 const express = require('express');
 const user = require('../models/user');
 const router = express.Router();
-const User = require('../models/user');
 
 // Rutas usuario
 router.get('/perfil', isAuthenticated, async (req, res) => {
 
     try {
         const cursosComprados = await user.aggregate([
-            {
-                $lookup:
-                {
-                 from: 'products',
-                 localField: 'cursos.id_curso',
-                 foreignField: '_id',
-                 as: 'cursos'
-               }
-            }, {
-               $match: {
-                user: req.user.user
-               }
-             },
-             { 
-                $unwind : '$cursos'
+           {
+               $lookup:
+               {
+                from: 'products',
+                localField: 'cursos.id_curso',
+                foreignField: '_id',
+                as: 'cursos'
               }
-           ]);
+           },
+           { $unwind : "$cursos" }
+        ]);
 
         // console.log(cursosComprados);
 
