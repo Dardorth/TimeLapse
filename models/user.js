@@ -4,9 +4,30 @@ const { Schema } = mongoose;
  
 //Esquema de la tabla Usuario
 const userSchema = new Schema({
+    name: String,
+    lastname: String,
+    age: {
+        type: Number,
+        default: 22
+    },
+    user: {
+        type: String,
+        unique: true,
+        require: true
+    },
+    password: {
+        type: String,
+        require: true
+    },
+    cursos: {
+        type: Array,
+        default: []
+    }
+})
+/* const userSchema = new Schema({
     user: String,
     password: String
-})
+}) */
 
 //Encriptar contraseña
 userSchema.methods.encrypthPassword = (password) =>{

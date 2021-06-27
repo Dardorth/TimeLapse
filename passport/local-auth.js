@@ -1,7 +1,6 @@
 const passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 const Vonage = require('@vonage/server-sdk');
-
 const vonage = new Vonage({apiKey: "8e606b2e", apiSecret: "GPg5yRQchWbRg6tf"});
 
 const User = require('../models/user');
@@ -31,13 +30,13 @@ passport.use('register', new LocalStrategy(
       if(await User.findOne({user: user})){
          done(null, false, req.flash('mensajeRegistro','El usuario ya existe'));
       }else{
-         const newUser = new User();
-         newUser.user = user;
+         const newUser = new User(req.body);
+         /* newUser.user = user; */
          newUser.password = newUser.encrypthPassword(password);
          await newUser.save();
          done(null,newUser,req.flash('registroExito','Usuario registrado'));
       }
- }   
+ }
 ));
 
 //Registro AUTOMATICO
