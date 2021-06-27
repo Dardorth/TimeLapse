@@ -1,46 +1,63 @@
 const express = require('express');
+const product = require('../models/product');
 const router = express.Router();
 
-// Rutas de página
+// Rutas de inicio
 router.get('/', (req, res) => {
     res.render('index');
 });
 
+// Rutas de tienda
 router.get('/tienda', async (req, res) => {
-    
-    const cursoRedSocial = await Cursos.find({categoria:'red_social'});
-    const cursoTrabajo = await Cursos.find({categoria:'trabajo'});
-    //console.log(curso);
 
-    res.render('pages/tienda',{
-        cursoRedSocial,
-        cursoTrabajo
-    });
+    try {
+        const cursosRedesSociales = await product.find({category:'redes sociales'}); 
+        const cursosOfimatica = await product.find({category: 'ofimatica'});
+
+        res.render('pages/tienda',{
+            cursosRedesSociales,
+            cursosOfimatica
+        });
+    } catch (err) {
+        console.log(err);
+    }
 
 });
 
-router.get('/producto', async (req, res) => {
-    //RECIBIMOS LOS DATOS DEL OPRIMIDO DE LA TIENDA
-    var id_curso =req.query.id;
-    var nombre = req.query.nombre;
-    var logo = req.query.logo;
-    var precio =req.query.precio;
+// Rutas de tienda -- ver detalles de producto
+router.get('/tienda/:name', async (req, res) => {
 
-    //console.log('ID DEL PRODUCTO SELECCIONADO: '+id_curso);
-    //console.log('NOMBRE DEL PRODUCTO SELECCIONADO: '+nombre);
-    //console.log('LOGO DEL PRODUCTO SELECCIONADO: '+logo);
-    //console.log('PRECIO DEL PRODUCTO SELECCIONADO: '+precio);
-    //const cursoProducto = await Cursos.find({_id:id});
-    //console.log('nombre DEL PRODUCTO SELECCIONADO: '+cursoProducto.nombre);
-    
-    //ENVIAMOS LOS DATOS A LA PAGINA DE PRODUCTO
-    res.render('pages/producto',{
-        id_curso, nombre, logo, precio
-    });
+    try {
+        const productDetails = await product.find({name:req.params.name});
+        console.log('****************Resultado =====>');
+        console.log(productDetails);
+
+        res.render('pages/producto',{productDetails});
+    } catch (err) {
+        console.log(err);
+    }
+
 });
 
+// Rutas de carrito
 router.get('/carrito', (req, res) => {
     res.render('pages/carrito');
+});
+
+// Rutas de carrito -- añadir al carrito
+router.get('/carrito/:id', async (req, res) => {
+
+    try {
+        const addProduct = await product.findById(req.params.id);
+        console.log('****************Resultado =====>');
+        console.log(addProduct);
+
+        res.render('pages/carrito',{addProduct});
+    } catch (err) {
+        console.log(err);
+    }
+
+    
 });
 
 router.get('/checkout', (req, res) => {

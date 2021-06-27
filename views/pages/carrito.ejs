@@ -16,83 +16,41 @@
                     <h4 class="wow fadeInUp text-center mb-1" data-wow-delay=".4s">Productos seleccionados</h4>
                     <div class="single-head wow fadeInUp" data-wow-delay=".4s">
                         <div class="">
-                            <table class="table table-bordered  border-primary">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">Producto</th>
-                                        <th scope="col">Precio</th>
-                                        <th scope="col">Eliminar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="row align-items-center">
-                                                <div class="col-lg-2 col-md-4 col-6">
-                                                    <img src="assets/images/products/logo-whatsapp.png" alt="#"
-                                                        style="height:80px;">
+                            <% if (typeof addProduct !== 'undefined') { %>
+                                <table class="table table-bordered  border-primary">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th scope="col">Producto</th>
+                                            <th scope="col">Precio</th>
+                                            <th scope="col">Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-lg-2 col-md-4 col-6">
+                                                        <img src="/images/products/<%= addProduct.logo %>" alt="#"
+                                                            style="height:80px;">
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-6">
+                                                        <h5 class="product-name"><%= addProduct.name %> </h5>
+                                                        <p class="product-des">
+                                                            <span><em> Categoria: <%= addProduct.category %> </em> </span>
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-10 col-md-8 col-6">
-                                                    <h5 class="product-name">Curso de
-                                                        WhatsApp
-                                                    </h5>
-                                                    <p class="product-des">
-                                                        <span><em>Categoria:</em> Social</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>6.99</td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fas fa-trash-alt"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="row align-items-center">
-                                                <div class="col-lg-2 col-md-4 col-6">
-                                                    <img src="assets/images/products/logo-teams.png" alt="#"
-                                                        style="height:80px;">
-                                                </div>
-                                                <div class="col-lg-10 col-md-8 col-6">
-                                                    <h5 class="product-name">Curso de Microsoft Teams</h5>
-                                                    <p class="product-des">
-                                                        <span><em>Categoria:</em> Colaborativo</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>6.99</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="fas fa-trash-alt"></i></button>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-
-                                        <td>
-                                            <div class="row align-items-center">
-                                                <div class="col-lg-2 col-md-4 col-6">
-                                                    <img src="assets/images/products/logo-zoom.png" alt="#"
-                                                        style="height:80px;">
-                                                </div>
-                                                <div class="col-lg-10 col-md-8 col-6">
-                                                    <h5 class="product-name">Curso de Zoom</h5>
-                                                    <p class="product-des">
-                                                        <span><em>Categoria:</em> Colaborativo</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>6.99</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="fas fa-trash-alt"></i></button>
-                                        </td>
-
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            </td>
+                                            <td><%= addProduct.price %></td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <% }else{ %>
+                                <h1>no tienes nada</h1>
+                            <% } %>
                         </div>
                     </div>
 

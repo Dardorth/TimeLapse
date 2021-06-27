@@ -9,7 +9,7 @@
                         <div class="mb-3 text-center">
                             <form action="">
                                 <div class="image-profile">
-                                    <img class="profile" src="assets/images/profiles/franklin.jpeg" alt="">
+                                    <img class="profile" src="images/profiles/franklin.jpeg" alt="">
                                     <input type="file" id="profile-image">
                                     <label for="profile-image" class="overlay-profile"><i
                                             class="fas fa-camera fa-2x mt-1"></i></label>
@@ -17,8 +17,8 @@
                             </form>
                             <p class="mt-4">Hola, <span class="text-primary font-weight-bold">
                                     <%if(user){%>
-                                        <%= user.user%>
-                                            <% } %>
+                                        <%= user.name +' '+ user.lastname%>
+                                    <% } %>
                                 </span>
 
                             </p>
@@ -61,16 +61,14 @@
 
                         <div class="services">
                             <div class="single-head">
-                                <!-- <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
-                                    src="assets/images/service/service-patern.png" alt="#"> -->
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-12">
+                                    <!-- <div class="col-lg-4 col-md-6 col-12">
                                         <div class="single-service wow fadeInUp text-center" data-wow-delay=".2s">
 
                                             <h3><a href="#">Curso de Whatsapp</a></h3>
 
                                             <div class="image mt-3">
-                                                <img src="assets/images/products/logo-whatsapp.png" alt="#"
+                                                <img src="images/products/logo-whatsapp.png" alt="#"
                                                     height="200px" width="200px">
                                             </div>
                                             <div class="button mt-5">
@@ -78,21 +76,28 @@
                                             </div>
                                         </div>
 
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12 text-center">
-                                        <div class="single-service wow fadeInUp" data-wow-delay=".4s">
-
-                                            <h3><a href="#">Curso de Twitter</a></h3>
-
-                                            <div class="image mt-3">
-                                                <img src="assets/images/products/logo-twitter.png" alt="#"
-                                                    height="200px" width="200px">
-                                            </div>
-                                            <div class="button mt-5">
-                                                <a href="#" class="btn">Vizualizar Curso</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </div> -->
+                                    <% if (cursosComprados) { %>
+                                        <% cursosComprados.forEach(curso => { %>
+                                            <% if (curso._id == user.id) { %>
+                                                <div class="col-lg-4 col-md-6 col-12">
+                                                    <div class="single-service wow fadeInUp text-center" data-wow-delay=".2s">
+            
+                                                        <h3><a href="#">Curso de <%= curso.cursos.name %> </a></h3>
+            
+                                                        <div class="image mt-3">
+                                                            <img src="images/products/<%= curso.cursos.logo %> " alt="#"
+                                                                height="200px" width="200px">
+                                                        </div>
+                                                        <div class="button mt-5">
+                                                            <a href="/curso-whatsapp" class="btn">Vizualizar Curso</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <% } %>
+                                        <% }) %>
+                                    <% } %>
+                                    
                                 </div>
                             </div>
                         </div>

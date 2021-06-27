@@ -34,38 +34,26 @@
 
             <div class="single-head">
                 <div class="row">
-
-                    <% for(var i=0; i < cursoTrabajo.length; i++){ %>
-                        <form action="/producto" method="get" style="width: 330px;"><!-- TAMANO DE LOS FORMS -->
-                            <div class="col-lg-3 col-md-6 col-12 mb-5" style="width: 300px;"> <!-- TAMANO DEL FONDO GRIS -->
-
-                            <!-- ENVIAMOS LOS DATOS DEL CURSOS DE FORMA OCULTA  -->
-                            <input id="id" type="text" value="<%= cursoTrabajo[i]._id %>" name="id" hidden>
-                            <input id="nombre" type="text" value="<%= cursoTrabajo[i].nombre %>" name="nombre" hidden>
-                            <input id="logo" type="text" value="<%= cursoTrabajo[i].logo %>" name="logo" hidden>
-                            <input id="precio" type="text" value="<%= cursoTrabajo[i].precio %>" name="precio" hidden>
-                            <!-- FIN -->
-                                    <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                                        <h3 class="text-center"><a >
-                                                <%= cursoTrabajo[i].nombre %>
-                                            </a></h3>
-                                        <div class="col text-center">
-                                            <!--<a id="logo" type="submit"><img src="<%= cursoTrabajo[i].logo %>"  alt="#"
-                                        height="200px" width="200px"></a>-->
-                                            <input type="image" src="<%= cursoTrabajo[i].logo %>" height="200px"
-                                                width="200px">
-                                        </div>
-                                        <p class="text-center" id="precio">$ <%= cursoTrabajo[i].precio %>
-                                        </p>
-                                        <br>
-                                        <div class="button text-center">
-                                            <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                                a carrito</a>
-                                        </div>
+                    <% if (cursosOfimatica) { %>
+                        <% cursosOfimatica.forEach(curso => { %>
+                            <div class="col-lg-3 col-md-6 col-12 mb-5">
+                                <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                                    <h3 class="text-center"><a><%= curso.name %> </a></h3>
+                                    <div class="col text-center">
+                                        <a href="/tienda/<%= curso.name %> ">
+                                            <img src="images/products/<%= curso.logo %>"  alt="#" height="200px" width="200px">
+                                        </a>
+                                    </div>
+                                    <p class="text-center"><%= curso.price %> </p>
+                                    <br>
+                                    <div class="button text-center" >
+                                        <a href="/carrito/<%= curso.id %>" class="btn" data-toggle="modal" data-target="">Añadir
+                                            a carrito</a>
                                     </div>
                                 </div>
-                        </form>
-                        <% } %>
+                            </div>
+                        <% }) %>
+                    <% } %>
                 </div>
 
             </div>
@@ -79,42 +67,28 @@
             <br>
             <div class="single-head">
                 <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
-                    src="assets/images/service/service-patern.png" alt="#">
+                    src="images/service/service-patern.png" alt="#">
                 <div class="row">
-                    <% for(var e=0; e < cursoRedSocial.length; e++){ %>
-                        <form action="/producto" method="get" style="width: 330px;">
-                            <div class="col-lg-3 col-md-6 col-12 mb-5" style="width: 300px;">
-                                <!-- ENVIAMOS LOS DATOS DEL CUROS DE FORMA OCULTA  -->
-                                <input id="id" type="text" value="<%= cursoRedSocial[e]._id %>" name="id" hidden>
-                                <input id="nombre" type="text" value="<%= cursoRedSocial[e].nombre %>" name="nombre"
-                                    hidden>
-                                <input id="logo" type="text" value="<%= cursoRedSocial[e].logo %>" name="logo" hidden>
-                                <input id="precio" type="text" value="<%= cursoRedSocial[e].precio %>" name="precio"
-                                    hidden>
-                                <!-- FIN -->
+                    <% if (cursosRedesSociales) { %>
+                        <% cursosRedesSociales.forEach(curso => { %>
+                            <div class="col-lg-3 col-md-6 col-12 mb-5">
                                 <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                                    <h3 class="text-center"><a>
-                                            <%= cursoRedSocial[e].nombre %>
-                                        </a></h3>
+                                    <h3 class="text-center"><a href="/producto"><%= curso.name %> </a></h3>
                                     <div class="col text-center">
-                                        <!-- <a href="/producto" id="<%= cursoRedSocial[e]._id %>" type="submit">
-                                    <img src="<%= cursoRedSocial[e].logo %>" alt="#" height="200px"
-                                    width="200px"></a>-->
-                                        <input type="image" src="<%= cursoRedSocial[e].logo %>" height="200px"
-                                            width="200px">
+                                        <a href="/tienda/<%= curso.name %> ">
+                                            <img src="images/products/<%= curso.logo %>"  alt="#" height="200px" width="200px">
+                                        </a>
                                     </div>
-                                    <p class="text-center">$ <%= cursoRedSocial[e].precio %>
-                                    </p>
+                                    <p class="text-center"><%= curso.price %> </p>
                                     <br>
-                                    <div class="button text-center">
-                                        <a class="btn btn-secondary" data-toggle="modal"
-                                            data-target="#modalConfirmacion">Añadir
+                                    <div class="button text-center" >
+                                        <a href="/carrito/<%= curso.id %>" class="btn" data-toggle="modal" data-target="">Añadir
                                             a carrito</a>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <% } %>
+                        <% }) %>
+                    <% } %>
                 </div>
             </div>
 
