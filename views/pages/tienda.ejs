@@ -34,78 +34,33 @@
 
             <div class="single-head">
                 <div class="row">
-<<<<<<< HEAD
-                    <div class="col-lg-3 col-md-6 col-12 mb-5">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                            <h3 class="text-center"><a href="/producto">Curso de Office</a></h3>
-                            <div class="col text-center">
-                                <a href="/producto"><img src="assets/images/products/logo-office.png" alt="#"
-                                        height="200px" width="200px"></a>
-                            </div>
-                            <p class="text-center">$ 1.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                            <h3 class="text-center"><a href="/producto">Curso de WhatsApp</a></h3>
-                            <div class="col text-center">
-                                <a href="/producto">
-                                    <img src="assets/images/products/logo-whatsapp.png" alt="#" height="200px"
-                                        width="200px">
-                                </a>
-                            </div>
-                            <p class="text-center">$ 1.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-service wow fadeInUp" data-wow-delay=".4s">
-                            <h3 class="text-center"><a href="service-single.html">Curso de MS Teams</a></h3>
-                            <div class="col text-center">
-                                <img src="assets/images/products/logo-teams.png" alt="#" height="200px" width="200px">
-                            </div>
-                            <p class="text-center">$ 3.99</p>
-                            <br>
-                            <div class="button text-center">
-                                <a class="btn" data-toggle="modal" data-target="#modalConfirmacion">Añadir
-                                    a carrito</a>
-                            </div>
-                        </div>
-                    </div>
-=======
                     <% if (cursosOfimatica) { %>
-                        <% cursosOfimatica.forEach(curso => { %>
+                        <% cursosOfimatica.forEach(curso=> { %>
                             <div class="col-lg-3 col-md-6 col-12 mb-5">
                                 <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                                    <h3 class="text-center"><a><%= curso.name %> </a></h3>
+                                    <h3 class="text-center"><a>
+                                            <%= curso.name %>
+                                        </a></h3>
                                     <div class="col text-center">
                                         <a href="/tienda/<%= curso.name %> ">
-                                            <img src="images/products/<%= curso.logo %>"  alt="#" height="200px" width="200px">
+                                            <img src="images/products/<%= curso.logo %>" alt="#" height="200px"
+                                                width="200px">
                                         </a>
                                     </div>
-                                    <p class="text-center"><%= curso.price %> </p>
+                                    <p class="text-center">
+                                        <%= curso.price %>
+                                    </p>
                                     <br>
-                                    <div class="button text-center" >
-                                        <a href="/carrito/<%= curso.id %>" class="btn" data-toggle="modal" data-target="">Añadir
+                                    <div class="button text-center">
+                                        <a href="/carrito/<%= curso.id %>" class="btn" data-toggle="modal"
+                                            data-target="">Añadir
                                             a carrito</a>
                                     </div>
                                 </div>
                             </div>
-                        <% }) %>
-                    <% } %>
+                            <% }) %>
+                                <% } %>
                 </div>
->>>>>>> c63cda1c772f8d234ed6ce28157704ff23aea43d
 
             </div>
 
@@ -117,29 +72,35 @@
 
             <br>
             <div class="single-head">
-                <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
-                    src="images/service/service-patern.png" alt="#">
+                <img class="service-patern wow fadeInLeft" data-wow-delay=".5s" src="images/service/service-patern.png"
+                    alt="#">
                 <div class="row">
                     <% if (cursosRedesSociales) { %>
-                        <% cursosRedesSociales.forEach(curso => { %>
+                        <% cursosRedesSociales.forEach(curso=> { %>
                             <div class="col-lg-3 col-md-6 col-12 mb-5">
                                 <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                                    <h3 class="text-center"><a href="/producto"><%= curso.name %> </a></h3>
+                                    <h3 class="text-center"><a href="/producto">
+                                            <%= curso.name %>
+                                        </a></h3>
                                     <div class="col text-center">
                                         <a href="/tienda/<%= curso.name %> ">
-                                            <img src="images/products/<%= curso.logo %>"  alt="#" height="200px" width="200px">
+                                            <img src="images/products/<%= curso.logo %>" alt="#" height="200px"
+                                                width="200px">
                                         </a>
                                     </div>
-                                    <p class="text-center"><%= curso.price %> </p>
+                                    <p class="text-center">
+                                        <%= curso.price %>
+                                    </p>
                                     <br>
-                                    <div class="button text-center" >
-                                        <a href="/carrito/<%= curso.id %>" class="btn" data-toggle="modal" data-target="">Añadir
+                                    <div class="button text-center">
+                                        <a href="/carrito/<%= curso.id %>" class="btn" data-toggle="modal"
+                                            data-target="">Añadir
                                             a carrito</a>
                                     </div>
                                 </div>
                             </div>
-                        <% }) %>
-                    <% } %>
+                            <% }) %>
+                                <% } %>
                 </div>
             </div>
 
