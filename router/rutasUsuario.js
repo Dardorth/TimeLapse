@@ -39,11 +39,11 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
 
 });
 
-router.get('/editarPerfil', (req, res) => {
+router.get('/editarPerfil',  isAuthenticated, (req, res) => {
     res.render('user/editarPerfil');
 });
 
-router.get('/miProgreso', (req, res) => {
+router.get('/miProgreso',  isAuthenticated, (req, res) => {
     res.render('user/progreso');
 });
 
