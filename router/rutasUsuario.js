@@ -23,6 +23,9 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
           },
            { $unwind : "$cursos" }
         ]);
+        // console.log('****************Resultado =====>');
+        // console.log(req.user.user);
+        // console.log(cursosComprados);
 
         // console.log(cursosComprados);
 
