@@ -82,15 +82,14 @@ passport.use('login', new LocalStrategy(
    async (req, user, password, done) => {
       const userDB = await User.findOne({user: user});
       if(!userDB){
-         return done(null, false, req.flash('mensajeLogin','Usuario no encontrado. Intente nuevamente'));
+         return done(null, false, /*{error: 'Usuario no encontrado'}*/req.flash('mensajeLogin','Usuario no encontrado. Intente nuevamente'));
       }
       if(!userDB.validatePassword(password)){
-         return done(null, false, req.flash('mensajeLogin','Contraseña incorrecta. Intente nuevamente'));
+         return done(null, false,/* {error: 'Contraseña incorrecta'}*/ req.flash('mensajeLogin','Contraseña incorrecta. Intente nuevamente'));
       }
       done(null,userDB);
    }
 ));
-
 
 function sendSMS(number,user,password){
    const from = "Vonage APIs"
