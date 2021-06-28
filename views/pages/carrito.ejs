@@ -16,7 +16,7 @@
                     <h4 class="wow fadeInUp text-center mb-1" data-wow-delay=".4s">Productos seleccionados</h4>
                     <div class="single-head wow fadeInUp" data-wow-delay=".4s">
                         <div class="">
-                            <% if (typeof addProduct !== 'undefined') { %>
+                            <% if (typeof cartShop !== 'undefined') { %>
                                 <table class="table table-bordered  border-primary">
                                     <thead>
                                         <tr class="table-primary">
@@ -26,26 +26,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="row align-items-center">
-                                                    <div class="col-lg-2 col-md-4 col-6">
-                                                        <img src="/images/products/<%= addProduct.logo %>" alt="#"
-                                                            style="height:80px;">
+                                        <% cartShop.forEach(product => { %>
+                                         <%= product.name %> 
+                                        <% }) %>
+                                            <tr>
+                                                <td>
+                                                    <div class="row align-items-center">
+                                                        <div class="col-lg-2 col-md-4 col-6">
+                                                            <img src="/images/products/<%= cartShop.logo %>" alt="#"
+                                                                style="height:80px;">
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-8 col-6">
+                                                            <h5 class="product-name"><%= cartShop.name %> </h5>
+                                                            <p class="product-des">
+                                                                <span><em> Categoria: <%= cartShop.category %> </em> </span>
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-lg-10 col-md-8 col-6">
-                                                        <h5 class="product-name"><%= addProduct.name %> </h5>
-                                                        <p class="product-des">
-                                                            <span><em> Categoria: <%= addProduct.category %> </em> </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><%= addProduct.price %></td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                                <td><%= cartShop.price %></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                                </td>
+                                            </tr>
                                     </tbody>
                                 </table>
                             <% }else{ %>

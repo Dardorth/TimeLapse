@@ -1,6 +1,7 @@
 const express = require('express');
 const product = require('../models/product');
 const router = express.Router();
+let cartShop = [];
 
 // Rutas de inicio
 router.get('/', (req, res) => {
@@ -45,19 +46,19 @@ router.get('/carrito', (req, res) => {
 });
 
 // Rutas de carrito -- añadir al carrito
-router.get('/carrito/:id', async (req, res) => {
+router.get('/carrito/:name', async (req, res) => {
 
     try {
-        const addProduct = await product.findById(req.params.id);
+        const addProduct = await product.find({name:req.params.name});
+        cartShop.push(addProduct);
         console.log('****************Resultado =====>');
-        console.log(addProduct);
+        console.log(cartShop);
 
-        res.render('pages/carrito',{addProduct});
+        res.render('pages/carrito',{cartShop});
     } catch (err) {
         console.log(err);
     }
 
-    
 });
 
 router.get('/checkout', (req, res) => {
