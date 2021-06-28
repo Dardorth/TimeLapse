@@ -72,7 +72,7 @@
                                 <button class="btn" type="submit" data-bs-toggle="modal" data-bs-target="#regauto"
                                     data-bs-dismiss="modal">Necesito ayuda</button>
                             </div>
-                            <hr>
+                            <hr class="wow fadeInUp" data-wow-delay=".1s">
                             <a class="wow fadeInUp" href="#!" data-bs-toggle="modal" data-bs-target="#login"
                                 data-bs-dismiss="modal" data-wow-delay=".1s">Volver</a>
                         </div>
@@ -118,8 +118,8 @@
 <div class="modal fade" id="regmanual" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content p-5">
-            <div class="modal-header">
-                <h2 class="modal-title text-primary wow fadeInUp" id="regmanualmodal" data-wow-delay=".1s">Registro
+            <div class="modal-header wow fadeInUp mb-3" data-wow-delay=".1s">
+                <h2 class="modal-title text-primary" id="regmanualmodal">Registro
                 </h2>
                 <button type="button" class="btn btn-clos" data-bs-dismiss="modal" aria-label="Close">X</button>
             </div>
@@ -129,44 +129,45 @@
                 </h5>
                 <% var modal="regmanual" %>
                     <% } %>
-                        <form action="/register" method="POST" class="wow fadeInUp" data-wow-delay=".2s">
+                        <form action="/register" method="POST" class="wow fadeInUp" data-wow-delay=".1s">
 
                             <div class="row">
                                 <div class="col-md-6 col-12 mb-3">
                                     <label for="nombre" class="col-form-label"><b>Nombre:</b></label>
-                                    <input type="text" class="form-control" id="nombre" name="name" required>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
                                 </div>
-                                
+
                                 <div class="col-md-6 col-12 mb-3">
                                     <label for="apellido" class="col-form-label"><b>Apellido:</b></label>
-                                    <input type="text" class="form-control" id="apellido" name="lastname" required>
+                                    <input type="text" class="form-control" id="apellido" name="apellido" required>
+                                </div>
+                                <!--
+                                <div class="col-md-6 col-12 mb-3">
+                                    <label for="edad" class="col-form-label"><b>Edad:</b></label>
+                                    <input type="text" class="form-control" id="edad" name="age" required>
+                                </div>
+                                -->
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 col-6 mb-3">
+                                    <label for="correo" class="col-form-label"><b>Usuario:</b></label>
+                                    <input type="text" class="form-control" id="usuario" name="user" required>
                                 </div>
 
-                                <!-- <div class="col-md-6 col-12 mb-3">
-                                    <label for="apellido" class="col-form-label"><b>Edad:</b></label>
-                                    <input type="text" class="form-control" id="edad" name="age" required>
-                                </div> -->
-                   
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="correo" class="col-form-label"><b>Usuario:</b></label>
-                                <input type="text" class="form-control" id="usuario" name="user" required>
-                            </div>
-               
-                            <div class="mb-3">
-                                <label for="contraseña" class="col-form-label"><b>Contraseña:</b></label>
-                                <input type="password" class="form-control" id="contraseña" name="password" required>
+                                <div class="col-md-12 col-6 mb-3">
+                                    <label for="contraseña" class="col-form-label"><b>Contraseña:</b></label>
+                                    <input type="password" class="form-control" id="contraseña" name="password"
+                                        required>
+                                </div>
+
                             </div>
 
-                            <div class="button wow fadeInUp text-center" data-wow-delay=".3s">
+                            <div class="button wow fadeInUp text-center" data-wow-delay=".1s">
                                 <button class="btn" type="submit">Registrarse</button>
-                                <!--
-                        <button class="btn" type="submit" data-bs-toggle="modal" data-bs-target="#mensajeManual"
-                        data-bs-dismiss="modal">Registrarse</button>
-                    -->
+
                             </div>
-                            <hr>
+                            <hr class="wow fadeInUp" data-wow-delay=".1s">
                             <a class="wow fadeInUp" href="#!" data-bs-toggle="modal" data-bs-target="#registro"
                                 data-bs-dismiss="modal" data-wow-delay=".1s">Volver</a>
                         </form>
@@ -182,8 +183,8 @@
 <div class="modal fade" id="regauto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content p-5">
-            <div class="modal-header">
-                <h2 class="modal-title text-primary wow fadeInUp" id="regmanualmodal" data-wow-delay=".1s">Registro
+            <div class="modal-header wow fadeInUp mb-3" data-wow-delay=".1s">
+                <h2 class="modal-title text-primary" id="regmanualmodal">Registro
                 </h2>
                 <button type="button" class="btn btn-clos" data-bs-dismiss="modal" aria-label="Close">X</button>
             </div>
@@ -193,7 +194,7 @@
                 </h5>
                 <% var modal="regauto" %>
                     <% } %>
-                        <form method="POST" action="/registerAuto" class="wow fadeInUp" data-wow-delay=".2s">
+                        <form method="POST" action="/registerAuto" class="wow fadeInUp" data-wow-delay=".1s">
 
                             <div class="row">
                                 <div class="col-md-6 col-12 mb-3">
@@ -208,18 +209,22 @@
 
                             <div class="mb-3">
                                 <label for="celular" class="col-form-label"><b>Número de celular:</b></label>
-                                <input type="text" class="form-control" id="celular" name="celular">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="prefijo">+507</span>
+                                    <input type="number" class="form-control" id="celular" name="celular"
+                                        aria-describedby="prefijo">
+                                </div>
                             </div>
                             <input type="hidden" name="user" value="user">
                             <input type="hidden" name="password" value="password">
-                            <div class="button wow fadeInUp text-center" data-wow-delay=".3s">
+                            <div class="button wow fadeInUp text-center" data-wow-delay=".1s">
                                 <button class="btn" type="submit">Registrarse</button>
                                 <!--
                         <button class="btn" type="submit" data-bs-toggle="modal" data-bs-target="#mensajeAuto"
                         data-bs-dismiss="modal">Registrarse</button>-->
                             </div>
                         </form>
-                        <hr>
+                        <hr class="wow fadeInUp" data-wow-delay=".1s">
                         <a class="wow fadeInUp" href="#!" data-bs-toggle="modal" data-bs-target="#registro"
                             data-bs-dismiss="modal" data-wow-delay=".1s">Volver</a>
         </div>
