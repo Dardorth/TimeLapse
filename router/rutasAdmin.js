@@ -44,12 +44,12 @@ router.get('/administrarCursos', async (req, res) => {
 
 });
 
-router.get('/administrarCursos/eliminar/:id', async (req, res) => {
+router.get('/administrarCursos/eliminar', async (req, res) => {
     
     try {
-        const {id}= req.params;
+        const id= req.query.idEliminar;
         //console.log('****************Resultado =====>');
-        //console.log(req.params);
+        //console.log(id);
         await product.remove({_id:id});
 
         //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
@@ -96,23 +96,6 @@ router.get('/administrarCursos/editar/:id', async (req, res) => {
 
 });
 
-
-router.get('/administrarCursos/obtenerDatos/:id', async (req, res) => {
-    
-    try {
-        const idSelect= req.params;
-        console.log('****************Resultado =====>');
-        console.log(idSelect);
-
-
-        res.render('admin/administrarCursos',{
-            idSelect
-    });
-    } catch (err) {
-        console.log(err);
-    }
-
-});
 
 
 module.exports = router;

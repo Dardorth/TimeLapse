@@ -80,8 +80,9 @@
                         </td>
                         </a>
                       <td>
-                      <a href="/administrarCursos/obtenerDatos/<%= administrarCursos[i]._id %>">
-                        <button type="button" class="btn btn-outline-danger" ><i class="far fa-trash-alt"></i></button>
+                      <a>
+                        <button type="button" class="btn btn-outline-danger"  data-toggle="modal" onclick="eliminaEvento('<%= administrarCursos[i]._id %>')" data-target="#modalEliminar">
+                          <i class="far fa-trash-alt"></i></button>
                       </a> 
                       </td>
                     </tr>
@@ -94,9 +95,16 @@
         </div>
       </div>
     </div>
-    <script>console.log("ID RETORNADO==============="+idSelect);</script>
-
+    
+    <!-- SCRIPT PARA ASIGNAR EL ID A ELIMINAR AL MODAL-->
+    <script>
+      function eliminaEvento(idEliminar){
+        id=idEliminar;
+        document.getElementById('idEliminar').value = id;  
+        }
+      </script>
     <!-- Modal Eliminar-->
+    <form action="/administrarCursos/eliminar" method="get">
     <div class="modal fade" id="modalEliminar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
       tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
@@ -107,15 +115,17 @@
           </div>
           <div class="modal-body">
             ¿Está seguro de que desea eliminar el curso de ?
-            <input  type="text" value="<%= %>" id="idSelect">
+            <input id="idEliminar" name="idEliminar" hidden>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-danger">Eliminar</button>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
           </div>
         </div>
       </div>
     </div>
+  </form>
+
     <!-- Final Modal eliminar-->
 
     <!-- Modal editar-->
@@ -289,6 +299,24 @@
       </div>
     </div>
     <!-- Final Modal agregar curso-->
+
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+    
+        $('#actualizar').click(function() {
+          actualizarEvento();
+        });
+    
+        $('#eliminar').click(function() {
+          eliminaEvento();
+        });
+    
+      });
+    </script>
+
+<script src="obtenerDatos.js"></script>
+
   </section>
   <!-- /End User Profile Area -->
   
