@@ -55,4 +55,6 @@ app.use('/', require('./router/rutasCursos'));
 //Rutas Login
 app.use('/', require('./router/rutasLoginRegistro'));
 
+
+
 app.listen(port, () => console.log('el servidor está corriendo en el puerto', port));

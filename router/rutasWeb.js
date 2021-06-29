@@ -29,8 +29,8 @@ router.get('/tienda/:name', async (req, res) => {
 
     try {
         const productDetails = await product.find({name:req.params.name});
-        console.log('****************Resultado =====>');
-        console.log(productDetails);
+        //console.log('****************Resultado =====>');
+        //console.log(productDetails);
 
         res.render('pages/producto',{productDetails});
     } catch (err) {

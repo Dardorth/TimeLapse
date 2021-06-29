@@ -42,7 +42,7 @@
             <div class="about-left mt-4">
               <div class="section-title">
                 <h2 class="wow fadeInUp" data-wow-delay=".4s">Cantidad de cursos: <h2
-                    class="font-weight-bold font-italic text-primary">6</h2>
+                    class="font-weight-bold font-italic text-primary"><%= administrarCursos.length %></h2><!--Mostramos la cantidad de cursos-->
                 </h2>
                 <p class="wow fadeInUp" data-wow-delay=".6s">Aquí podras administrar los cursos</p>
               </div>
@@ -67,88 +67,34 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <% for(var i=0; i < administrarCursos.length; i++) { %>
                     <tr>
-                      <th scope="row">1</th>
-                      <td><img src="images/products/logo-office.png" style="width: 50px; height: 50px;"></td>
-                      <td>Office</td>
-                      <td>$ 1.99</td>
-                      <td><button type="button" class="btn btn-outline-success" data-toggle="modal"
-                          data-target="#modalEditar">
-                          <i class="far fa-edit"></i></button></td>
-                      <td><button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                          data-target="#modalEliminar">
-                          <i class="far fa-trash-alt"></i></button></td>
+                      <th scope="row"><%= i+1 %></th> <!-- PARA QUE EL NUMERO NO COMIENZE MOSTRANDOSE EN CERO-->
+                      <td><img src="images/products/<%= administrarCursos[i].logo %>" style="width: 50px; height: 50px;"></td>
+                      <td><%= administrarCursos[i].name %></td>
+                      <td>$ <%= administrarCursos[i].price %></td>
+                      <td>
+                        <a href="/administrarCursos/editar/<%= administrarCursos[i]._id %>">
+                        <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                          data-target="#modalEditar"><i class="far fa-edit"></i></button>
+                        </td>
+                        </a>
+                      <td>
+                      <a href="/administrarCursos/obtenerDatos/<%= administrarCursos[i]._id %>">
+                        <button type="button" class="btn btn-outline-danger" ><i class="far fa-trash-alt"></i></button>
+                      </a> 
+                      </td>
                     </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td><img src="images/products/logo-whatsapp.png" style="width: 50px; height: 50px;"></td>
-                      <td>WhatsApp</td>
-                      <td>$ 1.99</td>
-                      <td><button type="button" class="btn btn-outline-success" data-toggle="modal"
-                          data-target="#modalEditar">
-                          <i class="far fa-edit"></i></button></td>
-                      <td><button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                          data-target="#modalEliminar">
-                          <i class="far fa-trash-alt"></i></button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td><img src="images/products/logo-excel.png" style="width: 50px; height: 50px;"></td>
-                      <td>Excel</td>
-                      <td>$ 1.99</td>
-                      <td><button type="button" class="btn btn-outline-success" data-toggle="modal"
-                          data-target="#modalEditar">
-                          <i class="far fa-edit"></i></button></td>
-                      <td><button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                          data-target="#modalEliminar">
-                          <i class="far fa-trash-alt"></i></button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td><img src="images/products/logo-instagram.png" style="width: 50px; height: 50px;"></td>
-                      <td>Instagram</td>
-                      <td>$ 1.99</td>
-                      <td><button type="button" class="btn btn-outline-success" data-toggle="modal"
-                          data-target="#modalEditar">
-                          <i class="far fa-edit"></i></button></td>
-                      <td><button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                          data-target="#modalEliminar">
-                          <i class="far fa-trash-alt"></i></button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td><img src="images/products/logo-outlook.png" style="width: 50px; height: 50px;"></td>
-                      <td>Outtlok</td>
-                      <td>$ 1.99</td>
-                      <td><button type="button" class="btn btn-outline-success" data-toggle="modal"
-                          data-target="#modalEditar">
-                          <i class="far fa-edit"></i></button></td>
-                      <td><button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                          data-target="#modalEliminar">
-                          <i class="far fa-trash-alt"></i></button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">6</th>
-                      <td><img src="images/products/logo-teams.png" style="width: 50px; height: 50px;"></td>
-                      <td>MS Teams</td>
-                      <td>$ 1.99</td>
-                      <td><button type="button" class="btn btn-outline-success" data-toggle="modal"
-                          data-target="#modalEditar">
-                          <i class="far fa-edit"></i></button></td>
-                      <td><button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                          data-target="#modalEliminar">
-                          <i class="far fa-trash-alt"></i></button></td>
-                    </tr>
+                    <% } %>                  
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
+    <script>console.log("ID RETORNADO==============="+idSelect);</script>
 
     <!-- Modal Eliminar-->
     <div class="modal fade" id="modalEliminar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
@@ -160,7 +106,8 @@
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ¿Está seguro de que desea eliminar este curso?
+            ¿Está seguro de que desea eliminar el curso de ?
+            <input  type="text" value="<%= %>" id="idSelect">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -172,49 +119,86 @@
     <!-- Final Modal eliminar-->
 
     <!-- Modal editar-->
-    <div class="modal fade" id="modalEditar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal fade" id="modalEditar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+      tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalToggleLabel">Editar curso</h5>
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
           </div>
+          <form method="POST" action="/administrarCursos/agregar">
           <div class="modal-body">
-            <form>
+            
               <div class="row">
                 <label class="form-label">
-                  <b>Logo del curso</b>
+                  <b><i class="fas fa-image"></i> Logo del curso:</b>
                 </label>
                 <div class="input-group mb-3">
-                  <input type="file" class="form-control" id="inputGroupFile02">
+                  <input type="file" class="form-control" id="logoEditar" name="logo" value="<%=  %>" required>
                 </div>
 
                 <div class="col-6">
                   <label class="form-label">
-                    <b>Curso</b>
+                    <b><i class="fas fa-book"></i> Curso:</b>
                   </label>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre del curso">
+                    <input type="text" class="form-control" placeholder="Nombre del curso" id="nameEditar" name="name" value="<%=  %>" required>
                   </div>
                 </div>
                 <div class="col-6">
                   <label class="form-label">
-
-                    <b>Precio</b>
+                    <b><i class="fas fa-dollar-sign"></i> Precio:</b>
                   </label>
                   <div class="input-group mb-3">
                     <span class="input-group-text">$</span>
-                    <input type="number" class="form-control" placeholder="Precio" aria-label="Apellido">
+                    <input type="number" class="form-control" placeholder="Precio" aria-label="Apellido" value="<%= %>" id="priceEditar" name="price" step="0.01" required>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label">
+                    <b><i class="fas fa-align-center"></i> Contenido:</b>
+                  </label>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Contenido del curso" value="<%= %>" id="contentEditar" name="content" required>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label">
+                    <b><i class="fas fa-thumbs-up"></i> Beneficios:</b>
+                  </label>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Beneficios del curso" value="<%= %>" id="benefitsEditar" name="benefits" required>
                   </div>
                 </div>
 
+                <div class="col-6">
+                  <label class="form-label">
+                    <b><i class="fas fa-list"></i> Categoria:</b>
+                  </label>
+                <select class="form-select" aria-label="Default select example" value="<%= %>" name="category" id="categoryEditar">
+                  <option value="ofimatica" selected>Ofimatica</option>
+                  <option value="redes sociales">Redes Sociales</option>
+                </select>
               </div>
-            </form>
+              
+              <div class="col-12">
+                <label class="form-label">
+                  <br>
+                  <b><i class="fas fa-comment-alt"></i> Descripcion:</b>
+                </label>
+                <div class="input-group mb-3">
+                  <textarea type="text" class="form-control" placeholder="Describa" cols="57" rows=5 value="<%= %>" id="descriptionEditar" name="description" required></textarea>
+                </div>
+              </div>
+              </div>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-success">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary" >Guardar Cambios</button>
           </div>
+        </form>
         </div>
       </div>
     </div>
@@ -229,42 +213,78 @@
             <h5 class="modal-title" id="exampleModalToggleLabel">Agregar curso</h5>
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
           </div>
+          <form method="POST" action="/administrarCursos/agregar">
           <div class="modal-body">
-            <form>
+            
               <div class="row">
                 <label class="form-label">
-                  <b>Logo del curso</b>
+                  <b><i class="fas fa-image"></i> Logo del curso:</b>
                 </label>
                 <div class="input-group mb-3">
-                  <input type="file" class="form-control" id="inputGroupFile02">
+                  <input type="file" class="form-control" id="logo" name="logo" accept="image/png, image/jpeg, image/jpg" required>
                 </div>
 
                 <div class="col-6">
                   <label class="form-label">
-                    <b>Curso</b>
+                    <b><i class="fas fa-book"></i> Curso:</b>
                   </label>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre del curso">
+                    <input type="text" class="form-control" placeholder="Nombre del curso" id="name" name="name" required>
                   </div>
                 </div>
                 <div class="col-6">
                   <label class="form-label">
-
-                    <b>Precio</b>
+                    <b><i class="fas fa-dollar-sign"></i> Precio:</b>
                   </label>
                   <div class="input-group mb-3">
                     <span class="input-group-text">$</span>
-                    <input type="number" class="form-control" placeholder="Precio" aria-label="Apellido">
+                    <input type="number" class="form-control" placeholder="Precio" aria-label="Apellido" id="price" name="price" step="0.01" required>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label">
+                    <b><i class="fas fa-align-center"></i> Contenido:</b>
+                  </label>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Contenido del curso" id="content" name="content" required>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label">
+                    <b><i class="fas fa-thumbs-up"></i> Beneficios:</b>
+                  </label>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Beneficios del curso" id="benefits" name="benefits" required>
                   </div>
                 </div>
 
+                <div class="col-6">
+                  <label class="form-label">
+                    <b><i class="fas fa-list"></i> Categoria:</b>
+                  </label>
+                <select class="form-select" aria-label="Default select example" name="category" id="category">
+                  <option value="ofimatica" selected>Ofimatica</option>
+                  <option value="redes sociales">Redes Sociales</option>
+                </select>
               </div>
-            </form>
+              
+              <div class="col-12">
+                <label class="form-label">
+                  <br>
+                  <b><i class="fas fa-comment-alt"></i> Descripcion:</b>
+                </label>
+                <div class="input-group mb-3">
+                  <textarea type="text" class="form-control" placeholder="Describa" cols="57" rows=5 id="description" name="description" required></textarea>
+                </div>
+              </div>
+              </div>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary">Agregar</button>
+            <button type="submit" class="btn btn-primary" >Agregar</button>
           </div>
+        </form>
         </div>
       </div>
     </div>
