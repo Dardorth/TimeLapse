@@ -42,7 +42,7 @@ router.get('/tienda/:name', async (req, res) => {
 
 // Rutas de carrito
 router.get('/carrito', (req, res) => {
-    res.render('pages/carrito');
+    res.render('pages/carrito',{cartShop});
 });
 
 // Rutas de carrito -- añadir al carrito

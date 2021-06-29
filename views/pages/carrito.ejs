@@ -16,73 +16,28 @@
                     <h4 class="wow fadeInUp text-center mb-1" data-wow-delay=".4s">Productos seleccionados</h4>
                     <div class="single-head wow fadeInUp" data-wow-delay=".4s">
                         <div class="">
-                            <% if (typeof cartShop !== 'undefined') { %>
-                                <table class="table table-bordered  border-primary">
-                                    <thead>
-                                        <tr class="table-primary">
-                                            <th scope="col">Producto</th>
-                                            <th scope="col">Precio</th>
-                                            <th scope="col">Eliminar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% cartShop.forEach(product => { %>
-                                         <%= product.name %> 
-                                        <% }) %>
-                                            <tr>
-                                                <td>
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-2 col-md-4 col-6">
-                                                            <img src="/images/products/<%= cartShop.logo %>" alt="#"
-                                                                style="height:80px;">
-                                                        </div>
-                                                        <div class="col-lg-10 col-md-8 col-6">
-                                                            <h5 class="product-name"><%= cartShop.name %> </h5>
-                                                            <p class="product-des">
-                                                                <span><em> Categoria: <%= cartShop.category %> </em> </span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td><%= cartShop.price %></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                                </td>
-                                            </tr>
-                                    </tbody>
-                                </table>
-                            <% }else{ %>
-                                <h1>no tienes nada</h1>
-                            <% } %>
+                            <table class="table table-bordered  border-primary">
+                                <thead>
+                                    <tr class="table-primary">
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="items"></tbody>
+                            </table>
                         </div>
                     </div>
-
-
                 </div>
                 <!-- /Fin de carrito de compras -->
 
-                <!-- TOTALES-->
                 <div class="col-lg-3 col-md-3 col-3 wow fadeInRight" data-wow-delay=".4s">
-                    <h2>&nbsp</h2>
                     <div class=" text-center" style="width: 18rem;">
-                        <div class="">
-                            <h3 class="">Totales</h3>
-                            <br>
-                            <p class="">
-                            <h6>Sub Total: $20.97</h6>
-                            <hr>
-                            <h6>Total neto: $20.97</h6>
-                            </p>
-                            <br>
-                            <div class="button">
-                                <a href="/checkout" class="btn">Realizar pedido</a>
-                                <br><br>
-                                <a href="/tienda" class="btn btn-alt">Continuar Comprando</a>
-                            </div>
+                        <div id="toPay">
+                            
                         </div>
                     </div>
                 </div>
-
 
             </div>
 
@@ -91,5 +46,7 @@
     <script>
         var element = document.getElementById('carrito');
         element.classList.add('active');
+
     </script>
+    <script defer src="/js/franklin.js"></script>
     <%- include('../templates/footer') %>
