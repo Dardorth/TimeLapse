@@ -1,6 +1,7 @@
 const btnAdd = document.querySelectorAll('.btn-add');
 const items = document.getElementById('items');
 const toPay = document.getElementById('toPay');
+// console.log(items);
 // const templateCart = document.getElementById('templateCart').content;
 // const templateToPay = document.getElementById('templateToPay').content;
 // const fragment = document.createDocumentFragment();
@@ -16,7 +17,7 @@ window.onload = ()=>{
 
 for (let i = 0; i < btnAdd.length; i++) {
     let product = btnAdd[i];
-
+    
     product.dataset.id = i+1;
     product.addEventListener('click', e =>{
         addToCart(e.target.closest('.single-service'));
@@ -63,32 +64,33 @@ const setToCart = ()=> {
     // console.log(cart);
     items.innerHTML = '';
     cart.forEach(item =>{
-        const tr = document.createElement('tr');
+        const div = document.createElement('div');
         const content = `
-        <tr>
-            <td>
-                <div class="row align-items-center">
-                    <div class="col-lg-2 col-md-4 col-6">
-                        <img src="${item.image}" alt="#" style="height:80px;">
-                    </div>
-                    <div class="col-lg-10 col-md-8 col-6">
-                        <h5 class="product-name">${item.title}</h5>
-                        <p class="product-des">
-                            <span> Categoria: <em>${item.category}</em> </span>
-                        </p>
-                    </div>
-                </div>
-            </td>
-            <td>${item.price}</td>
-            <td>
-                <button class="btn btn-danger" data-id="${item.id}">Eliminar</button>
-            </td>
-        </tr>
-        `
-        tr.innerHTML = content;
-        items.appendChild(tr);
+        
+        <div class="row">
 
-        tr.querySelector('button').addEventListener('click',removeProduct);
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-end">
+                    <h6 class="delete" data-id="${item.id}" style="cursor: pointer;">x</h6>
+                </div>
+                
+
+                <div class="col-lg-4 text-center">
+                    <img src="${item.image}" alt="imagen" class="" style="height: 100px;">
+                </div>
+                <div class="col-lg-8 d-flex align-items-center">
+                    <p>${item.description}</p>
+                </div>
+                <hr class="my-3">
+            </div>
+
+            
+        </div>
+        `
+        div.innerHTML = content;
+        items.appendChild(div);
+
+        div.querySelector('.delete').addEventListener('click',removeProduct);
     });
     cartToPay();
 
@@ -115,20 +117,36 @@ const setToCart = ()=> {
 const cartToPay = () =>{
     
     // toPay.innerHTML = '';
-    const nPrecio = Object.values(cart).reduce((acum, { price }) => acum + 1 * price, 0);
+    const price = Object.values(cart).reduce((acum, { price }) => acum + 1 * price, 0);
+    const itmb = price * 0.07;
+    const nPrecio = (price + itmb).toFixed(2);
 
     toPay.innerHTML = `
-        <h3 class="">Totales</h3>
-        <br>
-        <p class="">
-        <h6>${nPrecio}</h6>
-        </p>
-        <br>
-        <div class="button">
-            <a href="/checkout" class="btn">Realizar pedido</a>
-            <br><br>
-            <a href="/tienda" class="btn btn-alt">Continuar Comprando</a>
+    <div class="row">
+        <div class="col-lg-12 mb-3 px-4 d-flex justify-content-between">
+            <p class="d-inline">Sub Total</p>
+            <p class=""><span>B/.</span> ${price}</p>
         </div>
+        <div class="col-lg-12 mb-3 px-4 d-flex justify-content-between">
+            <p class="d-inline">+ Itbms</p>
+            <p class="">7%</p>
+        </div>
+        <div class="col-lg-12 px-4 d-flex justify-content-between">
+            <h4 class="d-inline">Total</h4>
+            <h4 class=""><span>B/.</span> ${nPrecio}</h4>
+        </div>
+
+        <hr class="my-3">
+    </div>
+
+    <div class="">
+        <div class="col-lg-12 mb-3">
+            <p>¿Tienes algún cupón o tarjeta de regalo?</p>
+        </div>
+        <div class="col-lg-12">
+            <p>¿Te falta algún curso? <a href="/tienda" class="font-weight-bold" style="color: #3763EB !important;">Sigue comprando</a></p>
+        </div>
+    </div>
     `
 
 
