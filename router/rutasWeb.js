@@ -29,8 +29,12 @@ router.get('/tienda', async (req, res) => {
 router.get('/tienda/:name', async (req, res) => {
 
     try {
-        const productDetails = await product.find({name:req.params.name});
+        const productName = await product.find({name:req.params.name});
         console.log('****************Resultado =====>');
+
+        productName.forEach(element => {
+            productDetails = element
+        });
         console.log(productDetails);
 
         res.render('pages/producto',{productDetails});

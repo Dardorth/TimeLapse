@@ -23,7 +23,11 @@
 
                             </p>
 
-                            <small>user@user</small>
+                            <small>Usuario: 
+                                <%if(user){%>
+                                    <%= user.user%>
+                                <% } %>
+                            </small>
 
                         </div>
                         <hr class="w-50 mx-auto">
