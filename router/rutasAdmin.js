@@ -84,7 +84,8 @@ router.get('/administrarCursos/editar', async (req, res) => {
     try {
       
         //ALMACENAMOS LOS DATOS EN UNA VARIABLE
-        let cursoNuevo = new product(req.body); 
+        let cursoNuevo = new product(req.body);
+        console.log(req.body); 
 
         //GUARDAMOS LOS DATOS CON SAVE()
         cursoNuevo.save();
