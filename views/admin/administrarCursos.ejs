@@ -132,7 +132,7 @@
         <script>
         //SCRIPT PARA EDITAR UN CURSO
         function enviarDatos(cursoSelect){                   
-                    //TRANSFORMAMOS LA CADENA QUE LLEGA EN UN JSON
+                    //TRANSFORMAMOS LA CADENA QUE LLEGA DESDE EL HTML EN UN JSON, YA QUE HTML NO PUEDE ENVIAR ARCHIVOS JSON
                     curso=JSON.parse(cursoSelect);
 
                     //console.log("IMAGEN SELECCIONADO==========="+curso.logo);
@@ -147,77 +147,81 @@
                    
                 }
         </script>
+
     <!-- Modal editar-->
     <form method="GET" action="/administrarCursos/editar">
     <div class="modal fade" id="modalEditar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
       tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
+      <div class="modal-dialog modal-xl" >
+        <div class="modal-content p-3">
+          <div class="modal-header">   
             <h5 class="modal-title" id="exampleModalToggleLabel">Editar curso</h5>
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <input id="idEditar" name="idEditar">
-              <div class="row">
+            <div class="row align-items-center">
+              <div class="col-lg-6 col-s-15">
+                <input id="idEditar" name="idEditar" hidden>       
+                  <label class="form-label">
+                    <b><i class="fas fa-image"></i> Logo del curso:</b>
+                  </label>
+                  <div class="input-group mb-2">
+                    <input type="file" class="form-control" id="logoEditar" name="logo" accept="image/png, image/jpeg, image/jpg" >
+                  </div>
+                  <div class="col-13">
+                    <label class="form-label">
+                      <b><i class="fas fa-book"></i> Curso:</b>
+                    </label>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="Nombre del curso" id="nameEditar" name="name" required>
+                    </div>
+                  </div>  
+                  <div class="row">
+                  <div class="col-6">
+                    <label class="form-label">
+                      <b><i class="fas fa-dollar-sign"></i> Precio:</b>
+                    </label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">$</span>
+                      <input type="number" class="form-control" placeholder="Precio" aria-label="Apellido" id="priceEditar" name="price" step="0.01" required>
+                    </div>
+                  </div> 
+                  <div class="col-6">
+                    <label class="form-label">
+                      <b><i class="fas fa-list"></i> Categoria:</b>
+                    </label>
+                  <select class="form-select" aria-label="Default select example" name="category" id="categoryEditar">
+                    <option value="ofimatica">Ofimatica</option>
+                    <option value="redes sociales">Redes Sociales</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-13">
                 <label class="form-label">
-                  <b><i class="fas fa-image"></i> Logo del curso:</b>
+                  <b><i class="fas fa-align-center"></i> Contenido:</b>
                 </label>
                 <div class="input-group mb-3">
-                  <input type="file" class="form-control" id="logoEditar" name="logo" accept="image/png, image/jpeg, image/jpg">
+                  <textarea type="text" class="form-control" cols="57" rows=5 placeholder="Contenido del curso" id="contentEditar" name="content" required></textarea>
                 </div>
+              </div>
+              </div>
+              <div class="col-lg-6 col-s-6">
 
-                <div class="col-6">
-                  <label class="form-label">
-                    <b><i class="fas fa-book"></i> Curso:</b>
-                  </label>
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre del curso" id="nameEditar" name="name" required>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <label class="form-label">
-                    <b><i class="fas fa-dollar-sign"></i> Precio:</b>
-                  </label>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">$</span>
-                    <input type="number" class="form-control" placeholder="Precio" aria-label="Apellido" id="priceEditar" name="price" step="0.01" required>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <label class="form-label">
-                    <b><i class="fas fa-align-center"></i> Contenido:</b>
-                  </label>
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Contenido del curso" id="contentEditar" name="content" required>
-                  </div>
-                </div>
-                <div class="col-6">
+                <div class="col-13">
                   <label class="form-label">
                     <b><i class="fas fa-thumbs-up"></i> Beneficios:</b>
                   </label>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Beneficios del curso" id="benefitsEditar" name="benefits" required>
+                    <textarea type="text" class="form-control" cols="57" rows=5 placeholder="Beneficios del curso" id="benefitsEditar" name="benefits" required></textarea>
                   </div>
-                </div>
-
-                <div class="col-6">
-                  <label class="form-label">
-                    <b><i class="fas fa-list"></i> Categoria:</b>
-                  </label>
-                <select class="form-select" aria-label="Default select example" name="category" id="categoryEditar">
-                  <option value="ofimatica">Ofimatica</option>
-                  <option value="redes sociales">Redes Sociales</option>
-                </select>
-              </div>
-              
+                </div>  
               <div class="col-12">
                 <label class="form-label">
                   <br>
                   <b><i class="fas fa-comment-alt"></i> Descripcion:</b>
                 </label>
                 <div class="input-group mb-3">
-                  <textarea type="text" class="form-control" placeholder="Describa" cols="57" rows=5 id="descriptionEditar" name="description" required></textarea>
+                  <textarea type="text" class="form-control" placeholder="Describa" cols="57" rows=7 id="descriptionEditar" name="description" required></textarea>
                 </div>
               </div>
               </div>           
