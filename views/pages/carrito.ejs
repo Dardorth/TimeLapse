@@ -45,7 +45,7 @@
                 </div> -->
 
             </div>
-            <div class="row">
+            <div class="row cartShop">
                 <div class="col-lg-4 col-md-4 wow fadeInDown mb-5 mr-5" data-wow-delay=".4s" style="border-right: 3px solid #3764ebd7;">
                     <h4 class="text-center wow fadeInDown" data-wow-delay=".4s">Productos</h4>
                     <div id="items" class="wow fadeInDown" data-wow-delay=".4s">
@@ -106,7 +106,7 @@
         const x = ()=>{
 
             if(localStorage.getItem('cart')){
-            cart = JSON.parse(localStorage.getItem('cart'));
+            let cart = JSON.parse(localStorage.getItem('cart'));
             }
 
             const array = [];
@@ -117,7 +117,10 @@
             
             console.log(array);
 
-            location.href = `/comprar/${array}`;
+            location.href = `/perfil/${array}`;
+
+            // cart = [];
+            // localStorage.setItem('cart',JSON.stringify(cart));
         }
 
     </script>

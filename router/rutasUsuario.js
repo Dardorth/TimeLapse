@@ -41,7 +41,7 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
 });
 
 
-router.get('/comprar/:cart', async (req, res) => {
+router.get('/perfil/:cart', async (req, res) => {
     products = req.params.cart;
 
     array = [];
@@ -54,19 +54,21 @@ router.get('/comprar/:cart', async (req, res) => {
         array.forEach(async item => {
             ids = await product.find({name:item});
             ids.forEach(async x =>{
-                // await user.updateOne(
-                //     { _id: req.user.id},
-                //     {
-                //       $push: {
-                //         cursos: {
-                //            $each: [ { id_curso: x._id } ]
-                //         }
-                //       }
-                //     }
-                //  )
+                await user.updateOne(
+                    { _id: req.user.id},
+                    {
+                      $push: {
+                        cursos: {
+                           $each: [ { id_curso: x._id } ]
+                        }
+                      }
+                    }
+                 )
                  console.log(x);
             });
         });
+
+        res.redirect('/perfil');
 
 
     } catch (err) {

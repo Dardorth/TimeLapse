@@ -51,24 +51,6 @@ router.get('/carrito', (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Rutas de carrito -- añadir al carrito
 router.get('/carrito/:name', async (req, res) => {
 
