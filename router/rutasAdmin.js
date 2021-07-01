@@ -50,9 +50,6 @@ router.get('/ganancias', async (req, res) => {
         //Lo agrego al arreglo que se ha declarado anteriormente.
         sales_by_product.push(product);
     }
-
-    console.log(sales_by_product)
-
     //-------------- NO ELIMINAR ---------------------
 /*
     const id = stats[0].toObject()._id;
