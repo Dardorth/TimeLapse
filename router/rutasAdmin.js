@@ -56,28 +56,29 @@ router.get('/administrarCursos/eliminar', async (req, res) => {
          res.redirect('/administrarCursos');
 
     } catch (err) {
-        console.log(err);
+        console.log("No se puedo eliminar el curso: "+err);
     }
 
 });
 
-router.get('/administrarCursos/editar/:id', async (req, res) => {
+router.get('/administrarCursos/editar', async (req, res) => {
     
     try {
-        const {id}= req.params;
-        console.log('****************Resultado =====>');
-        console.log(req.params);
-        const cursoSeleccionado = await product.findById(id);
+        //console.log("ID RECIBIDO========"+req.query.idEditar);
+        
+        //HACEMOS LA COMPARACION DE ID Y ACTUALIZAMOS LOS DATOS
+        await product.updateOne({_id:req.query.idEditar},req.query);
+ 
+        //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
+        res.redirect('/administrarCursos');
 
-
-        res.render('admin/administrarCursos',{
-            cursoSeleccionado
-        });
+        console.log("=============Se actualizo correctamente el curso");
     } catch (err) {
-        console.log(err);
+        console.log("No se puedo editar el curso============ "+err);
     }
 
 });
+
 
     router.post('/administrarCursos/agregar', async (req, res) => {
     try {

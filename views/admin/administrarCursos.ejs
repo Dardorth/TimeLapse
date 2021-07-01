@@ -1,5 +1,4 @@
 <%- include('../templates/head', {tituloWeb: '- Panel Control' }) %>
-
   <!-- Start User Profile Area -->
   <section class="about-us section">
     <div class="">
@@ -74,11 +73,11 @@
                       <td><%= administrarCursos[i].name %></td>
                       <td>$ <%= administrarCursos[i].price %></td>
                       <td>
-                        <a href="/administrarCursos/editar/<%= administrarCursos[i]._id %>">
-                        <button type="button" class="btn btn-outline-success" data-toggle="modal"
-                          data-target="#modalEditar"><i class="far fa-edit"></i></button>
+                        <a>
+                        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalEditar"onclick="enviarDatos('<%= JSON.stringify(administrarCursos[i]) %>');">
+                          <i class="far fa-edit"></i></button>
                         </td>
-                        </a>
+                      </a>
                       <td>
                       <a>
                         <button type="button" class="btn btn-outline-danger"  data-toggle="modal" onclick="eliminaEvento('<%= administrarCursos[i]._id %>')" data-target="#modalEliminar">
@@ -100,6 +99,7 @@
     <script>
       function eliminaEvento(idEliminar){
         id=idEliminar;
+        //ASIGNAMOS EL VALOR AL CAMPO idEliminar
         document.getElementById('idEliminar').value = id;  
         }
       </script>
@@ -114,7 +114,7 @@
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ¿Está seguro de que desea eliminar el curso de ?
+            ¿Está seguro de que desea eliminar este curso?
             <input id="idEliminar" name="idEliminar" hidden>
           </div>
           <div class="modal-footer">
@@ -125,10 +125,30 @@
       </div>
     </div>
   </form>
-
     <!-- Final Modal eliminar-->
 
+
+    
+        <script>
+        //SCRIPT PARA EDITAR UN CURSO
+        function enviarDatos(cursoSelect){                   
+                    //TRANSFORMAMOS LA CADENA QUE LLEGA EN UN JSON
+                    curso=JSON.parse(cursoSelect);
+
+                    //console.log("IMAGEN SELECCIONADO==========="+curso.logo);
+                    document.getElementById('idEditar').value = curso._id; 
+                    document.getElementById('logoEditar').file = curso.logo; 
+                    document.getElementById('nameEditar').value = curso.name; 
+                    document.getElementById('priceEditar').value = curso.price.$numberDecimal;
+                    document.getElementById('contentEditar').value = curso.content; 
+                    document.getElementById('benefitsEditar').value = curso.benefits; 
+                    document.getElementById('categoryEditar').value = curso.category; 
+                    document.getElementById('descriptionEditar').value = curso.description; 
+                   
+                }
+        </script>
     <!-- Modal editar-->
+    <form method="GET" action="/administrarCursos/editar">
     <div class="modal fade" id="modalEditar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
       tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
@@ -137,15 +157,14 @@
             <h5 class="modal-title" id="exampleModalToggleLabel">Editar curso</h5>
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form method="POST" action="/administrarCursos/agregar">
           <div class="modal-body">
-            
+            <input id="idEditar" name="idEditar">
               <div class="row">
                 <label class="form-label">
                   <b><i class="fas fa-image"></i> Logo del curso:</b>
                 </label>
                 <div class="input-group mb-3">
-                  <input type="file" class="form-control" id="logoEditar" name="logo" value="<%=  %>" required>
+                  <input type="file" class="form-control" id="logoEditar" name="logo" accept="image/png, image/jpeg, image/jpg">
                 </div>
 
                 <div class="col-6">
@@ -153,7 +172,7 @@
                     <b><i class="fas fa-book"></i> Curso:</b>
                   </label>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre del curso" id="nameEditar" name="name" value="<%=  %>" required>
+                    <input type="text" class="form-control" placeholder="Nombre del curso" id="nameEditar" name="name" required>
                   </div>
                 </div>
                 <div class="col-6">
@@ -162,7 +181,7 @@
                   </label>
                   <div class="input-group mb-3">
                     <span class="input-group-text">$</span>
-                    <input type="number" class="form-control" placeholder="Precio" aria-label="Apellido" value="<%= %>" id="priceEditar" name="price" step="0.01" required>
+                    <input type="number" class="form-control" placeholder="Precio" aria-label="Apellido" id="priceEditar" name="price" step="0.01" required>
                   </div>
                 </div>
                 <div class="col-6">
@@ -170,7 +189,7 @@
                     <b><i class="fas fa-align-center"></i> Contenido:</b>
                   </label>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Contenido del curso" value="<%= %>" id="contentEditar" name="content" required>
+                    <input type="text" class="form-control" placeholder="Contenido del curso" id="contentEditar" name="content" required>
                   </div>
                 </div>
                 <div class="col-6">
@@ -178,7 +197,7 @@
                     <b><i class="fas fa-thumbs-up"></i> Beneficios:</b>
                   </label>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Beneficios del curso" value="<%= %>" id="benefitsEditar" name="benefits" required>
+                    <input type="text" class="form-control" placeholder="Beneficios del curso" id="benefitsEditar" name="benefits" required>
                   </div>
                 </div>
 
@@ -186,8 +205,8 @@
                   <label class="form-label">
                     <b><i class="fas fa-list"></i> Categoria:</b>
                   </label>
-                <select class="form-select" aria-label="Default select example" value="<%= %>" name="category" id="categoryEditar">
-                  <option value="ofimatica" selected>Ofimatica</option>
+                <select class="form-select" aria-label="Default select example" name="category" id="categoryEditar">
+                  <option value="ofimatica">Ofimatica</option>
                   <option value="redes sociales">Redes Sociales</option>
                 </select>
               </div>
@@ -198,20 +217,19 @@
                   <b><i class="fas fa-comment-alt"></i> Descripcion:</b>
                 </label>
                 <div class="input-group mb-3">
-                  <textarea type="text" class="form-control" placeholder="Describa" cols="57" rows=5 value="<%= %>" id="descriptionEditar" name="description" required></textarea>
+                  <textarea type="text" class="form-control" placeholder="Describa" cols="57" rows=5 id="descriptionEditar" name="description" required></textarea>
                 </div>
               </div>
-              </div>
-            
+              </div>           
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-primary" >Guardar Cambios</button>
-          </div>
-        </form>
+          </div>        
         </div>
       </div>
     </div>
+  </form>
     <!-- Final Modal editar-->
 
     <!-- Modal Agregar curso-->
@@ -225,7 +243,6 @@
           </div>
           <form method="POST" action="/administrarCursos/agregar">
           <div class="modal-body">
-            
               <div class="row">
                 <label class="form-label">
                   <b><i class="fas fa-image"></i> Logo del curso:</b>
@@ -300,22 +317,6 @@
     </div>
     <!-- Final Modal agregar curso-->
 
-
-    <script type="text/javascript">
-      $(document).ready(function() {
-    
-        $('#actualizar').click(function() {
-          actualizarEvento();
-        });
-    
-        $('#eliminar').click(function() {
-          eliminaEvento();
-        });
-    
-      });
-    </script>
-
-<script src="obtenerDatos.js"></script>
 
   </section>
   <!-- /End User Profile Area -->
