@@ -14,9 +14,18 @@
                                     <label for="profile-image" class="overlay-profile"><i class="fas fa-camera fa-2x mt-1"></i></label>
                                 </div>
                             </form>
-                            <p class="mt-4">Hola, <span class="text-primary font-weight-bold">Franklin alvarado</span>
+                            <p class="mt-4">Hola, <span class="text-primary font-weight-bold">
+                                <%if(user){%>
+                                    <%= user.name +' '+ user.lastname%>
+                                <% } %>
+                            </span>
                             </p>
-                            <small>user@user</small>
+
+                            <small>Usuario: 
+                                <%if(user){%>
+                                    <%= user.user%>
+                                <% } %>
+                            </small>
                         </div>
                         <hr class="w-50 mx-auto">
                         <div class="widget popular-feeds px-5" style="border-style: none;">

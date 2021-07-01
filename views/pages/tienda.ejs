@@ -38,28 +38,24 @@
                         <% cursosOfimatica.forEach(curso=> { %>
                             <div class="col-lg-3 col-md-6 col-12 mb-5">
                                 <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                                    <h3 class="text-center"><a>
-                                            <%= curso.name %>
-                                        </a></h3>
+                                    <h5 class="text-center"><%= curso.name %></h5>
+                                    <input type="hidden" class="text-center" value="<%= curso.category %>"></input>
+                                    <input type="hidden" class="text-center" value="<%= curso.description %>"></input>
                                     <div class="col text-center">
                                         <a href="/tienda/<%= curso.name %> ">
                                             <img src="images/products/<%= curso.logo %>" alt="#" height="200px"
                                                 width="200px">
                                         </a>
                                     </div>
-                                    <p class="text-center">
-                                        <%= curso.price %>
-                                    </p>
+                                    <p class="text-center"><%= curso.price %></p>
                                     <br>
                                     <div class="button text-center">
-                                        <a href="/carrito/<%= curso.id %>" class="btn" data-toggle="modal"
-                                            data-target="">Añadir
-                                            a carrito</a>
+                                        <a href="/carrito" class="btn btn-add" >Añadir a carrito</a>
                                     </div>
                                 </div>
                             </div>
-                            <% }) %>
-                                <% } %>
+                        <% }) %>
+                    <% } %>
                 </div>
 
             </div>
@@ -79,32 +75,26 @@
                         <% cursosRedesSociales.forEach(curso=> { %>
                             <div class="col-lg-3 col-md-6 col-12 mb-5">
                                 <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                                    <h3 class="text-center"><a href="/producto">
-                                            <%= curso.name %>
-                                        </a></h3>
+                                    <h5 class="text-center"><%= curso.name %></h5>
+                                    <input type="hidden" class="text-center" value="<%= curso.category %>"></input>
+                                    <input type="hidden" class="text-center" value="<%= curso.description %>"></input>
                                     <div class="col text-center">
                                         <a href="/tienda/<%= curso.name %> ">
                                             <img src="images/products/<%= curso.logo %>" alt="#" height="200px"
                                                 width="200px">
                                         </a>
                                     </div>
-                                    <p class="text-center">
-                                        <%= curso.price %>
-                                    </p>
+                                    <p class="text-center"><%= curso.price %></p>
                                     <br>
                                     <div class="button text-center">
-                                        <a href="/carrito/<%= curso.id %>" class="btn" data-toggle="modal"
-                                            data-target="">Añadir
-                                            a carrito</a>
+                                        <a href="/carrito" class="btn btn-add">Añadir a carrito</a>
                                     </div>
                                 </div>
                             </div>
                             <% }) %>
-                                <% } %>
+                         <% } %>
                 </div>
             </div>
-
-
 
             <!-- Modal de confirmacion-->
             <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -133,5 +123,6 @@
         var element = document.getElementById('tienda');
         element.classList.add('active');
     </script>
+    <!-- <script defer src="/js/franklin.js"></script> -->
 
     <%- include('../templates/footer') %>
