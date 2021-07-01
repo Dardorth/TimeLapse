@@ -78,9 +78,14 @@
                                 </div> -->
                                 <div class="row">
                                     <div class="col-lg-4">
-                                        <div class="button">
-                                            <a onclick="x()" class="btn btn-add" style="padding: 18px 80px;">Pagar</a>
-                                        </div>
+                                        <%if(user){%>
+                                            <div class="button">
+                                                <a onclick="x()" class="btn btn-add" style="padding: 18px 80px;">Pagar</a>
+                                            </div>
+                                        <% }else{ %>
+                                            <h4>Inicia sesión primero hdp, cha toy cansaooo lco</h4>
+                                        <% } %>
+                                        
                                     </div>
                                     <div class="col-lg-8 d-flex align-items-center">
                                         <i class="fas fa-lock mr-1"></i>
