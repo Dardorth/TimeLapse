@@ -1,5 +1,6 @@
 const express = require('express');
 const product = require('../models/product');
+const user = require('../models/user');
 const router = express.Router();
 let cartShop = [];
 
@@ -48,6 +49,25 @@ router.get('/tienda/:name', async (req, res) => {
 router.get('/carrito', (req, res) => {
     res.render('pages/carrito',{cartShop});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Rutas de carrito -- añadir al carrito
 router.get('/carrito/:name', async (req, res) => {

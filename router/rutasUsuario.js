@@ -1,4 +1,5 @@
 const express = require('express');
+const product = require('../models/product');
 const user = require('../models/user');
 const router = express.Router();
 
@@ -24,7 +25,7 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
            { $unwind : "$cursos" }
         ]);
         // console.log('****************Resultado =====>');
-        // console.log(req.user.user);
+        // console.log(req.user.id);
         // console.log(cursosComprados);
 
         // console.log(cursosComprados);
@@ -37,6 +38,40 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
         console.log(err);
     }
 
+});
+
+
+router.get('/comprar/:cart', async (req, res) => {
+    products = req.params.cart;
+
+    array = [];
+    array = products.split(',');
+
+    console.log('***********Resultado');
+    // console.log(req.user.id);
+    try {
+        let ids = '';
+        array.forEach(async item => {
+            ids = await product.find({name:item});
+            ids.forEach(async x =>{
+                // await user.updateOne(
+                //     { _id: req.user.id},
+                //     {
+                //       $push: {
+                //         cursos: {
+                //            $each: [ { id_curso: x._id } ]
+                //         }
+                //       }
+                //     }
+                //  )
+                 console.log(x);
+            });
+        });
+
+
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 router.get('/editarPerfil', (req, res) => {

@@ -54,8 +54,6 @@
                     <div id="toPay" class="wow fadeInDown" data-wow-delay=".4s"></div>
                 </div>
 
-
-
                 <div class="col-lg-7 col-md-7">
                     <div class="wow fadeInRight" data-wow-delay=".5s">
                         <h3 class="mb-3 text-center">Pago</h3>
@@ -81,7 +79,7 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="button">
-                                            <a href="#" class="btn btn-add" style="padding: 18px 80px;">Pagar</a>
+                                            <a onclick="x()" class="btn btn-add" style="padding: 18px 80px;">Pagar</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 d-flex align-items-center">
@@ -103,6 +101,24 @@
     <script>
         var element = document.getElementById('carrito');
         element.classList.add('active');
+
+        
+        const x = ()=>{
+
+            if(localStorage.getItem('cart')){
+            cart = JSON.parse(localStorage.getItem('cart'));
+            }
+
+            const array = [];
+
+            cart.forEach(item => {
+                array.push(item.title);
+            });
+            
+            console.log(array);
+
+            location.href = `/comprar/${array}`;
+        }
 
     </script>
     <!-- <script defer src="/js/franklin.js"></script> -->
