@@ -4,7 +4,7 @@ const {Schema, model} = require('mongoose');
 const saleSchema = new Schema({
     total_buy: Schema.Types.Decimal128,
     total_purchased: Number,
-    products:[Schema.Types.ObjectId],
+    products:[String],
     month:{
         type: Number,
         default: (new Date()).getMonth()

@@ -56,7 +56,9 @@
                                         </div>
                                         <div class="col-10">
                                             <h4 class="inline-block">
-                                                <%=totalSales%>
+                                                <% /*Recibo el objeto stats, accedo al primero elemento y luego muestro
+                                                    el total de ventas. */%>
+                                                    <%= stats[0].toObject().total_sales%>
                                             </h4>
                                             <h5 class="inline-block">Ventas totales</h5>
                                         </div>
@@ -71,7 +73,9 @@
                                         </div>
                                         <div class="col-10">
                                             <h4>
-                                                <%=totalEarnings%>
+                                                <% /*Recibo el objeto stats, accedo al primero elemento y luego muestro
+                                                    el total de ingresos.*/ %>
+                                                    <%=stats[0].toObject().total_earnings%>
                                             </h4>
                                             <h5>Ingresos totales</h5>
                                         </div>
@@ -86,7 +90,9 @@
                                         </div>
                                         <div class="col-10">
                                             <h4 class="inline-block">
-                                                <%=soldProducts%>
+                                                <% /*Recibo el objeto stats, accedo al primero elemento y luego muestro
+                                                    el total de productos vendidos. */%>
+                                                    <%=stats[0].toObject().total_sold_products%>
                                             </h4>
                                             <h5 class="inline-block">Cursos vendidos</h5>
                                         </div>
@@ -95,15 +101,24 @@
                             </div>
                         </div>
 
-
-                        <div class="services">
-                            <div class="single-head">
-                                <h6>Ventas mensuales del 2021</h6>
+                        <!---------- GRAFICAS ------------->
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="text-center">Ventas mensuales del <%=(new Date()).getFullYear() %>
+                                </h6>
                                 <!-- <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
                                     src="images/service/service-patern.png" alt="#"> -->
                                 <canvas id="ventasPorMes" width="80vh" height="20vh"></canvas>
                             </div>
+
+                            <div class="col-12 mt-5">
+                                <h6 class="text-center">Ventas por productos</h6>
+                                <canvas id="ventasProductos" width="80vh" height="20vh"></canvas>
+                            </div>
+
                         </div>
+
+                        <!---------- ./GRAFICAS ------------->
                     </div>
                 </div>
 
@@ -111,59 +126,95 @@
         </div>
 
     </section>
-    <!-- /End User Profile Area -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
 
-        var ctx = document.getElementById('ventasPorMes').getContext('2d');
-        var ventasPorMes = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
-                    'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                datasets: [{
-                    label: 'Ganancias',
-                    data: [
-                        <%= sales_per_month.enero %>,
-                        <%= sales_per_month.febrero %>,
-                        <%= sales_per_month.marzo %>,
-                        <%= sales_per_month.abril %>,
-                        <%= sales_per_month.mayo %>,
-                        <%= sales_per_month.junio %>,
-                        <%= sales_per_month.julio %>,
-                        <%= sales_per_month.agosto %>,
-                        <%= sales_per_month.septiembre %>,
-                        <%= sales_per_month.octubre %>,
-                        <%= sales_per_month.noviembre %>,
-                        <%= sales_per_month.diciembre %>
-                    ],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.5)',
-                        'rgba(54, 162, 235, 0.5)',
-                        'rgba(255, 206, 86, 0.5)',
-                        'rgba(75, 192, 192, 0.5)',
-                        'rgba(153, 102, 255, 0.5)',
-                        'rgba(255, 159, 64, 0.5)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+    <% //Arreglo para mostrar en la grafica -Ventas mensuales del año actual - 
+        var salesperMonth = []
+        sales_per_month.forEach(element=> {
+        salesperMonth.push(element)
+        });
+
+        var pNames = []
+        sales_by_product.forEach(element => {
+            pNames.push(element.name)
+        });
+
+        var pSales = []
+        sales_by_product.forEach(element => {
+            pSales.push(element.count)
+        });
+
+        // Arreglos para mostrar en la grafica -Ventas por productos desde el comienzo -
+        // Uso dos arreglos: courses para mostrar la lista de cursos que tengo
+        // y salesByCourses, esta va a compoñado de cada cursos, muestra la cantidad
+        //de veces que ha sido comprado.
+        /*var courses = []
+        var salesByCourses = []*/
+
+        //Recorro arrelo de objetos y almaceno en los arreglos,
+        //para luego insertar en las graficas
+        /*stats[0].toObject().sales_by_product.forEach(element=> {
+        courses.push(element.name)
+        salesByCourses.push(element.count)
+        });*/
+        %>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            var ctx = document.getElementById('ventasPorMes').getContext('2d');
+            var ventasPorMes = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+                        'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    datasets: [{
+                        label: 'Ganancias',
+                        data: <%-JSON.stringify(salesperMonth) %>,
+                        borderColor: 'rgb(13, 107, 247)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.2
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
-        });
-    </script>
+            });
 
-    <%- include('../templates/footer') %>
+           var canvas = document.getElementById('ventasProductos').getContext('2d');
+            var ventasProductos = new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: <%-JSON.stringify(pNames) %>,
+                        datasets: [{
+                            label: 'Cantidad de ventas',
+                            data:  <%-JSON.stringify(pSales) %>,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.5)',
+                                    'rgba(54, 162, 235, 0.5)',
+                                    'rgba(255, 206, 86, 0.5)',
+                                    'rgba(153, 102, 255, 0.2)'
+                                ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgb(153, 102, 255)',
+                            ],
+                            borderWidth: 1
+                        }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+        </script>
+
+        <%- include('../templates/footer') %>
