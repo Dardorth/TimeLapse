@@ -1,5 +1,5 @@
 <%- include('../templates/head', {tituloWeb: '- Panel Control' }) %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js"></script>-->
     <!-- Start User Profile Area -->
     <section class="about-us section">
         <div class="">
@@ -7,8 +7,8 @@
                 <aside class="col-lg-3 col-md-4 col-12 d-flex justify-content-center mb-5">
                     <div class="sidebar ml-2 border-1 border-right">
                         <div class="mb-3 text-center">
-                            <img class="rounded-circle border border-2 border-primary"
-                                src="images/profiles/admin.png" alt="" style="width: 200px; height: 200px;">
+                            <img class="rounded-circle border border-2 border-primary" src="images/profiles/admin.png"
+                                alt="" style="width: 200px; height: 200px;">
                             <p class="mt-4">Hola, <span class="text-primary font-weight-bold">Administrador</span></p>
                             <small>user@user</small>
                         </div>
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="single-popular-feed text-primary">
                                     <i class="fas fa-dollar-sign fa-lg d-inline mr-2"></i>
-                                    <h6 class="text-primary"><a href="/ganancias">Ganancias</a></h6>
+                                    <h6 class="text-primary"><a href="/ganancias">Estadísticas</a></h6>
                                 </div>
 
                             </div>
@@ -41,19 +41,67 @@
                     <div class="container mt-4">
                         <div class="about-left mt-4">
                             <div class="section-title">
-                                <h2 class="wow fadeInUp" data-wow-delay=".4s">Ganancias</h2>
-                                <p class="wow fadeInUp" data-wow-delay=".6s">Aquí podras ver tus ganancias por mes</p>
+                                <h2 class="wow fadeInUp" data-wow-delay=".4s">Estadísticas</h2>
+                                <p class="wow fadeInUp" data-wow-delay=".6s">Observa las estadísticas de TimeLapse</p>
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12 mb-5">
+                                <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                                    <div class="row">
+                                        <div class="col-2 text-right">
+                                            <i class="fas fa-clipboard-check fa-lg d-inline"
+                                                style="font-size: 30px;"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <h4 class="inline-block">
+                                                <%=totalSales%>
+                                            </h4>
+                                            <h5 class="inline-block">Ventas totales</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 mb-5">
+                                <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                                    <div class="row">
+                                        <div class="col-2 text-right">
+                                            <i class="fas fa-dollar-sign fa-lg d-inline" style="font-size: 30px;"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <h4>
+                                                <%=totalEarnings%>
+                                            </h4>
+                                            <h5>Ingresos totales</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 mb-5">
+                                <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                                    <div class="row">
+                                        <div class="col-2 text-right">
+                                            <i class="fas fa-book fa-lg d-inline " style="font-size: 30px;"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <h4 class="inline-block">
+                                                <%=soldProducts%>
+                                            </h4>
+                                            <h5 class="inline-block">Cursos vendidos</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="services">
                             <div class="single-head">
+                                <h6>Ventas mensuales del 2021</h6>
                                 <!-- <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
                                     src="images/service/service-patern.png" alt="#"> -->
-
-                                <canvas id="myChart" width="400" height="150"></canvas>
-
-
+                                <canvas id="ventasPorMes" width="80vh" height="20vh"></canvas>
                             </div>
                         </div>
                     </div>
@@ -64,17 +112,31 @@
 
     </section>
     <!-- /End User Profile Area -->
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
+
+        var ctx = document.getElementById('ventasPorMes').getContext('2d');
+        var ventasPorMes = new Chart(ctx, {
+            type: 'line',
             data: {
                 labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
                     'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                 datasets: [{
                     label: 'Ganancias',
-                    data: [12, 19, 3, 5, 2, 3, 10, 10, 10, 10, 10, 10],
+                    data: [
+                        <%= sales_per_month.enero %>,
+                        <%= sales_per_month.febrero %>,
+                        <%= sales_per_month.marzo %>,
+                        <%= sales_per_month.abril %>,
+                        <%= sales_per_month.mayo %>,
+                        <%= sales_per_month.junio %>,
+                        <%= sales_per_month.julio %>,
+                        <%= sales_per_month.agosto %>,
+                        <%= sales_per_month.septiembre %>,
+                        <%= sales_per_month.octubre %>,
+                        <%= sales_per_month.noviembre %>,
+                        <%= sales_per_month.diciembre %>
+                    ],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.5)',
                         'rgba(54, 162, 235, 0.5)',
