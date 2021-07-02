@@ -3,8 +3,6 @@ const app = express();
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
-//LLAMADA AL MODELO CURSOS
-require('./models/cursos');
 
 const port = 3000;
 

@@ -1767,7 +1767,7 @@ ol {
 /* Dropdown Menu */
 .header .navbar-nav li .sub-menu {
   background: #fff;
-  width: 220px;
+  width: 190px;
   text-align: left;
   position: absolute;
   top: 100%;
@@ -1837,7 +1837,7 @@ ol {
 
 .header .navbar-nav li .sub-menu li:hover a {
   color: #fff;
-  background: #3763EB;
+  background: #3764ebde;
 }
 
 .header .button {

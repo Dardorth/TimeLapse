@@ -45,7 +45,7 @@
                 </div> -->
 
             </div>
-            <div class="row">
+            <div class="row cartShop">
                 <div class="col-lg-4 col-md-4 wow fadeInDown mb-5 mr-5" data-wow-delay=".4s" style="border-right: 3px solid #3764ebd7;">
                     <h4 class="text-center wow fadeInDown" data-wow-delay=".4s">Productos</h4>
                     <div id="items" class="wow fadeInDown" data-wow-delay=".4s">
@@ -53,8 +53,6 @@
                     </div>
                     <div id="toPay" class="wow fadeInDown" data-wow-delay=".4s"></div>
                 </div>
-
-
 
                 <div class="col-lg-7 col-md-7">
                     <div class="wow fadeInRight" data-wow-delay=".5s">
@@ -75,14 +73,16 @@
                                     <input type="checkbox" class="form-check-input">
                                     <label class="form-check-label" for="exampleCheck1"> Manténganme informado de las novedades y ofertas exclusivas</label>
                                 </div>
-                                <!-- <div class="button d-flex justify-content-start">
-                                    <button class="btn-video px-5" style="font-size: 20px;">Pagar</button>
-                                </div> -->
                                 <div class="row">
                                     <div class="col-lg-4">
-                                        <div class="button">
-                                            <a href="#" class="btn btn-add" style="padding: 18px 80px;">Pagar</a>
-                                        </div>
+                                        <%if(user){%>
+                                            <div class="button">
+                                                <a onclick="payProduct()" class="btn btn-add" style="padding: 18px 80px;">Pagar</a>
+                                            </div>
+                                        <% }else{ %>
+                                            <h4>Inicia sesión primero hdp, cha toy cansaooo lco</h4>
+                                        <% } %>
+                                        
                                     </div>
                                     <div class="col-lg-8 d-flex align-items-center">
                                         <i class="fas fa-lock mr-1"></i>
@@ -93,9 +93,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                
             </div>
 
         </div>
@@ -103,7 +100,6 @@
     <script>
         var element = document.getElementById('carrito');
         element.classList.add('active');
-
     </script>
-    <!-- <script defer src="/js/franklin.js"></script> -->
+    <script src="/js/personal-js/cart.js"></script>
     <%- include('../templates/footer') %>

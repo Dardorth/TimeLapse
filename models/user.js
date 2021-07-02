@@ -20,12 +20,7 @@ const userSchema = new Schema({
         require: true
     },
     cursos: {
-        type: Array,
-        default: []
-    },
-    role: {
-        type: String,
-        default: 'client'
+        type: Object
     }
 })
 /* const userSchema = new Schema({

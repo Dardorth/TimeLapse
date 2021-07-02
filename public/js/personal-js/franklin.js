@@ -1,6 +1,7 @@
 const btnAdd = document.querySelectorAll('.btn-add');
 const items = document.getElementById('items');
 const toPay = document.getElementById('toPay');
+const section = document.querySelector('.cartShop');
 let cart = [];
 
 // Get JSON from LocalStorage if it exists
@@ -92,6 +93,19 @@ const addNewProduct = newProduct =>{
 
 // Set to new product to cartShop
 const setToCart = ()=> {
+
+    if (cart.length == 0) {
+        section.innerHTML = `
+        <div class="col-lg-12 wow fadeInDown" data-wow-delay=".4s">
+            <h6 class="text-center mb-3">carrito vacío</h6>
+            <div class="button d-flex justify-content-center">
+                <a href="/tienda" class="btn">Volver a tienda</a>
+            </div>
+        </div>
+        `;
+        localStorage.setItem('cart',JSON.stringify(cart));
+        return;
+    }
 
     items.innerHTML = '';
     cart.forEach(item =>{

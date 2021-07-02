@@ -37,35 +37,34 @@
                                     <!-- Tab 1 -->
                                     <div class="tab-pane fade show active" id="t-tab1" role="tabpanel">
                                         <div class="tab-content text-dark">
-                                            <p>Los productos más destacados del mercado en la ofimática a nivel mundial con
-                                                documentación extensa para su efizaz aprendizaje.</p>
-                                            <ul>
+                                            <p><% productDetails.details.forEach(element => { %>
+                                                <%= element.content %> 
+                                            <% }) %> </p>
+                                            <!-- <ul>
                                                 <li><i class="far fa-check-circle"></i> Word</li>
                                                 <li><i class="far fa-check-circle"></i> Excel</li>
                                                 <li><i class="far fa-check-circle"></i> Outlook</li>
                                                 <li><i class="far fa-check-circle"></i> One Drive</li>
                                                 <li><i class="far fa-check-circle"></i> Power Point</li>
-                                            </ul>
+                                            </ul> -->
                                         </div>
                                     </div>
                                     <!--/ End Tab 1 -->
                                     <!-- Tab 2 -->
                                     <div class="tab-pane fade" id="t-tab2" role="tabpanel">
                                         <div class="tab-content text-dark">
-                                            <p>Obtendrás nivel y nuevos conocimientos en las aplicacaciones office para
-                                                realizar informes, artículos, trabajos, proyectos, etc. Todo en el área de
-                                                informática básica.</p>
-                                            <p>También podrás conocer la nube con one drive y guardar todos tus archivos
-                                                personales y laborales de manera segura sin consumir almacenamiento en tu
-                                                dispositivo.</p>
+                                            <p><% productDetails.details.forEach(element => { %>
+                                                <%= element.benefits %> 
+                                            <% }) %> </p>
                                         </div>
                                     </div>
                                     <!--/ End Tab 2 -->
                                     <!-- Tab 3 -->
                                     <div class="tab-pane fade" id="t-tab3" role="tabpanel">
                                         <div class="tab-content text-dark">
-                                            <p>La mayoría de usuarios de internet saben utilizar los productos básicos de
-                                                oficmática, no te quedes atrás y adquiere nivel.</p>
+                                            <p><% productDetails.details.forEach(element => { %>
+                                                <%= element.experiences %> 
+                                            <% }) %> </p>
                                             <ul>
                                                 <li><i class="far fa-check-circle"></i> Alcanza Niveles y deja el
                                                     pasado atrás.</li>

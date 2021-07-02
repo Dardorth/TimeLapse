@@ -12,7 +12,11 @@ const productSchema = new Schema({
         require: true
     },
     category: String,
-    logo: String
+    logo: String,
+    details: {
+        type: Array,
+        default: []
+    }
 });
 
 module.exports = model('Product', productSchema);
