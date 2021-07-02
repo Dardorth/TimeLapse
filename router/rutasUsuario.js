@@ -80,8 +80,40 @@ router.get('/editarPerfil', (req, res) => {
     res.render('user/editarPerfil');
 });
 
-router.get('/miProgreso',  isAuthenticated, (req, res) => {
-    res.render('user/progreso');
+router.get('/miProgreso',  isAuthenticated, async (req, res) => {
+
+    try {
+        const cursosComprados = await user.aggregate([
+           {
+               $lookup:
+               {
+                from: 'products',
+                localField: 'cursos.id_curso',
+                foreignField: '_id',
+                as: 'cursos'
+              }
+           },
+           {
+            $match: {
+             user: req.user.user
+            }
+          },
+           { $unwind : "$cursos" }
+        ]);
+        // console.log('****************Resultado =====>');
+        // console.log(req.user.id);
+        console.log(cursosComprados);
+
+        // console.log(cursosComprados);
+
+        res.render('user/progreso',{
+            cursosComprados
+        });
+
+    } catch (err) {
+        console.log(err);
+    }
+
 });
 
 
