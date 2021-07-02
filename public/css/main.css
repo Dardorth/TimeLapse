@@ -2220,6 +2220,17 @@ ol {
   bottom: -55px;
 }
 
+.progreso{
+  padding: 40px 30px;
+  background-color: #f6f9fc;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+}
+
 .single-service {
   padding: 40px 30px;
   background-color: #f6f9fc;
@@ -2314,6 +2325,11 @@ ol {
   visibility: visible;
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
+}
+
+.progreso:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
 }
 
 .single-service:hover h3 a {
@@ -5385,7 +5401,8 @@ body.dark-mode .services {
 
 body.dark-mode .single-table,
 body.dark-mode .mini-call-action,
-body.dark-mode .single-service {
+body.dark-mode .single-service,
+body.dark-mode .progreso {
   background: #050505;
 }
 
