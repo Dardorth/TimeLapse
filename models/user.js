@@ -20,8 +20,7 @@ const userSchema = new Schema({
         require: true
     },
     cursos: {
-        type: Array,
-        default: []
+        type: Object
     }
 })
 /* const userSchema = new Schema({

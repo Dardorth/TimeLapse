@@ -36,8 +36,7 @@ router.get('/tienda/:name', async (req, res) => {
         productName.forEach(element => {
             productDetails = element
         });
-        console.log(productDetails);
-
+        
         res.render('pages/producto',{productDetails});
     } catch (err) {
         console.log(err);

@@ -73,14 +73,11 @@
                                     <input type="checkbox" class="form-check-input">
                                     <label class="form-check-label" for="exampleCheck1"> Manténganme informado de las novedades y ofertas exclusivas</label>
                                 </div>
-                                <!-- <div class="button d-flex justify-content-start">
-                                    <button class="btn-video px-5" style="font-size: 20px;">Pagar</button>
-                                </div> -->
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <%if(user){%>
                                             <div class="button">
-                                                <a onclick="x()" class="btn btn-add" style="padding: 18px 80px;">Pagar</a>
+                                                <a onclick="payProduct()" class="btn btn-add" style="padding: 18px 80px;">Pagar</a>
                                             </div>
                                         <% }else{ %>
                                             <h4>Inicia sesión primero hdp, cha toy cansaooo lco</h4>
@@ -96,9 +93,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                
             </div>
 
         </div>
@@ -106,28 +100,6 @@
     <script>
         var element = document.getElementById('carrito');
         element.classList.add('active');
-
-        
-        const x = ()=>{
-
-            if(localStorage.getItem('cart')){
-            let cart = JSON.parse(localStorage.getItem('cart'));
-            }
-
-            const array = [];
-
-            cart.forEach(item => {
-                array.push(item.title);
-            });
-            
-            console.log(array);
-
-            location.href = `/perfil/${array}`;
-
-            // cart = [];
-            // localStorage.setItem('cart',JSON.stringify(cart));
-        }
-
     </script>
-    <!-- <script defer src="/js/franklin.js"></script> -->
+    <script src="/js/personal-js/cart.js"></script>
     <%- include('../templates/footer') %>

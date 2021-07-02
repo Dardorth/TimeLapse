@@ -3,7 +3,7 @@ const product = require('../models/product');
 const user = require('../models/user');
 const router = express.Router();
 
-// Rutas usuario
+// Ruta perfil usuario
 router.get('/perfil', isAuthenticated, async (req, res) => {
 
     try {
@@ -26,7 +26,7 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
         ]);
         // console.log('****************Resultado =====>');
         // console.log(req.user.id);
-        // console.log(cursosComprados);
+        console.log(cursosComprados);
 
         // console.log(cursosComprados);
 
@@ -40,7 +40,7 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
 
 });
 
-
+// Ruta comprar productos
 router.get('/perfil/:cart', async (req, res) => {
     products = req.params.cart;
 
