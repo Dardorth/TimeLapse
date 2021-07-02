@@ -5388,7 +5388,7 @@ body.dark-mode .services {
 body.dark-mode .single-table,
 body.dark-mode .mini-call-action,
 body.dark-mode .single-service,
-body.dark-mode .progreso {
+body.dark-mode .own-card {
   background: #050505;
 }
 
@@ -5420,7 +5420,7 @@ body.dark-mode .modal-content {
 /*-------------- PROGRESO DE USUARIO -------------------*/
 
 /*- Cartas para mostrar los cursos*/
-.progreso{
+.own-card{
   padding: 40px 30px;
   background-color: #f6f9fc;
   border-radius: 10px;
@@ -5432,7 +5432,7 @@ body.dark-mode .modal-content {
   border: solid rgb(13, 107, 247) 2px;
 }
 
-.progreso:hover {
+.own-card:hover {
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
 }

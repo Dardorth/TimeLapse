@@ -48,7 +48,7 @@
 
                         <div class="row">
                             <div class="col-lg-4 col-md-12 mb-5">
-                                <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                                <div class="own-card wow fadeInUp" data-wow-delay=".2s">
                                     <div class="row">
                                         <div class="col-2 text-right">
                                             <i class="fas fa-clipboard-check fa-lg d-inline"
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 mb-5">
-                                <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                                <div class="own-card wow fadeInUp" data-wow-delay=".2s">
                                     <div class="row">
                                         <div class="col-2 text-right">
                                             <i class="fas fa-dollar-sign fa-lg d-inline" style="font-size: 30px;"></i>
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 mb-5">
-                                <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                                <div class="own-card wow fadeInUp" data-wow-delay=".2s">
                                     <div class="row">
                                         <div class="col-2 text-right">
                                             <i class="fas fa-book fa-lg d-inline " style="font-size: 30px;"></i>
@@ -133,29 +133,17 @@
         salesperMonth.push(element)
         });
 
+        //Almacenando nombre de los productos
         var pNames = []
         sales_by_product.forEach(element => {
             pNames.push(element.name)
         });
-
+        //Almacenando ventas por producto
         var pSales = []
         sales_by_product.forEach(element => {
             pSales.push(element.count)
         });
 
-        // Arreglos para mostrar en la grafica -Ventas por productos desde el comienzo -
-        // Uso dos arreglos: courses para mostrar la lista de cursos que tengo
-        // y salesByCourses, esta va a compoñado de cada cursos, muestra la cantidad
-        //de veces que ha sido comprado.
-        /*var courses = []
-        var salesByCourses = []*/
-
-        //Recorro arrelo de objetos y almaceno en los arreglos,
-        //para luego insertar en las graficas
-        /*stats[0].toObject().sales_by_product.forEach(element=> {
-        courses.push(element.name)
-        salesByCourses.push(element.count)
-        });*/
         %>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>

@@ -13,7 +13,8 @@ router.get('/usuariosRegistrados', (req, res) => {
 });
 router.get('/ganancias', async (req, res) => {
 
-    //------------- Estadisticas ----------------
+    try {
+        //------------- Estadisticas ----------------
     //Query para recibir las estadisticas de la Coleccion 'Statistics'
     const stats = await Statistic.find({});
 
@@ -49,7 +50,13 @@ router.get('/ganancias', async (req, res) => {
         }
         //Lo agrego al arreglo que se ha declarado anteriormente.
         sales_by_product.push(product);
+
+        res.render('admin/ganancias',{stats,sales_per_month,sales_by_product});
     }
+    } catch (error) {
+        console.log(error);
+    }
+    
     //-------------- NO ELIMINAR ---------------------
 /*
     const id = stats[0].toObject()._id;
@@ -77,8 +84,6 @@ router.get('/ganancias', async (req, res) => {
         ).exec();
     */
 
-        
-    res.render('admin/ganancias',{stats,sales_per_month,sales_by_product});
 });
 router.get('/administrarCursos', (req, res) => {
     res.render('admin/administrarCursos');
