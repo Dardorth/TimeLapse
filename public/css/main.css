@@ -5429,6 +5429,7 @@ body.dark-mode .modal-content {
   transition: all 0.4s ease;
   -webkit-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
+  border: solid rgb(13, 107, 247) 2px;
 }
 
 .progreso:hover {
@@ -5450,7 +5451,6 @@ body.dark-mode .modal-content {
   font: bold 12px Sans-Serif;
   color: #333;
   text-align: center;
-  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
   -webkit-transform: rotate(45deg);
   -moz-transform:    rotate(45deg);
   -ms-transform:     rotate(45deg);
@@ -5460,13 +5460,12 @@ body.dark-mode .modal-content {
   left: -5px;
   top: 15px;
   width: 120px;
-  background-color: #BFDC7A;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
-  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
-  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45); 
-  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45); 
-  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45); 
-  color: #6a6340;
+  background: rgb(13,107,247);
+  background: -moz-linear-gradient(90deg, rgba(13,107,247,1) 0%, rgba(13,107,247,1) 35%, rgba(147,191,255,1) 80%);
+  background: -webkit-linear-gradient(90deg, rgba(13,107,247,1) 0%, rgba(13,107,247,1) 35%, rgba(147,191,255,1) 80%);
+  background: linear-gradient(90deg, rgba(13,107,247,1) 0%, rgba(13,107,247,1) 35%, rgba(147,191,255,1) 80%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0d6bf7",endColorstr="#93bfff",GradientType=1);
+  color: rgb(41, 41, 41);
   -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
   -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
   box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
