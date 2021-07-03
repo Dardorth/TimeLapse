@@ -122,7 +122,9 @@ const setToCart = ()=> {
                     <img src="${item.image}" alt="imagen" class="" style="height: 100px;">
                 </div>
                 <div class="col-lg-8 d-flex align-items-center">
-                    <p>${item.description}</p>
+                    <p>Curso de <span>${item.title}</span></p>
+                    <input type="hidden" name="name" value="${item.title}">
+                    <input type="hidden" name="price" value="${item.price}">
                 </div>
                 <hr class="my-3">
             </div>
@@ -146,13 +148,13 @@ const cartToPay = () =>{
     toPay.innerHTML = '';
     const price = Object.values(cart).reduce((acum, { price }) => acum + 1 * price, 0);
     const itmb = price * 0.07;
-    const nPrecio = (price + itmb).toFixed(2);
+    const nPrice = (price + itmb).toFixed(2);
 
     toPay.innerHTML = `
     <div class="row">
         <div class="col-lg-12 mb-3 px-4 d-flex justify-content-between">
             <p class="d-inline">Sub Total</p>
-            <p class=""><span>B/.</span> ${price.toFixed(2)}</p>
+            <p>B/. <span>${price.toFixed(2)}</span></p>
         </div>
         <div class="col-lg-12 mb-3 px-4 d-flex justify-content-between">
             <p class="d-inline">+ Itbms</p>
@@ -160,7 +162,8 @@ const cartToPay = () =>{
         </div>
         <div class="col-lg-12 px-4 d-flex justify-content-between">
             <h4 class="d-inline">Total</h4>
-            <h4 class=""><span>B/.</span> ${nPrecio}</h4>
+            <h4>B/. <span name="priceTotal">${nPrice}</span></h4>
+            <input type="hidden" name="priceTotal" value="${nPrice}">
         </div>
 
         <hr class="my-3">
