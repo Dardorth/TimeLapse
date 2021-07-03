@@ -4,50 +4,8 @@
     <section class="about-us section">
         <div class="">
             <div class="row">
-                <aside class="col-lg-3 col-md-4 col-12 d-flex justify-content-center mb-5">
-                    <div class="sidebar ml-2 border-1 border-right">
-                        <div class="mb-3 text-center">
-                            <form action="">
-                                <div class="image-profile">
-                                    <img class="profile" src="images/profiles/franklin.jpeg" alt="">
-                                    <input type="file" id="profile-image">
-                                    <label for="profile-image" class="overlay-profile"><i class="fas fa-camera fa-2x mt-1"></i></label>
-                                </div>
-                            </form>
-                            <p class="mt-4">Hola, <span class="text-primary font-weight-bold">
-                                <%if(user){%>
-                                    <%= user.name +' '+ user.lastname%>
-                                <% } %>
-                            </span>
-                            </p>
-
-                            <small>Usuario: 
-                                <%if(user){%>
-                                    <%= user.user%>
-                                <% } %>
-                            </small>
-                        </div>
-                        <hr class="w-50 mx-auto">
-                        <div class="widget popular-feeds px-5" style="border-style: none;">
-                            <h5 class="widget-title text-primary">Esta es tu sección</h5>
-                            <div class="">
-                                <div class="single-popular-feed">
-                                    <i class="far fa-folder-open fa-lg d-inline mr-2"></i>
-                                    <h6 class=""><a href="/perfil">Mis Cursos</a></h6>
-                                </div>
-
-                                <div class="single-popular-feed">
-                                    <i class="fas fa-battery-three-quarters fa-lg d-inline mr-2"></i>
-                                    <h6 class=""><a href="/miProgreso">Mi Progreso</a></h6>
-                                </div>
-                                <div class="single-popular-feed">
-                                    <i class="far fa-chart-bar fa-lg d-inline mr-2 font nav-active"></i>
-                                    <h6 class="nav-active"><a href="/editarPerfil">Editar Cuenta</a></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
+                
+                <%- include('templates/aside') %>
 
                 <div class="col-lg-9 col-md-8">
                     <div class="container mt-4">
@@ -60,33 +18,51 @@
                         </div>
 
                         <div class="container mt-5">
-                            <form action="">
+                            <%if(user){%>
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay=".4s">
-                                        <div class="mb-5">
-                                            <h5 class="mb-2">Tu nombre:</h5>
-                                            <input type="text" class="form-control mb-1" id="" value="Franklin">
-                                            <small class="text-muted">Este campo hace referencia al tu nombre y se ve reflejado en la información de tu cuenta.</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 wow fadeInRight" data-wow-delay=".4s">
-                                        <div class="mb-5">
-                                            <h5 class="mb-2">Tu apellido:</h5>
-                                            <input type="text" class="form-control mb-1" id="" value="Alvarado">
-                                            <small class="text-muted">Este campo hace referencia al tu apellido y se ve reflejado en la información de tu cuenta.</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 wow fadeInLeft" data-wow-delay=".4s">
-                                        <div class="mb-4">
-                                            <h5 class="mb-2">Tu número celular:</h5>
-                                            <input type="text" class="form-control mb-1" id="" value="0202020">
-                                            <small class="text-muted">Este campo hace referencia al tu número de celular, asegúrate de colocar tú celular personal.</small>
-                                        </div>
+                                    <div class="col-lg-12 col-md-6 wow fadeInLeft" data-wow-delay=".4s">
+                                        <form action="#" method="POST" enctype="multipart/form-data">
+                                            <div class="image-profile">
+                                                <img class="profile" id="foto" src="images/profiles/<%= user.profile %>" alt="">
+                                                <input type="file" id="profile-image" name="profile-image">
+                                                <label for="profile-image" id="btn-profile" class="overlay-profile"><i class="fas fa-camera fa-2x mt-1"></i></label>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary wow fadeInUp mx-auto d-block mt-3" data-wow-delay=".4s">Guardar</button>
+                                        </form>
                                     </div>
                                 </div>
+
+                                <hr class="w-50 d-flex mx-auto my-5">
                                 
-                                <button type="submit" class="btn btn-primary wow fadeInUp" data-wow-delay=".4s">Guardar</button>
-                            </form>
+                                <form action="/editarPerfil/<%= user.id %> " method="POST">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay=".4s">
+                                            <div class="mb-5">
+                                                <h5 class="mb-2">Tu nombre:</h5>
+                                                <input type="text" class="form-control mb-1" name="name" value="<%= user.name %>">
+                                                <small class="text-muted">Este campo hace referencia al tu nombre y se ve reflejado en la información de tu cuenta.</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 wow fadeInRight" data-wow-delay=".4s">
+                                            <div class="mb-5">
+                                                <h5 class="mb-2">Tu apellido:</h5>
+                                                <input type="text" class="form-control mb-1" name="lastname" value="<%= user.lastname %>">
+                                                <small class="text-muted">Este campo hace referencia al tu apellido y se ve reflejado en la información de tu cuenta.</small>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-lg-6 col-md-12 wow fadeInLeft" data-wow-delay=".4s">
+                                            <div class="mb-4">
+                                                <h5 class="mb-2">Tu número celular:</h5>
+                                                <input type="text" class="form-control mb-1" id="" value="0202020">
+                                                <small class="text-muted">Este campo hace referencia al tu número de celular, asegúrate de colocar tú celular personal.</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary wow fadeInUp" data-wow-delay=".4s">Guardar</button>
+                                </form>
+                            <% } %>
                             
                             <hr class="w-50 d-flex mx-auto my-5">
 
@@ -162,9 +138,10 @@
     </section>
     <!-- /End User Profile Area -->
     <script>
-        const element = document.querySelectorAll('.nav-active');
-        element.forEach(active => {
-            active.classList.add('text-primary');
-        });
+        const i = document.querySelectorAll('i');
+        const h6 = document.querySelectorAll('h6');
+
+        i[3].classList.add('text-primary');
+        h6[2].classList.add('text-primary');
     </script>
     <%- include('../templates/footer') %>

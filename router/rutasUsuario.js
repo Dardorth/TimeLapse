@@ -76,10 +76,12 @@ router.get('/perfil/:cart', async (req, res) => {
     }
 });
 
+// Ruta view editar perfil
 router.get('/editarPerfil', (req, res) => {
     res.render('user/editarPerfil');
 });
 
+<<<<<<< HEAD
 router.get('/miProgreso',  isAuthenticated, async (req, res) => {
 
     try {
@@ -110,10 +112,47 @@ router.get('/miProgreso',  isAuthenticated, async (req, res) => {
             cursosComprados
         });
 
+=======
+
+// Ruta actualizar info perfil
+router.post('/editarPerfil/:id', async (req, res) => {
+    
+    const id = req.params.id;
+    const body = req.body;
+    try {
+        await user.findByIdAndUpdate(id, body, {useFindAndModify: false});
+
+        res.redirect('/editarPerfil');
+>>>>>>> 033ca658dd7f15a0274efc9c2de3f54c2f4d2fdb
     } catch (err) {
         console.log(err);
     }
 
+<<<<<<< HEAD
+=======
+});
+
+
+// Ruta actualizar foto perfil
+router.post('/editarFoto/:id', async (req, res) => {
+    
+    const id = req.params.id;
+    const body = req.body;
+
+    console.log(id);
+    console.log(body);
+    try {
+        
+    } catch (err) {
+        console.log(err);
+    }
+
+});
+
+
+router.get('/miProgreso', (req, res) => {
+    res.render('user/progreso');
+>>>>>>> 033ca658dd7f15a0274efc9c2de3f54c2f4d2fdb
 });
 
 

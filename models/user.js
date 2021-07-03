@@ -15,6 +15,10 @@ const userSchema = new Schema({
         unique: true,
         require: true
     },
+    profile: {
+        type: String,
+        default: 'profile-default.png'
+    },
     password: {
         type: String,
         require: true
