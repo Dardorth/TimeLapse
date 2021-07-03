@@ -76,9 +76,44 @@ router.get('/perfil/:cart', async (req, res) => {
     }
 });
 
+// Ruta view editar perfil
 router.get('/editarPerfil', (req, res) => {
     res.render('user/editarPerfil');
 });
+
+
+// Ruta actualizar info perfil
+router.post('/editarPerfil/:id', async (req, res) => {
+    
+    const id = req.params.id;
+    const body = req.body;
+    try {
+        await user.findByIdAndUpdate(id, body, {useFindAndModify: false});
+
+        res.redirect('/editarPerfil');
+    } catch (err) {
+        console.log(err);
+    }
+
+});
+
+
+// Ruta actualizar foto perfil
+router.post('/editarFoto/:id', async (req, res) => {
+    
+    const id = req.params.id;
+    const body = req.body;
+
+    console.log(id);
+    console.log(body);
+    try {
+        
+    } catch (err) {
+        console.log(err);
+    }
+
+});
+
 
 router.get('/miProgreso', (req, res) => {
     res.render('user/progreso');

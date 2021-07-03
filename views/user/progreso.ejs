@@ -4,49 +4,8 @@
     <section class="about-us section">
         <div class="">
             <div class="row">
-                <aside class="col-lg-3 col-md-4 col-12 d-flex justify-content-center mb-5">
-                    <div class="sidebar ml-2 border-1 border-right">
-                        <div class="mb-3 text-center">
-                            <form action="">
-                                <div class="image-profile">
-                                    <img class="profile" src="images/profiles/franklin.jpeg" alt="">
-                                    <input type="file" id="profile-image">
-                                    <label for="profile-image" class="overlay-profile"><i class="fas fa-camera fa-2x mt-1"></i></label>
-                                </div>
-                            </form>
-                            <p class="mt-4">Hola, <span class="text-primary font-weight-bold">
-                                <%if(user){%>
-                                    <%= user.name +' '+ user.lastname%>
-                                <% } %>
-                            </span>
-                            </p>
-                            <small>Usuario: 
-                                <%if(user){%>
-                                    <%= user.user%>
-                                <% } %>
-                            </small>
-                        </div>
-                        <hr class="w-50 mx-auto">
-                        <div class="widget popular-feeds px-5" style="border-style: none;">
-                            <h5 class="widget-title text-primary">Esta es tu sección</h5>
-                            <div class="">
-                                <div class="single-popular-feed">
-                                    <i class="far fa-folder-open fa-lg d-inline mr-2"></i>
-                                    <h6 class=""><a href="/perfil">Mis Cursos</a></h6>
-                                </div>
-
-                                <div class="single-popular-feed">
-                                    <i class="fas fa-battery-three-quarters fa-lg d-inline mr-2 nav-active"></i>
-                                    <h6 class="nav-active"><a href="/miProgreso">Mi Progreso</a></h6>
-                                </div>
-                                <div class="single-popular-feed">
-                                    <i class="far fa-chart-bar fa-lg d-inline mr-2"></i>
-                                    <h6 class=""><a href="/editarPerfil">Editar Cuenta</a></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
+                
+                <%- include('templates/aside') %>
 
                 <div class="col-lg-9 col-md-8">
                     <div class="container mt-4">
@@ -66,9 +25,10 @@
     </section>
     <!-- /End User Profile Area -->
     <script>
-        const element = document.querySelectorAll('.nav-active');
-        element.forEach(active => {
-            active.classList.add('text-primary');
-        });
+        const i = document.querySelectorAll('i');
+        const h6 = document.querySelectorAll('h6');
+
+        i[2].classList.add('text-primary');
+        h6[1].classList.add('text-primary');
     </script>
     <%- include('../templates/footer') %>
