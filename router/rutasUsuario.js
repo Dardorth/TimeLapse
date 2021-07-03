@@ -81,38 +81,6 @@ router.get('/editarPerfil', (req, res) => {
     res.render('user/editarPerfil');
 });
 
-<<<<<<< HEAD
-router.get('/miProgreso',  isAuthenticated, async (req, res) => {
-
-    try {
-        const cursosComprados = await user.aggregate([
-           {
-               $lookup:
-               {
-                from: 'products',
-                localField: 'cursos.id_curso',
-                foreignField: '_id',
-                as: 'cursos'
-              }
-           },
-           {
-            $match: {
-             user: req.user.user
-            }
-          },
-           { $unwind : "$cursos" }
-        ]);
-        // console.log('****************Resultado =====>');
-        // console.log(req.user.id);
-        console.log(cursosComprados);
-
-        // console.log(cursosComprados);
-
-        res.render('user/progreso',{
-            cursosComprados
-        });
-
-=======
 
 // Ruta actualizar info perfil
 router.post('/editarPerfil/:id', async (req, res) => {
@@ -123,13 +91,10 @@ router.post('/editarPerfil/:id', async (req, res) => {
         await user.findByIdAndUpdate(id, body, {useFindAndModify: false});
 
         res.redirect('/editarPerfil');
->>>>>>> 033ca658dd7f15a0274efc9c2de3f54c2f4d2fdb
     } catch (err) {
         console.log(err);
     }
 
-<<<<<<< HEAD
-=======
 });
 
 
@@ -150,13 +115,35 @@ router.post('/editarFoto/:id', async (req, res) => {
 });
 
 
-router.get('/miProgreso', (req, res) => {
-    res.render('user/progreso');
->>>>>>> 033ca658dd7f15a0274efc9c2de3f54c2f4d2fdb
+router.get('/miProgreso',  isAuthenticated, async (req, res) => {
+
+    try {
+        const cursosComprados = await user.aggregate([
+           {
+               $lookup:
+               {
+                from: 'products',
+                localField: 'cursos.id_curso',
+                foreignField: '_id',
+                as: 'cursos'
+              }
+           },
+           {
+            $match: {
+             user: req.user.user
+            }
+          },
+           { $unwind : "$cursos" }
+        ]);
+        res.render('user/progreso',{
+            cursosComprados
+        });
+
+    } catch (err) {
+        console.log(err);
+    }
+
 });
-
-
-
 
 function isAuthenticated(req,res,next){
     if(req.isAuthenticated()){
