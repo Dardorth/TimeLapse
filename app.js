@@ -37,6 +37,8 @@ app.use((req,res,next) => {
     app.locals.mensajeLogin = req.flash('mensajeLogin');
     app.locals.registroExito = req.flash('registroExito');
     app.locals.user = req.user;
+    app.locals.mensajeEliminado = req.flash('mensajeEliminado');
+    app.locals.mensajeEditado = req.flash('mensajeEditado');
     next();
 });
 

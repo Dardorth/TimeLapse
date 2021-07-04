@@ -3,18 +3,34 @@ const product = require('../models/product');
 const router = express.Router();
 const multer = require('multer');
 
-//PROPIEDAD PARA MANTENER LA EXTENSION ORIGINAL DE LA IMAGEN
-const storage = multer.diskStorage({
-    destination:'./public/images/products',
-    filename: (req, file, cb)=>{
-        cb(null,file.originalname)
-    }});
 
-//RUTA PARA GUARDAR LA IMAGEN
-router.use(multer({
-    storage,
-    dest: './public/images/products'
-}).single('logo'));
+
+  const upload = multer({
+    storage: multer.diskStorage({
+      destination:'./public/images/products',
+      filename: (req, file, cb)=>{
+        cb(null,file.originalname)
+        }
+        })
+  });
+
+
+
+router.post('/administrarCursos/agregar', upload.single('logo'), async (req, res) => {
+
+    try {
+        const cursoNuevo = await new product(req.body); //OBTENEMOS TODOS LOS DATOS, EXCEPTO EL LOGO
+        cursoNuevo.logo = req.file.originalname //ASIGNAMOS UN NUEVO CAMPO LLAMADO LOGO AL JSON Y LE AGREGAMOS EL NOMBRE DEL LOGO
+        console.log(cursoNuevo);
+        cursoNuevo.save(); //GUARDAMOS LOS DATOS EN LA BD
+
+      res.redirect('/administrarCursos')
+    } catch (err) {
+        console.log("NO SE PUDO AGREGAR EL CURSO: "+err);
+    }
+})
+
+
 
 
 // Rutas admin
@@ -51,53 +67,41 @@ router.get('/administrarCursos/eliminar', async (req, res) => {
         //console.log('****************Resultado =====>');
         //console.log(id);
         await product.remove({_id:id});
-
+        req.flash('mensajeEliminado','El curso se elimino correctamente.');
         //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
          res.redirect('/administrarCursos');
-
+         
     } catch (err) {
         console.log("No se puedo eliminar el curso: "+err);
     }
 
 });
 
-router.get('/administrarCursos/editar', async (req, res) => {
+router.post('/administrarCursos/editar',  upload.single('logoEditar'), async (req, res) => {
     
     try {
-        //console.log("ID RECIBIDO========"+req.query.idEditar);
-        
         //HACEMOS LA COMPARACION DE ID Y ACTUALIZAMOS LOS DATOS
-        await product.updateOne({_id:req.query.idEditar},req.query);
+        
+        const datos=req.body;
+        //const datosCompletos = JSON.stringify(datos);
+        console.log("INFORMACION DE LOS DATOS============ "+datos);
+        //datos.logo = req.file.originalname;
+        //console.log("INFORMACION DE LOS DATOS CON LOGO ============ "+datos);
+       // const logo= Object.values(req.file.originalname);
+        //console.log("INFORMACION DEL LOGO============ "+logo);
+        
+        //await product.updateOne({_id:req.query.idEditar},datos);
  
+        req.flash('mensajeEditado','El curso se edito correctamente.');
         //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
         res.redirect('/administrarCursos');
 
-        console.log("=============Se actualizo correctamente el curso");
+        console.log("=============Se actualizo correctamente el curso===================");
     } catch (err) {
         console.log("No se puedo editar el curso============ "+err);
     }
 
 });
-
-
-    router.post('/administrarCursos/agregar', async (req, res) => {
-    try {
-      
-        //ALMACENAMOS LOS DATOS EN UNA VARIABLE
-        let cursoNuevo = new product(req.body);
-        console.log(req.body); 
-
-        //GUARDAMOS LOS DATOS CON SAVE()
-        cursoNuevo.save();
-
-        //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
-        res.redirect('/administrarCursos');
-    } catch (err) {
-        console.log(err);
-    }
-
-});
-
 
 
 module.exports = router;

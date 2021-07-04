@@ -47,6 +47,38 @@
               </div>
             </div>
 
+            <!-- MENSAJES DE RETROALIMENTACION -->
+            <% if(mensajeEditado.length !==0){ %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="updateYes">
+              <strong><i class="fas fa-edit"></i> Actualizacion Exitosa: </strong> <%= mensajeEditado %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <% } %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="updateNo" hidden>
+              <strong><i class="fas fa-exclamation-triangle"></i> Error al actualizar el curso: </strong> El curso no se logro actualizar.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <div class="alert alert-primary alert-dismissible fade show" role="alert" id="addYes" hidden>
+              <strong><i class="fas fa-plus-circle"></i> Curso Agregado: </strong> El curso se agrego correctamente.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="addNo" hidden>
+              <strong><i class="fas fa-exclamation-triangle"></i> Error al agregar el curso: </strong> El curso no pudo ser agregado.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <% if(mensajeEliminado.length !==0){ %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="deleteYes">
+              <strong><i class="far fa-trash-alt"></i> Curso Eliminado: </strong> <%= mensajeEliminado %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <% } %>
+
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="deleteNo" hidden>
+              <strong><i class="fas fa-exclamation-triangle"></i> Error al eliminar el curso: </strong> El curso no se pudo eliminar.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <!-- FIN DE MENSAJES DE RETROALIMENTACION -->
             <div class="services">
               <div class="single-head">
                 <div class="d-grid gap-2 d-md-block mb-4">
@@ -69,7 +101,7 @@
                     <% for(var i=0; i < administrarCursos.length; i++) { %>
                     <tr>
                       <th scope="row"><%= i+1 %></th> <!-- PARA QUE EL NUMERO NO COMIENZE MOSTRANDOSE EN CERO-->
-                      <td><img src="images/products/<%= administrarCursos[i].logo %>" style="width: 50px; height: 50px;"></td>
+                        <td><img src="images/products/<%= administrarCursos[i].logo %>" style="width: 50px; height: 50px;"></td>
                       <td><%= administrarCursos[i].name %></td>
                       <td>$ <%= administrarCursos[i].price %></td>
                       <td>
@@ -127,8 +159,8 @@
   </form>
     <!-- Final Modal eliminar-->
 
+
     <!-- Modal Agregar cursoooo -->
-    <form method="POST" action="/administrarCursos/agregar">
       <div class="modal fade" id="modalAgregar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
         tabindex="-1">
         <div class="modal-dialog modal-xl" >
@@ -136,16 +168,18 @@
             <div class="modal-header bg-primary">   
               <h5 class="modal-title text-white" id="exampleModalToggleLabel"><i class="fas fa-plus-circle"></i> Agregar curso</h5>
               <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-            </div>     
+            </div>   
+            
             <div class="modal-body">
-              <div class="row align-items-center">
-                <div class="col-lg-6 col-s-15">      
+              <form method="POST" action="/administrarCursos/agregar" enctype="multipart/form-data">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 col-s-15">
                     <label class="form-label">
                       <b><i class="fas fa-image"></i> Logo del curso:</b>
-                    </label>
-                    <div class="input-group mb-2">
-                      <input type="file" class="form-control" id="logo" name="logo" accept="image/png, image/jpeg, image/jpg" required>
-                    </div>
+                    </label>    
+              <div class="input-group mb-2">
+                <input class="form-control" type="file" id="logo" name="logo" accept="image/png, image/jpeg, image/jpg" required>
+              </div>
                     <div class="col-13">
                       <label class="form-label">
                         <b><i class="fas fa-book"></i> Curso:</b>
@@ -202,21 +236,19 @@
                     <textarea type="text" class="form-control" placeholder="Describa" cols="57" rows=7 id="description" name="description" required></textarea>
                   </div>
                 </div>
-                </div>           
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Agregar Curso</button>
+              </div>     
+              </form>         
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-primary" >Agregar Curso</button>
-            </div>        
+  
           </div>
-        
         </div>
       </div>
-  </div>
-  </form>
-  
       <!-- Final Modal agregar curso-->
-
 
 
 
@@ -241,7 +273,7 @@
 
     <!-- Modal editar-->
 
-    <form method="GET" action="/administrarCursos/editar">
+    <form method="POST" action="/administrarCursos/editar" enctype="multipart/form-data">
     <div class="modal fade" id="modalEditar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
       tabindex="-1">
       <div class="modal-dialog modal-xl" >
@@ -258,14 +290,14 @@
                     <b><i class="fas fa-image"></i> Logo del curso:</b>
                   </label>
                   <div class="input-group mb-2">
-                    <input type="file" class="form-control" id="logoEditar" accept="image/png, image/jpeg, image/jpg" required>
+                    <input type="file" class="form-control" id="logoEditar" name="logoEditar" accept="image/png, image/jpeg, image/jpg">
                   </div>
                   <div class="col-13">
                     <label class="form-label">
                       <b><i class="fas fa-book"></i> Curso:</b>
                     </label>
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Nombre del curso" id="nameEditar" name="name" required>
+                      <input type="text" class="form-control" placeholder="Nombre del curso" id="nameEditar" name="nameEditar" required>
                     </div>
                   </div>  
                   <div class="row">
@@ -275,14 +307,14 @@
                     </label>
                     <div class="input-group mb-3">
                       <span class="input-group-text">$</span>
-                      <input type="number" class="form-control" placeholder="Precio" aria-label="Apellido" id="priceEditar" name="price" step="0.01" required>
+                      <input type="number" class="form-control" placeholder="Precio" aria-label="Apellido" id="priceEditar" name="priceEditar" step="0.01" required>
                     </div>
                   </div> 
                   <div class="col-6">
                     <label class="form-label">
                       <b><i class="fas fa-list"></i> Categoria:</b>
                     </label>
-                  <select class="form-select" aria-label="Default select example" name="category" id="categoryEditar">
+                  <select class="form-select" aria-label="Default select example" name="categoryEditar" id="categoryEditar">
                     <option value="ofimatica">Ofimatica</option>
                     <option value="redes sociales">Redes Sociales</option>
                   </select>
@@ -293,7 +325,7 @@
                   <b><i class="fas fa-align-center"></i> Contenido:</b>
                 </label>
                 <div class="input-group mb-3">
-                  <textarea type="text" class="form-control" cols="57" rows=5 placeholder="Contenido del curso" id="contentEditar" name="content" required></textarea>
+                  <textarea type="text" class="form-control" cols="57" rows=5 placeholder="Contenido del curso" id="contentEditar" name="contentEditar" required></textarea>
                 </div>
               </div>
               </div>
@@ -304,7 +336,7 @@
                     <b><i class="fas fa-thumbs-up"></i> Beneficios:</b>
                   </label>
                   <div class="input-group mb-3">
-                    <textarea type="text" class="form-control" cols="57" rows=5 placeholder="Beneficios del curso" id="benefitsEditar" name="benefits" required></textarea>
+                    <textarea type="text" class="form-control" cols="57" rows=5 placeholder="Beneficios del curso" id="benefitsEditar" name="benefitsEditar" required></textarea>
                   </div>
                 </div>  
               <div class="col-12">
@@ -313,7 +345,7 @@
                   <b><i class="fas fa-comment-alt"></i> Descripcion:</b>
                 </label>
                 <div class="input-group mb-3">
-                  <textarea type="text" class="form-control" placeholder="Describa" cols="57" rows=7 id="descriptionEditar" name="description" required></textarea>
+                  <textarea type="text" class="form-control" placeholder="Describa" cols="57" rows=7 id="descriptionEditar" name="descriptionEditar" required></textarea>
                 </div>
               </div>
               </div>           
@@ -327,6 +359,12 @@
     </div>
   </form> 
     <!-- Final Modal editar-->
+
+
+
+
+
+
 
 
 
