@@ -123,10 +123,6 @@ router.get('/success', (req, res) => {
     } catch (error) {
         console.log(error)
     }
-
-
-
-
         
         res.send(JSON.stringify(payment.transactions));
 

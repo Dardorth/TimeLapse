@@ -62,25 +62,6 @@ router.get('/administrarCursos', (req, res) => {
     res.render('admin/administrarCursos');
 });
 
-
-async function count(){
-    
-    const productNames = await Product.find({}).select('name -_id');
-    var productCount = []
-
-    for (const element of productNames) {
-        const query = await Sale.find({'products': element.name});
-        count = Object.keys(query).length
-        
-        var product = {
-            name: element.name,
-            count: count
-        }
-        productCount.push(product);
-    }
-    return productCount;
-}
-
 //Funcion para calcular las VENTAS por MES del año actual
 function monthSales(sales){
 
