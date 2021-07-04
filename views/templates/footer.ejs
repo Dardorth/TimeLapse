@@ -1,4 +1,46 @@
 <!------------ AREA DE MODALS ---------------->
+
+<!-- FACTURA -->
+<div class="modal fade" id="factura" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-5">
+            <div class="modal-body">
+                <%if(typeof hola !=='undefined' ){%>
+                    <% var modal="factura" %>
+                
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-s-6 wow fadeInUp">
+                        <img src="/public/images/logo/t.png" alt="" height="100px">
+                            <h2 class="font-weight-bold">Gracias por tu compra en <span class="text-primary">TimeLapse</span>.</h2>
+                            <p>Sabemos que nuestros cursos te encantarán.</p>
+                    </div>
+                    <div class="col-lg-6 col-s-6 wow fadeInUp">
+                        <h4 class="">Detalles</h4>
+                        <hr>
+                        <% products.forEach(product => { %>
+                            <div> 
+                                <h6>Curso de: <%=product.name %>  </h6>
+                                <span>Precio: $ <%=product.price %> </span>
+                                <hr>
+                            </div>
+                        <% }); %> 
+
+                        <h6>Total: $ <span class="text-primary"><%= totalAmount %></span> </h6>
+                        <% } %>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <div class="button wow fadeInUp text-center" data-wow-delay=".2s">
+                            <button type="button"  class="btn" data-bs-dismiss="modal" onclick="renderCart()">Continuar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- FIN DE LOGIN -->
+
 <!-- LOGIN -->
 <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -390,7 +432,7 @@
 </a>
 
 <!-- ========================= JS here ========================= -->
-
+<script src="/js/personal-js/cart.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/count-up.min.js"></script>
 <script src="/js/wow.min.js"></script>

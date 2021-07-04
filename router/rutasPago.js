@@ -117,10 +117,18 @@ router.get('/success', (req, res) => {
             const total_purchased = payment.transactions[0].item_list.items.length;
             
             const items = payment.transactions[0].item_list.items;
-            const productsNames = []
+            const productsNames = [];
+            const products = [];
 
             for(let i = 0; i < total_purchased;i++){
-                productsNames.push(items[i].name)
+                productsNames.push(items[i].name);
+
+                products.push(
+                    {
+                        "name": items[i].name,
+                        "price": items[i].price
+                    }
+                );
             }
             
             try {
@@ -165,10 +173,14 @@ router.get('/success', (req, res) => {
                     });
                 });
 
+                const hola = 0
+                console.log(products)
+                console.log(totalAmount)
+                
+                res.render('../views/index.ejs',{hola,totalAmount,products})
+
             //Aqui va el render de la pagina
             //res.send(JSON.stringify(payment.transactions));
-
-            
                 
             } catch (error) {
                 console.log(error)
@@ -179,7 +191,8 @@ router.get('/success', (req, res) => {
 })
 
 router.get('/factura', (req, res) => {
-    res.render('../views/user/factura.ejs');
+    const hola = 0
+    res.render('../views/index.ejs', {hola});
 })
 
 
