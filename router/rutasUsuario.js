@@ -26,7 +26,7 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
         ]);
         // console.log('****************Resultado =====>');
         // console.log(req.user.id);
-        console.log(cursosComprados);
+        // console.log(cursosComprados);
 
         // console.log(cursosComprados);
 
@@ -40,10 +40,36 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
 
 });
 
+
+
+
+
+
+
+
+// Arrue
+router.post('/paypal', async (req, res) => {
+
+    const body = req.body;
+    console.log(body);
+    
+    // res.render('user/editarPerfil');
+});
+
+
+
+
+
+
+
+
+
+
+
 // Ruta comprar productos
 router.get('/perfil/:cart', async (req, res) => {
     products = req.params.cart;
-
+    
     array = [];
     array = products.split(',');
 
@@ -87,6 +113,24 @@ router.post('/editarPerfil/:id', async (req, res) => {
     
     const id = req.params.id;
     const body = req.body;
+    try {
+        await user.findByIdAndUpdate(id, body, {useFindAndModify: false});
+
+        res.redirect('/editarPerfil');
+    } catch (err) {
+        console.log(err);
+    }
+
+});
+
+// Ruta actualizar contraseña
+router.post('/editarContrasena/:id', async (req, res) => {
+    
+    const id = req.params.id;
+    const body = req.body;
+
+    console.log(id);
+    console.log(body);
     try {
         await user.findByIdAndUpdate(id, body, {useFindAndModify: false});
 

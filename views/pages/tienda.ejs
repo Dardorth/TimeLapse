@@ -50,7 +50,7 @@
                                     <p class="text-center"><%= curso.price %></p>
                                     <br>
                                     <div class="button text-center">
-                                        <a href="/carrito" class="btn btn-add" >Añadir a carrito</a>
+                                        <a href="#" class="btn btn-add" >Añadir a carrito</a>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                     <p class="text-center"><%= curso.price %></p>
                                     <br>
                                     <div class="button text-center">
-                                        <a href="/carrito" class="btn btn-add">Añadir a carrito</a>
+                                        <a href="#" class="btn btn-add">Añadir a carrito</a>
                                     </div>
                                 </div>
                             </div>
@@ -96,8 +96,16 @@
                 </div>
             </div>
 
+            <!-- Start cart -->
+            <div aria-hidden="true" style="display: none;">
+                <!-- Carrito de compra -->
+                <div id="items"></div>
+                <div id="toPay"></div>
+            </div>
+            <!-- End cart -->
+
             <!-- Modal de confirmacion-->
-            <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <!-- <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -114,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Final Modal de confirmacion-->
         </div>
     </section>

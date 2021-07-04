@@ -109,29 +109,6 @@ Author: GrayGrids
 	JS Franklin - Dark Mode
 ========================================*/
 
-/* const btnSwitch = document.querySelector('.switch');
-btnSwitch.addEventListener('click',()=>{
-    document.body.classList.toggle('dark-mode');
-    btnSwitch.classList.toggle('active-mode');
-
-    // Localstorage
-    if(document.body.classList.contains('dark-mode')){
-        localStorage.setItem('dark-mode','true');
-    }else{
-        localStorage.setItem('dark-mode','false');
-    }
-});
-
-
-// Localstorage mode
-if(localStorage.getItem('dark-mode') === 'true'){
-    document.body.classList.add('dark-mode');
-    btnSwitch.classList.add('active-mode');
-}else{
-    document.body.classList.remove('dark-mode');
-    btnSwitch.classList.remove('active-mode');
-} */
-
 const checkMode = document.querySelectorAll('.radio-mode');
 const lightMode = document.getElementById('light-mode');
 const darkMode = document.getElementById('dark-mode');
@@ -156,4 +133,43 @@ if(localStorage.getItem('dark-mode') === 'true'){
 }else{
     document.body.classList.remove('dark-mode');
     lightMode.setAttribute('checked','');
+}
+
+
+/*======================================
+	JS Franklin - Validar contraseña
+========================================*/
+
+const form = document.getElementById('formPassword');
+const password1 = document.getElementById('password1');
+const password2 = document.getElementById('password2');
+const message = document.getElementById('messagePass');
+
+console.log(form);
+
+form.addEventListener('submit', e =>{
+    e.preventDefault();
+    checkPassword();
+})
+
+const checkPassword = ()=>{
+    const pass1Value = password1.value.trim();
+    const pass2Value = password2.value.trim();
+
+    if (pass1Value !== pass2Value) {
+        setError();
+    }else{
+        successPassword();
+    }
+}
+
+const setError = ()=>{
+    password1.classList.add('border','border-danger','border-2');
+    password2.classList.add('border','border-danger','border-2');
+    message.innerHTML = 'Los campos no coinciden';
+    message.classList.add('text-danger','font-weight-bold');
+}
+
+const successPassword = ()=> {
+    // form.submit();
 }

@@ -5,12 +5,19 @@ const payProduct = ()=>{
     cart.forEach(item => {
         productsCart.push(item.title);
     });
-    
-    console.log(productsCart);
 
-    location.href = `/perfil/${productsCart}`;
+    // console.log(cart);
 
-    renderCart();
+    // cart.forEach(product => {
+
+    // });
+
+
+    // console.log(productsCart);
+
+    // location.href = `/perfil/${productsCart}`;
+
+    // renderCart();
 }
 
 const renderCart = ()=>{

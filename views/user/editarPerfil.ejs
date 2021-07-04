@@ -108,27 +108,31 @@
                                   <div id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="cursor: pointer;">
                                     <h5 class="d-inline mr-2" >Cambiar contraseña</h5><i class="far fa-edit"></i>
                                   </div>
-                              
-                                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                    <form action="">
-                                        <div class="col-lg-6 col-md-12 mt-3">
-                                            <div class="mb-4">
-                                                <input type="password" class="form-control" id="" value="">
+                                  <%if(user){%>
+                                     
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <form action="/editarContrasena/<%= user.id %>" method="POST" id="formPassword">
+                                            <div class="col-lg-6 col-md-12 mt-3">
+                                                <div class="mb-4">
+                                                    <input type="password" class="form-control" id="password1" name="password">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="mb-4">
-                                                <h5 class="mb-3">Confirmar contraseña:</h5>
-                                                <input type="password" class="form-control" id="" value="">
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="mb-4">
+                                                    <h5 class="mb-3">Confirmar contraseña:</h5>
+                                                    <input type="password" class="form-control" id="password2" name="password2">
+                                                    <small id="messagePass" class="d-flex justify-content-end text-danger"></small>
+                                                </div>
                                             </div>
-                                        </div>
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
-                                    </form>
-                                  </div>
+                                            
+                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                        </form>
+                                    </div>
+
+                                <% } %>
                                 </div>    
                             </div>
                         </div>
-
 
                     </div>
                 </div>
