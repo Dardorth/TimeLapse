@@ -57,34 +57,6 @@ router.get('/ganancias', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-    
-    //-------------- NO ELIMINAR ---------------------
-/*
-    const id = stats[0].toObject()._id;
-    const totalBuy = 2.99;
-    const totalPurchased = 1;
-    const products = ['60d6ce7753fd06781cc22daf','60d6cfa654c56d1820a6c5da']
-
-    //GUARDAR VENTA
-    await new Sale({
-        total_buy: 6.99,
-        total_purchased: 2,
-        products:products
-    }).save()
-
-    //ACUTALIZAR ESTADISTICAS
-    await Statistic.findOneAndUpdate(
-        {_id: id},
-        {
-            $inc: {
-                'total_sales' : 1, 
-                'total_earnings': totalBuy, 
-                'total_sold_products': totalPurchased
-            }
-        }
-        ).exec();
-    */
-
 });
 router.get('/administrarCursos', (req, res) => {
     res.render('admin/administrarCursos');

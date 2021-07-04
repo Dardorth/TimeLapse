@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 var paypal = require('paypal-rest-sdk');
+const Statistic = require('../models/statistic');
+const Sale = require('../models/sale');
+const Product = require('../models/product');
+
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
@@ -74,12 +78,58 @@ router.get('/success', (req, res) => {
       "payer_id": payerId
     };
   
-    paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+    paypal.payment.execute(paymentId, execute_payment_json, async function (error, payment) {
       if (error) {
           console.log(error.response);
           throw error;
       } else {
-          res.send(JSON.stringify(payment.transactions));
+
+        const totalAmount = payment.transactions[0].amount.total;
+        const total_purchased = payment.transactions[0].item_list.items.length;
+        
+        const items = payment.transactions[0].item_list.items;
+        const productsNames = []
+
+        for(let i = 0; i < total_purchased;i++){
+            productsNames.push(items[i].name)
+        }
+        
+        console.log(totalAmount)
+        console.log(total_purchased)
+        console.log(productsNames)
+        
+    try {
+        //GUARDAR NUEVA VENTA
+        await new Sale({
+            total_buy: totalAmount,
+            total_purchased: total_purchased,
+            products:productsNames
+        }).save()
+
+        //ACUTALIZAR ESTADISTICAS
+        const stats = await Statistic.find({});
+        const id = stats[0].toObject()._id;
+        
+        await Statistic.findOneAndUpdate(
+            {_id: id},
+            {
+                $inc: {
+                    'total_sales' : 1, 
+                    'total_earnings': totalAmount, 
+                        'total_sold_products': total_purchased
+                }
+            }).exec();
+        
+    } catch (error) {
+        console.log(error)
+    }
+
+
+
+
+        
+        res.send(JSON.stringify(payment.transactions));
+
           //Aqui va el render de la pagina
       }
   });
