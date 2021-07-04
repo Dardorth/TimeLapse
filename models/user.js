@@ -25,6 +25,10 @@ const userSchema = new Schema({
     },
     cursos: {
         type: Object
+    },
+    role: {
+        type: String,
+        default: 'client'
     }
 })
 /* const userSchema = new Schema({

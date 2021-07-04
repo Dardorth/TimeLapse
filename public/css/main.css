@@ -2317,6 +2317,8 @@ ol {
           transform: scale(1.05);
 }
 
+
+
 .single-service:hover h3 a {
   color: #fff;
 }
@@ -5386,7 +5388,8 @@ body.dark-mode .services {
 
 body.dark-mode .single-table,
 body.dark-mode .mini-call-action,
-body.dark-mode .single-service {
+body.dark-mode .single-service,
+body.dark-mode .own-card {
   background: #050505;
 }
 
@@ -5433,3 +5436,74 @@ body.dark-mode .pagination li a {
 body.dark-mode .modal-content {
   background: #1b1b1b;
 }
+
+
+/*-------------- PROGRESO DE USUARIO -------------------*/
+
+/*- Cartas para mostrar los cursos*/
+.own-card{
+  padding: 40px 30px;
+  background-color: #f6f9fc;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  border: solid rgb(13, 107, 247) 2px;
+}
+
+.own-card:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+/*CINTA en la esquina de las cartas*/
+.ribbon-wrapper-green {
+  width: 85px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.ribbon-green {
+  font: bold 12px Sans-Serif;
+  color: #333;
+  text-align: center;
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+  position: relative;
+  padding: 7px 0;
+  left: -5px;
+  top: 15px;
+  width: 120px;
+  background: rgb(13,107,247);
+  background: -moz-linear-gradient(90deg, rgba(13,107,247,1) 0%, rgba(13,107,247,1) 35%, rgba(147,191,255,1) 80%);
+  background: -webkit-linear-gradient(90deg, rgba(13,107,247,1) 0%, rgba(13,107,247,1) 35%, rgba(147,191,255,1) 80%);
+  background: linear-gradient(90deg, rgba(13,107,247,1) 0%, rgba(13,107,247,1) 35%, rgba(147,191,255,1) 80%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0d6bf7",endColorstr="#93bfff",GradientType=1);
+  color: rgb(41, 41, 41);
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon-green:before, .ribbon-green:after {
+  content: "";
+  border-top:   3px solid #6e8900;   
+  border-left:  3px solid transparent;
+  border-right: 3px solid transparent;
+  position:absolute;
+  bottom: -3px;
+}
+
+.ribbon-green:before {
+  left: 0;
+}
+.ribbon-green:after {
+  right: 0;
+}​

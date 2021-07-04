@@ -30,7 +30,9 @@ passport.use('register', new LocalStrategy(
       if(await User.findOne({user: user})){
          done(null, false, req.flash('mensajeRegistro','El usuario ya existe'));
       }else{
-         const newUser = new User(req.body);
+         const newUser = new User();
+         newUser.name = req.body.nombre;
+         newUser.lastname = req.body.apellido;
          /* newUser.user = user; */
          newUser.password = newUser.encrypthPassword(password);
          await newUser.save();
@@ -49,9 +51,9 @@ passport.use('registerAuto', new LocalStrategy(
    },
    async (req, user, password, done) =>{
       number = req.body.celular
-      user = req.body.apellido + '.' + number;
+      string = req.body.apellido + '.' + number;
+      user = string.toLowerCase();
       if(await User.findOne({user: user})){
-         console.log('El usuario ya existe');
          done(null, false, req.flash('mensajeRegistroAuto','Numero de celular ya esta registrado'));
       }else{
          const newUser = new User();
@@ -59,8 +61,10 @@ passport.use('registerAuto', new LocalStrategy(
          //Contraseña autogenerada
          var password = Math.random().toString(36).slice(-8);
          newUser.password = newUser.encrypthPassword(password);
+         newUser.name = req.body.nombre;
+         newUser.lastname = req.body.apellido;
          await newUser.save();
-         sendSMS(number, user, password);
+        // sendSMS(number, user, password);
          done(null,newUser,req.flash('registroExito','Usuario registrado'));
       }
   
@@ -78,22 +82,20 @@ passport.use('login', new LocalStrategy(
    async (req, user, password, done) => {
       const userDB = await User.findOne({user: user});
       if(!userDB){
-         return done(null, false, req.flash('mensajeLogin','Usuario no encontrado. Intente nuevamente'));
+         return done(null, false, /*{error: 'Usuario no encontrado'}*/req.flash('mensajeLogin','Usuario no encontrado. Intente nuevamente'));
       }
       if(!userDB.validatePassword(password)){
-         return done(null, false, req.flash('mensajeLogin','Contraseña incorrecta. Intente nuevamente'));
+         return done(null, false,/* {error: 'Contraseña incorrecta'}*/ req.flash('mensajeLogin','Contraseña incorrecta. Intente nuevamente'));
       }
       done(null,userDB);
    }
 ));
-
 
 function sendSMS(number,user,password){
    const from = "Vonage APIs"
    const to = '507' + number
    const message = 'Tus datos son los siguientes... Usuario: ' + user +' Contraseña: '+ password;
 
-   console.log(to);
 
     vonage.message.sendSms(from, to, message, (err, responseData) => {
         if (err) {

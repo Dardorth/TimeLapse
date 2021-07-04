@@ -40,32 +40,6 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
 
 });
 
-
-
-
-
-
-
-
-// Arrue
-router.post('/paypal', async (req, res) => {
-
-    const body = req.body;
-    console.log(body);
-    
-    // res.render('user/editarPerfil');
-});
-
-
-
-
-
-
-
-
-
-
-
 // Ruta comprar productos
 router.get('/perfil/:cart', async (req, res) => {
     products = req.params.cart;
@@ -159,12 +133,35 @@ router.post('/editarFoto/:id', async (req, res) => {
 });
 
 
-router.get('/miProgreso', (req, res) => {
-    res.render('user/progreso');
+router.get('/miProgreso',  isAuthenticated, async (req, res) => {
+
+    try {
+        const cursosComprados = await user.aggregate([
+           {
+               $lookup:
+               {
+                from: 'products',
+                localField: 'cursos.id_curso',
+                foreignField: '_id',
+                as: 'cursos'
+              }
+           },
+           {
+            $match: {
+             user: req.user.user
+            }
+          },
+           { $unwind : "$cursos" }
+        ]);
+        res.render('user/progreso',{
+            cursosComprados
+        });
+
+    } catch (err) {
+        console.log(err);
+    }
+
 });
-
-
-
 
 function isAuthenticated(req,res,next){
     if(req.isAuthenticated()){
