@@ -2,6 +2,7 @@ const express = require('express');
 const product = require('../models/product');
 const router = express.Router();
 const multer = require('multer');
+const { exists } = require('../models/product');
 
 
 
@@ -83,14 +84,18 @@ router.post('/administrarCursos/editar',  upload.single('logoEditar'), async (re
         //HACEMOS LA COMPARACION DE ID Y ACTUALIZAMOS LOS DATOS
         
         const datos=req.body;
+        //const id=req.body.idEditar;
+        console.log(req.body);
         //const datosCompletos = JSON.stringify(datos);
-        console.log("INFORMACION DE LOS DATOS============ "+datos);
-        //datos.logo = req.file.originalname;
-        //console.log("INFORMACION DE LOS DATOS CON LOGO ============ "+datos);
-       // const logo= Object.values(req.file.originalname);
-        //console.log("INFORMACION DEL LOGO============ "+logo);
         
-        //await product.updateOne({_id:req.query.idEditar},datos);
+        //console.log("INFORMACION DEL LOGO ============ "+req.file);
+        if(req.file != undefined){
+            datos.logo = req.file.originalname;
+        };
+        //console.log("INFORMACION DE LOS DATOS============ "+datos);
+       // const logo= Object.values(req.file.originalname);
+
+        await product.updateOne({_id:req.body.idEditar},datos);
  
         req.flash('mensajeEditado','El curso se edito correctamente.');
         //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
