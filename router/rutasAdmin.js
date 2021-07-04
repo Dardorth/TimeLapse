@@ -3,6 +3,19 @@ const router = express.Router();
 const Statistic = require('../models/statistic');
 const Sale = require('../models/sale');
 const Product = require('../models/product');
+const multer = require('multer');
+
+
+//UZAMOS LA DEPENDENCIA MULTER PARA ALMACENAR UNA IMAGEN EN LA CARPETA PRODUCT
+const upload = multer({
+    storage: multer.diskStorage({
+      destination:'./public/images/products',
+      filename: (req, file, cb)=>{
+        cb(null,file.originalname)
+        }
+        })
+  });
+
 
 // Rutas admin
 router.get('/panelControl',isAuthenticated, (req, res) => {
@@ -59,8 +72,21 @@ router.get('/ganancias', isAuthenticated, async (req, res) => {
     }
 });
 
-router.get('/administrarCursos', isAuthenticated, (req, res) => {
+router.get('/administrarCursos', isAuthenticated, async (req, res) => {
+    
+    try {
+        //LLAMO A TODOS LOS CURSOS SIN FILTRAR
+        const administrarCursos = await Product.find({}); 
+
+        //ENVIO LA INFORMACION DE LOS CURSOS A administrarCursos
+            res.render('admin/administrarCursos',{
+                administrarCursos
+        });
+        } catch (err) {
+            console.log(err);
+        }
     res.render('admin/administrarCursos');
+
 });
 
 //Funcion para calcular las VENTAS por MES del año actual
@@ -122,5 +148,72 @@ function isAuthenticated(req,res,next){
     }
     res.redirect('/');
 }
+
+
+router.post('/administrarCursos/agregar', upload.single('logo'), async (req, res) => {
+
+    try {
+        const cursoNuevo = await new Product(req.body); //OBTENEMOS TODOS LOS DATOS, EXCEPTO EL LOGO
+        cursoNuevo.logo = req.file.originalname //ASIGNAMOS UN NUEVO CAMPO LLAMADO LOGO AL JSON Y LE AGREGAMOS EL NOMBRE DEL LOGO
+        console.log(cursoNuevo);
+        cursoNuevo.save(); //GUARDAMOS LOS DATOS EN LA BD
+        req.flash('mensajeAgregado','El curso se agrego correctamente.'); //ENVIAMOS UN MENSAJE DE RETROALIMENTACION
+        res.redirect('/administrarCursos')
+    } catch (err) {
+        req.flash('mensajeNoAgregado','El curso no se pudo agregar.');
+        res.redirect('/administrarCursos')
+        console.log("NO SE PUDO AGREGAR EL CURSO: "+err);
+    }
+})
+
+router.get('/administrarCursos/eliminar', async (req, res) => {
+    
+    try {
+        const id= req.query.idEliminar;
+        //console.log(id);
+        await Product.remove({_id:id});
+        req.flash('mensajeEliminado','El curso se elimino correctamente.');//ENVIAMOS UN MENSAJE DE RETROALIMENTACION
+        //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
+         res.redirect('/administrarCursos');
+         
+    } catch (err) {
+        console.log("No se puedo eliminar el curso: "+err);
+        req.flash('mensajeNoEliminado','El curso no se pudo eliminar.');
+        //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
+         res.redirect('/administrarCursos');
+    }
+
+});
+
+
+router.post('/administrarCursos/editar',  upload.single('logoEditar'), async (req, res) => {
+    
+    try {
+      
+        const datos=req.body;
+        console.log(req.body);
+ 
+        if(req.file != undefined){
+            datos.logo = req.file.originalname;
+        };
+
+        await Product.updateOne({_id:req.body.idEditar},datos);//HACEMOS LA COMPARACION DE ID Y ACTUALIZAMOS LOS DATOS
+ 
+        req.flash('mensajeEditado','El curso se edito correctamente.'); //ENVIAMOS UN MENSAJE DE RETROALIMENTACION
+        //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
+        res.redirect('/administrarCursos');
+
+        console.log("=============Se actualizo correctamente el curso===================");
+    } catch (err) {
+        req.flash('mensajeNoEditado','El curso no se pudo editar');
+        res.redirect('/administrarCursos');
+        console.log("No se puedo editar el curso============ "+err);
+    }
+
+});
+
+
+
+
 
 module.exports = router;

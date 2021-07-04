@@ -16,7 +16,9 @@ const productSchema = new Schema({
     details: {
         type: Array,
         default: []
-    }
+    },
+    benefits: String,
+    content: String
 });
 
 module.exports = model('Product', productSchema);

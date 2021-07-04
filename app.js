@@ -3,7 +3,6 @@ const app = express();
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
-
 const port = 3000;
 
 //Inicializaciones
@@ -30,11 +29,19 @@ app.use(express.static(__dirname + '/public'));
 
 //Variables de sesion y mensajes de error y exito
 app.use((req,res,next) => {
+    //MENSAJES DE RETROALIMENTACION PARA EL LOGIN Y REGISTRO
     app.locals.mensajeRegistro = req.flash('mensajeRegistro');
     app.locals.mensajeRegistroAuto = req.flash('mensajeRegistroAuto');
     app.locals.mensajeLogin = req.flash('mensajeLogin');
     app.locals.registroExito = req.flash('registroExito');
     app.locals.user = req.user;
+    //MENSAJES DE RETROALIMENTACION DEL CRUD PARA EL ADMIN
+    app.locals.mensajeEliminado = req.flash('mensajeEliminado');
+    app.locals.mensajeNoEliminado = req.flash('mensajeNoEliminado');
+    app.locals.mensajeEditado = req.flash('mensajeEditado');
+    app.locals.mensajeNoEditado = req.flash('mensajeNoEditado');
+    app.locals.mensajeAgregado = req.flash('mensajeAgregado');
+    app.locals.mensajeNoAgregado = req.flash('mensajeNoAgregado');
     next();
 });
 
