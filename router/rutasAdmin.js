@@ -5,13 +5,13 @@ const Sale = require('../models/sale');
 const Product = require('../models/product');
 
 // Rutas admin
-router.get('/panelControl', (req, res) => {
+router.get('/panelControl',isAuthenticated, (req, res) => {
     res.render('admin/panelControl');
 });
-router.get('/usuariosRegistrados', (req, res) => {
+router.get('/usuariosRegistrados', isAuthenticated,(req, res) => {
     res.render('admin/usuariosRegistrados');
 });
-router.get('/ganancias', async (req, res) => {
+router.get('/ganancias', isAuthenticated, async (req, res) => {
 
     try {
         //------------- Estadisticas ----------------
@@ -58,7 +58,8 @@ router.get('/ganancias', async (req, res) => {
         console.log(error);
     }
 });
-router.get('/administrarCursos', (req, res) => {
+
+router.get('/administrarCursos', isAuthenticated, (req, res) => {
     res.render('admin/administrarCursos');
 });
 
@@ -113,6 +114,13 @@ function monthSales(sales){
 
     });
     return sales_per_months;
+}
+
+function isAuthenticated(req,res,next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/');
 }
 
 module.exports = router;

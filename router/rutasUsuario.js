@@ -77,7 +77,7 @@ router.get('/perfil/:cart', async (req, res) => {
 });
 
 // Ruta view editar perfil
-router.get('/editarPerfil', (req, res) => {
+router.get('/editarPerfil',isAuthenticated,(req, res) => {
     res.render('user/editarPerfil');
 });
 
