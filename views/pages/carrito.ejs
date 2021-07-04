@@ -45,7 +45,7 @@
                 </div> -->
 
             </div>
-            <form action="/paypal" method="POST">
+            <form action="/pay" method="POST">
                 <div class="row cartShop">
                         <div class="col-lg-4 col-md-4 wow fadeInDown mb-5 mr-5" data-wow-delay=".4s" style="border-right: 3px solid #3764ebd7;">
                             <h4 class="text-center wow fadeInDown" data-wow-delay=".4s">Productos</h4>
@@ -75,9 +75,9 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4">
-                                            <%if(user){%>
+                                            <%if(true/*user*/){%>
                                                 <div class="button">
-                                                    <button type="submit" onclick="" class="btn btn-add" style="padding: 18px 80px;">Pagar</button>
+                                                    <button value="Buy" type="submit" onclick="" class="btn btn-add" style="padding: 18px 80px;">Pagar</button>
                                                 </div>
                                             <% }else{ %>
                                                 <h4>Inicia sesión primero hdp, cha toy cansaooo lco</h4>

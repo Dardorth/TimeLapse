@@ -40,32 +40,6 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
 
 });
 
-
-
-
-
-
-
-
-// Arrue
-router.post('/paypal', async (req, res) => {
-
-    const body = req.body;
-    console.log(body);
-    
-    // res.render('user/editarPerfil');
-});
-
-
-
-
-
-
-
-
-
-
-
 // Ruta comprar productos
 router.get('/perfil/:cart', async (req, res) => {
     products = req.params.cart;
