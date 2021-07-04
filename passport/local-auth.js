@@ -33,8 +33,9 @@ passport.use('register', new LocalStrategy(
          const newUser = new User();
          newUser.name = req.body.nombre;
          newUser.lastname = req.body.apellido;
-         /* newUser.user = user; */
+         newUser.user = user;
          newUser.password = newUser.encrypthPassword(password);
+         console.log(newUser);
          await newUser.save();
          done(null,newUser,req.flash('registroExito','Usuario registrado'));
       }
