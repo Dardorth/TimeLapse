@@ -47,7 +47,7 @@
                 <div class="col-12 mt-5">
                     <div class="pagination center wow fadeInRigh mt-5" data-wow-delay=".1s">
                         <ul class="pagination-list border">
-                            <li><a href="#"><i class="fas fa-angle-left"></i></a></li>
+                            <li><a href="/curso-whatsapp"><i class="fas fa-angle-left"></i></a></li>
                             <li><a href="/curso-whatsapp">1</a></li>
                             <li class="active"><a href="/curso-whatsapp-p1">2</a></li>
                             <li><a href="#">3</a></li>
@@ -106,3 +106,7 @@
     </div>
 
     <%- include('../../templates/footer') %>
+    <script>
+        const span = document.querySelectorAll('.part');
+        span[1].classList.add('text-primary','font-weight-bold');
+    </script>
