@@ -13,10 +13,7 @@ const productSchema = new Schema({
     },
     category: String,
     logo: String,
-    details: {
-        type: Array,
-        default: []
-    },
+
     benefits: String,
     content: String
 });
