@@ -3,6 +3,7 @@ const product = require('../models/product');
 const user = require('../models/user');
 const router = express.Router();
 const multer = require('multer');
+const bcrypt = require('bcrypt');
 
 // Ruta perfil usuario
 router.get('/perfil', isAuthenticated, async (req, res) => {
@@ -104,8 +105,8 @@ router.post('/editarContrasena/:id', async (req, res) => {
     const id = req.params.id;
     const body = req.body;
 
-    console.log(id);
-    console.log(body);
+    body.password = encrypthPassword(req.body.password)
+    
     try {
         await user.findByIdAndUpdate(id, body, {useFindAndModify: false});
 
@@ -116,6 +117,13 @@ router.post('/editarContrasena/:id', async (req, res) => {
 
 });
 
+function encrypthPassword(password){
+
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(password, salt);
+
+    return hash
+}
 
 
 //UZAMOS LA DEPENDENCIA MULTER PARA ALMACENAR UNA IMAGEN EN LA CARPETA PRODUCT

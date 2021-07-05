@@ -171,5 +171,5 @@ const setError = ()=>{
 }
 
 const successPassword = ()=> {
-    // form.submit();
+    form.submit();
 }
