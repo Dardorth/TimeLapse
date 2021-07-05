@@ -2664,15 +2664,11 @@ ol {
     Intro Video CSS
 ========================================*/
 .intro-video-area {
-  background-image: url("../images/video/video.jpg");
+  background-image: url("../images/video/video-whatsapp.jpg");
   background-size: cover;
   position: relative;
   z-index: 9;
   padding-bottom: 130px;
-}
-
-.video-whatsapp {
-  background-image: url("../images/video/video-whatsapp.jpg");
 }
 
 .intro-video-area.overlay::before {

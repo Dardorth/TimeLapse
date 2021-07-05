@@ -27,30 +27,71 @@
 
                 <div class="col-12 col-md-12 col-lg-8 mb-5">
                     <div class="row">
-                        <div class="col-12 mb-1">
+                        <!-- <div class="col-12 mb-1">
                             <div class="button d-flex justify-content-end wow fadeInRight" data-wow-delay=".4s">
                                 <button class="btn-video">Cómo se vería en computadora</button>
                             </div>
-                        </div>
-                        <div class="container">
-                            <section class="intro-video-area border border-primary border-2 video-whatsapp overlay section">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="intro-video-play">
-                                            <div class="row justify-content-center">
-                                                <div class="col-lg-10 col-12">
-                                                    <div class="play-thumb wow zoomIn" style="margin-top: 120px;"
-                                                        data-wow-delay=".2s">
-                                                        <a href="https://www.youtube.com/watch?v=qorBzcjfEmc&ab_channel=TBS"
-                                                            class="glightbox video"><i class="fas fa-play"></i></a>
+                        </div> -->
+                        <ul class="nav nav-pills mb-1 pr-4 d-flex justify-content-end" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><small>Ver como computadora</small></a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><small>Ver como celular</small></a>
+                            </li>
+                            <!-- <li class="nav-item" role="presentation">
+                              <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">no veas esto</a>
+                            </li> -->
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="container">
+                                    <section class="intro-video-area border border-primary border-2 overlay section">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="intro-video-play">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-lg-10 col-12">
+                                                            <div class="play-thumb wow zoomIn" style="margin-top: 120px;"
+                                                                data-wow-delay=".2s">
+                                                                <a href="https://www.youtube.com/watch?v=qorBzcjfEmc&ab_channel=TBS"
+                                                                    class="glightbox video"><i class="fas fa-play"></i></a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
                                 </div>
-                            </section>
+                            </div>
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <div class="container">
+                                    <section class="intro-video-area border border-primary border-2 overlay section">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="intro-video-play">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-lg-10 col-12">
+                                                            <div class="play-thumb wow zoomIn" style="margin-top: 120px;"
+                                                                data-wow-delay=".2s">
+                                                                <a href="https://www.youtube.com/watch?v=EzS_QRrNmRA&ab_channel=GoneViral"
+                                                                    class="glightbox video"><i class="fas fa-play"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                
+                            </div>
                         </div>
+                        
                     </div>
                 </div>
 
@@ -90,8 +131,8 @@
                 <div class="col-12">
                     <div class="pagination center wow fadeInRight" data-wow-delay=".1s">
                         <ul class="pagination-list border">
-                            <li><a href="#"><i class="fas fa-angle-left"></i></a></li>
-                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="/curso-whatsapp"><i class="fas fa-angle-left"></i></a></li>
+                            <li class="active"><a href="/curso-whatsapp">1</a></li>
                             <li><a href="/curso-whatsapp-p1">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#">4</a></li>
@@ -108,17 +149,64 @@
 
     <%- include('../../templates/footer') %>
 
+        <script>
+            const span = document.querySelectorAll('.part');
+            span[0].classList.add('text-primary','font-weight-bold');
+        </script>
+
         <script type="text/javascript">
             //========= glightbox
+            
+            // Obtener los 2 btn para el cambio de video (ver como computadora y ver como celular)
+            const change = document.querySelectorAll('.nav-link');
 
-            const video_movil = 'https://www.youtube.com/watch?v=qorBzcjfEmc&ab_channel=TBS';
-            const video_desktop = '';
-
-            GLightbox({
-                'href': video_movil,
-                'type': 'video',
-                'source': 'youtube', //vimeo, youtube or local
-                'width': 900,
-                'autoplayVideos': true,
+            // Al hacer click cambiar el focus a video como computadora y guardar variable en localstorage.
+            change[0].addEventListener('click', ()=>{
+                change[0].classList.add('active');
+                change[1].classList.remove('active');
+                localStorage.setItem('video-cel','false');
+                document.location.reload();
             });
+
+            // Al hacer click cambiar el focus a video como celular y guardar variable en localstorage.
+            change[1].addEventListener('click', ()=>{
+                change[1].classList.add('active');
+                change[0].classList.remove('active');
+                localStorage.setItem('video-cel','true');
+                document.location.reload();
+            });
+
+            // Validar desde el localstorage la variable guardada anteriormente.
+            if(localStorage.getItem('video-cel') === 'false'){
+                change[0].classList.add('active');
+                change[1].classList.remove('active');
+                // GLightbox es la librería que muestra el video.
+                GLightbox({
+                    'href': 'https://www.youtube.com/watch?v=qorBzcjfEmc&ab_channel=TBS',
+                    'type': 'video',
+                    'source': 'youtube',
+                    'width': 900,
+                    'autoplayVideos': true,
+                });
+            }else if (localStorage.getItem('video-cel') === 'true'){
+                change[1].classList.add('active');
+                change[0].classList.remove('active');
+                // GLightbox es la librería que muestra el video.
+                GLightbox({
+                    'href': 'https://www.youtube.com/watch?v=EzS_QRrNmRA&ab_channel=GoneViral',
+                    'type': 'video',
+                    'source': 'youtube',
+                    'width': 900,
+                    'autoplayVideos': true,
+                });
+            }else{ // Default del video, cuando no se clicke los btn (ver como computadora o ver como celular)
+                GLightbox({
+                    'href': 'https://www.youtube.com/watch?v=qorBzcjfEmc&ab_channel=TBS',
+                    'type': 'video',
+                    'source': 'youtube',
+                    'width': 900,
+                    'autoplayVideos': true,
+                });
+            }
+
         </script>
