@@ -3,7 +3,9 @@ const app = express();
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
-const port = 3000;
+require('dotenv').config();
+
+const port = process.env.PORT;
 
 //Inicializaciones
 require('./database/database'); //Conexion a base de datos

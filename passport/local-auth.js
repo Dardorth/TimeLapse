@@ -1,7 +1,9 @@
 const passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 const Vonage = require('@vonage/server-sdk');
-const vonage = new Vonage({apiKey: "8e606b2e", apiSecret: "GPg5yRQchWbRg6tf"});
+const apiKey = process.env.VONAGE_APIKEY;
+const apiSecret = process.env.VONAGE_APISECRET;
+const vonage = new Vonage({apiKey: apiKey, apiSecret: apiSecret});
 
 const User = require('../models/user');
 
