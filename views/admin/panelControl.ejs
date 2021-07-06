@@ -52,98 +52,18 @@
                         <div class="services">
                             <div class="single-head">
                                 <div class="single-head">
-
                                     <div class="row">
+                                        <% for(var i=0; i < panelPrincipal.length; i++) { %>
                                         <div class="col-lg-3 col-md-6 col-12 mb-5">
                                             <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                                                <h3 class="text-center"><a href="/producto">Curso de Office</a></h3>
+                                                <h3 class="text-center"><a><%= panelPrincipal[i].name %></a></h3>
                                                 <div class="col text-center">
-                                                    <a href="/producto"><img
-                                                            src="images/products/logo-office.png" alt="#"
-                                                            height="60px" width="60px"></a>
+                                                    <a href="/tienda/<%= panelPrincipal[i].name %> "><img src="images/products/<%= panelPrincipal[i].logo %>" alt="#" height="60px" width="60px"></a>
                                                 </div>
-
                                             </div>
-                                        </div>
+                                        </div>  
+                                        <% } %>  
                                         <br>
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                                                <h3 class="text-center"><a href="/producto">Curso de WhatsApp</a></h3>
-                                                <div class="col text-center">
-                                                    <a href="/producto">
-                                                        <img src="images/products/logo-whatsapp.png" alt="#"
-                                                            height="60px" width="60px">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="single-service wow fadeInUp" data-wow-delay=".4s">
-                                                <h3 class="text-center"><a href="/producto">Curso de MS Teams</a></h3>
-                                                <div class="col text-center">
-                                                    <img src="images/products/logo-teams.png" alt="#"
-                                                        height="60px" width="60px">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="single-service wow fadeInUp" data-wow-delay=".6s">
-                                                <h3 class="text-center"><a href="/producto">Curso de Excel</a></h3>
-                                                <div class="col text-center">
-                                                    <img src="images/products/logo-excel.png" alt="#"
-                                                        height="60px" width="60px">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br><br>
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                                                <h3 class="text-center"><a href="/producto">Curso de Outlook</a></h3>
-                                                <div class="col text-center">
-                                                    <img src="images/products/logo-outlook.png" alt="#"
-                                                        height="60px" width="60px">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                                                <h3 class="text-center"><a href="/producto">Curso de Word</a></h3>
-                                                <div class="col text-center">
-                                                    <img src="images/products/logo-word.png" alt="#"
-                                                        height="60px" width="60px">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                                                <h3 class="text-center"><a href="/producto">Curso de Zoom</a></h3>
-                                                <div class="col text-center">
-                                                    <img src="images/products/logo-zoom.png" alt="#"
-                                                        height="60px" width="60px">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                                                <h3 class="text-center"><a href="/producto">Curso de Instagram</a></h3>
-                                                <div class="col text-center">
-                                                    <img src="images/products/logo-instagram.png" alt="#"
-                                                        height="60px" width="60px">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                                                <h3 class="text-center"><a href="/producto">Curso de Twitter</a></h3>
-                                                <div class="col text-center">
-                                                    <img src="images/products/logo-twitter.png" alt="#"
-                                                        height="60px" width="60px">
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
