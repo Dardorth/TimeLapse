@@ -49,19 +49,33 @@
                                     <li class="nav-item header-item">
                                         <a href="/" id="inicio">Inicio</a>
                                     </li>
-                                    <li class="nav-item header-item"><a href="/tienda" id="tienda">Tienda</a></li>
-                                    <li class="nav-item header-item"><a href="/carrito" id="carrito">Carrito</a></li>
-                                    <li class="nav-item header-item"><a href="/sobreNosotros" id="nosotros">¿Quiénes
-                                            somos?</a></li>
+                                    
                                     <%if(user){%>
-                                        <li class="nav-item header-item">
-                                            <a class="text-primary font-weight-bold" style="color: #3763EB !important;" href="/perfil"><%= user.name +' '+ user.lastname%></a>
-                                            <ul class="sub-menu">
-                                                <li><a href="/editarPerfil">Editar Perfil</a></li>
-                                                <li><a href="/logout">Cerrar Sesión</a></li>
-                                            </ul>
-                                        </li>
+                                        <% if (user.role === 'client') { %>
+                                            <li class="nav-item header-item"><a href="/tienda" id="tienda">Tienda</a></li>
+                                            <li class="nav-item header-item"><a href="/carrito" id="carrito">Carrito</a></li>
+                                            <li class="nav-item header-item"><a href="/sobreNosotros" id="nosotros">¿Quiénes
+                                                somos?</a></li>
+                                            <li class="nav-item header-item">
+                                                <a class="text-primary font-weight-bold" style="color: #3763EB !important;" href="/perfil"><%= user.name +' '+ user.lastname%></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="/editarPerfil">Editar Perfil</a></li>
+                                                    <li><a href="/logout">Cerrar Sesión</a></li>
+                                                </ul>
+                                            </li>
+                                        <% } else if (user.role === 'admin') {%>
+                                            <li class="nav-item header-item">
+                                                <a class="text-primary font-weight-bold" style="color: #3763EB !important;" href="/panelControl"><%= user.name +' '+ user.lastname%></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="/logout">Cerrar Sesión</a></li>
+                                                </ul>
+                                            </li>
+                                        <% }%>
                                     <% } else { %>
+                                        <li class="nav-item header-item"><a href="/tienda" id="tienda">Tienda</a></li>
+                                        <li class="nav-item header-item"><a href="/carrito" id="carrito">Carrito</a></li>
+                                        <li class="nav-item header-item"><a href="/sobreNosotros" id="nosotros">¿Quiénes
+                                            somos?</a></li>
                                         <li class="nav-item header-item" style="cursor:pointer;">
                                             <a data-bs-toggle="modal" data-bs-target="#login">
                                                 <span class="text-primary font-weight-bold">Iniciar Sesión</span>
