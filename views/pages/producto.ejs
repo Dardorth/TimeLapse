@@ -10,8 +10,7 @@
                             <div class="section-title align-left">
                                 <span class="wow fadeInDown" data-wow-delay=".2s">producto</span>
                                 <span class="wow fadeInDown" data-wow-delay=".2s"><%= productDetails.name %></span>
-                                <p class="wow fadeInUp" data-wow-delay=".6s">Obtén el paquete office y descubre nuevas
-                                    habilidades con los cursos sobre los productos más utilizados en la ofimática. </p>
+                                <p class="wow fadeInUp" data-wow-delay=".6s"><%= productDetails.description %>  </p>
                             </div>
 
                             <div class="price wow fadeInUp mb-3" data-wow-delay=".6s">
@@ -37,9 +36,7 @@
                                     <!-- Tab 1 -->
                                     <div class="tab-pane fade show active" id="t-tab1" role="tabpanel">
                                         <div class="tab-content text-dark">
-                                            <p><% productDetails.details.forEach(element => { %>
-                                                <%= element.content %> 
-                                            <% }) %> </p>
+                                            <p><%= productDetails.content %></p>
                                             <!-- <ul>
                                                 <li><i class="far fa-check-circle"></i> Word</li>
                                                 <li><i class="far fa-check-circle"></i> Excel</li>
@@ -53,21 +50,19 @@
                                     <!-- Tab 2 -->
                                     <div class="tab-pane fade" id="t-tab2" role="tabpanel">
                                         <div class="tab-content text-dark">
-                                            <p><% productDetails.details.forEach(element => { %>
-                                                <%= element.benefits %> 
-                                            <% }) %> </p>
+                                            <p><%= productDetails.benefits %></p>
                                         </div>
                                     </div>
                                     <!--/ End Tab 2 -->
                                     <!-- Tab 3 -->
                                     <div class="tab-pane fade" id="t-tab3" role="tabpanel">
                                         <div class="tab-content text-dark">
-                                            <p><% productDetails.details.forEach(element => { %>
-                                                <%= element.experiences %> 
-                                            <% }) %> </p>
+                                            <p>Las experiencias para nuestra empresa son importantes. Queremos ser transparentes y mostrarte lo que podemos hacer por ti <i class="far fa-smile-wink"></i></p>
                                             <ul>
                                                 <li><i class="far fa-check-circle"></i> Alcanza Niveles y deja el
                                                     pasado atrás.</li>
+                                                <li><i class="far fa-check-circle"></i> Conviértete en alguien relevante para el mercado actual.</li>
+                                                <li><i class="far fa-check-circle"></i> Demustra que puedes adquirir conocimientos nuevos.</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -85,6 +80,15 @@
                         <a class="btn btn-add" href="/carrito">Añadir a carrito</a>
                     </div>
                 </div>
+                <!-- Start cart -->
+                <div aria-hidden="true" style="display: none;">
+                    <div class="col-lg-4 col-md-4">
+                        <div id="items" class="wow fadeInDown" data-wow-delay=".4s">
+                        </div>
+                        <div id="toPay" class="wow fadeInDown" data-wow-delay=".4s"></div>
+                    </div>
+                </div>
+                <!-- End cart -->
             </div>
         </div>
     </section>
