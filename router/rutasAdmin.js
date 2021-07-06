@@ -18,8 +18,19 @@ const upload = multer({
 
 
 // Rutas admin
-router.get('/panelControl',isAuthenticated, (req, res) => {
-    res.render('admin/panelControl');
+router.get('/panelControl',isAuthenticated, async (req, res) => {
+
+    try {
+        //LLAMO A TODOS LOS CURSOS SIN FILTRAR
+        const panelPrincipal = await Product.find({}); 
+
+        //ENVIO LA INFORMACION DE LOS CURSOS A administrarCursos
+            res.render('admin/panelControl',{
+                panelPrincipal
+        });
+        } catch (err) {
+            console.log(err);
+        }
 });
 router.get('/usuariosRegistrados', isAuthenticated,(req, res) => {
     res.render('admin/usuariosRegistrados');
@@ -85,7 +96,6 @@ router.get('/administrarCursos', isAuthenticated, async (req, res) => {
         } catch (err) {
             console.log(err);
         }
-    res.render('admin/administrarCursos');
 
 });
 
