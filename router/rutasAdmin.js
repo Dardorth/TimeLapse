@@ -3,6 +3,7 @@ const router = express.Router();
 const Statistic = require('../models/statistic');
 const Sale = require('../models/sale');
 const Product = require('../models/product');
+const Users = require('../models/user');
 const multer = require('multer');
 
 
@@ -32,9 +33,50 @@ router.get('/panelControl',isAuthenticated, async (req, res) => {
             console.log(err);
         }
 });
-router.get('/usuariosRegistrados', isAuthenticated,(req, res) => {
-    res.render('admin/usuariosRegistrados');
+
+
+
+router.get('/usuariosRegistrados', isAuthenticated, async(req, res) => {
+
+    try {
+        //LLAMO A TODOS LOS CURSOS SIN FILTRAR
+        const usuariosRegistrados = await Users.find({}); 
+
+        //ENVIO LA INFORMACION DE LOS CURSOS A administrarCursos
+            res.render('admin/usuariosRegistrados',{
+                usuariosRegistrados
+        });
+        } catch (err) {
+            console.log(err);
+        }
+
 });
+
+
+
+
+router.get('/administrarCursos/eliminarUsuario', async (req, res) => {
+    
+    try {
+        const id= req.query.idUsuario;
+        //console.log("ID DE USUARIO RECIBIDO: "+id);
+        await Users.remove({_id:id});
+        req.flash('mensajeUserEliminado','El Usuario se elimino correctamente.');//ENVIAMOS UN MENSAJE DE RETROALIMENTACION
+        
+        //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
+        res.redirect('/usuariosRegistrados');
+         
+    } catch (err) {
+        console.log("No se puedo eliminar el Usuario: "+err);
+        req.flash('mensajeUserNoEliminado','El Usuario no se pudo eliminar.');
+        //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
+         res.redirect('/usuariosRegistrados');
+    }
+
+});
+
+
+
 router.get('/ganancias', isAuthenticated, async (req, res) => {
 
     try {

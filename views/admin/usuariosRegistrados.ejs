@@ -43,13 +43,24 @@
                         <div class="about-left mt-4">
                             <div class="section-title">
                                 <h2 class="wow fadeInUp" data-wow-delay=".4s">Usuarios Registrados: <h2
-                                        class="font-weight-bold font-italic text-primary">2</h2>
+                                        class="font-weight-bold font-italic text-primary"><%= usuariosRegistrados.length %></h2>
                                 </h2>
                                 <p class="wow fadeInUp" data-wow-delay=".6s">Aquí podrás visualizar y administrar
                                     todos los usuarios registrados en el sistema.</p>
                             </div>
                         </div>
-
+                        <% if(mensajeUserEliminado.length !==0){ %>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert" id="deleteUserYes">
+                              <strong><i class="far fa-trash-alt"></i> Eliminacion Exitosa: </strong> <%= mensajeUserEliminado %>
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            <% } %>
+                            <% if(mensajeUserNoEliminado.length !==0){ %>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert" id="deleteUserNo">
+                                  <strong><i class="far fa-trash-alt"></i> Error de Eliminacion: </strong> <%= mensajeUserNoEliminado %>
+                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <% } %>
                         <div class="services">
                             <div class="single-head">
                                 <table class="table table-bordered table-hover border-primary text-center">
@@ -63,24 +74,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <% for(var i=0; i < usuariosRegistrados.length; i++) { %>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>mark021</td>
+                                            <th scope="row"><%= i+1 %></th>
+                                            <td><%= usuariosRegistrados[i].name %></td>
+                                            <td><%= usuariosRegistrados[i].lastname %></td>
+                                            <td><%= usuariosRegistrados[i].user %></td>
                                             <td><button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    data-target="#modalEliminar">
+                                                    data-target="#modalEliminar" onclick="eliminaUsuario('<%= usuariosRegistrados[i]._id %>')">
                                                     <i class="fas fa-trash-alt"></i></button></td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>jacob723</td>
-                                            <td><button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    data-target="#modalEliminar">
-                                                    <i class="fas fa-trash-alt"></i></button></td>
-                                        </tr>
+                                        <% } %>
                                     </tbody>
                                 </table>
                             </div>
@@ -91,7 +95,17 @@
             </div>
         </div>
 
+
+    <!-- SCRIPT PARA ASIGNAR EL ID DEL USUARIO A ELIMINAR AL MODAL-->
+    <script>
+        function eliminaUsuario(idUsuario){
+          id=idUsuario;
+          //ASIGNAMOS EL VALOR AL CAMPO idEliminar
+          document.getElementById('idUsuario').value = id;  
+          }
+        </script>
         <!-- Modal confirmar-->
+        <form action="/administrarCursos/eliminarUsuario" method="GET" >
         <div class="modal fade" id="modalEliminar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
             tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
@@ -102,14 +116,16 @@
                     </div>
                     <div class="modal-body">
                         ¿Está seguro de que desea eliminar a este usuario?
+                        <input id="idUsuario" name="idUsuario" hidden>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger">Eliminar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
                     </div>
                 </div>
             </div>
         </div>
+    </form>
         <!-- Final Modal confirmar-->
     </section>
     <!-- /End User Profile Area -->

@@ -44,6 +44,9 @@ app.use((req,res,next) => {
     app.locals.mensajeNoEditado = req.flash('mensajeNoEditado');
     app.locals.mensajeAgregado = req.flash('mensajeAgregado');
     app.locals.mensajeNoAgregado = req.flash('mensajeNoAgregado');
+    //MENSAJES DE RETROALIMENTACION PARA ELIMINAR USUARIO
+    app.locals.mensajeUserEliminado = req.flash('mensajeUserEliminado');
+    app.locals.mensajeUserNoEliminado = req.flash('mensajeUserNoEliminado');
     next();
 });
 
