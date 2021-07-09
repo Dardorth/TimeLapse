@@ -55,11 +55,11 @@ router.get('/usuariosRegistrados', isAuthenticated, async(req, res) => {
 
 
 
-router.get('/administrarCursos/eliminarUsuario', async (req, res) => {
+router.get('/usuariosRegistrados/eliminarUsuario', async (req, res) => {
     
     try {
         const id= req.query.idUsuario;
-        //console.log("ID DE USUARIO RECIBIDO: "+id);
+        
         await Users.remove({_id:id});
         req.flash('mensajeUserEliminado','El Usuario se elimino correctamente.');//ENVIAMOS UN MENSAJE DE RETROALIMENTACION
         
@@ -205,7 +205,7 @@ function isAuthenticated(req,res,next){
 router.post('/administrarCursos/agregar', upload.single('logo'), async (req, res) => {
 
     try {
-        const cursoNuevo = await new Product(req.body); //OBTENEMOS TODOS LOS DATOS, EXCEPTO EL LOGO
+        const cursoNuevo = await new Product(req.body); //OBTENEMOS TODOS LOS DATOS
         cursoNuevo.logo = req.file.originalname //ASIGNAMOS UN NUEVO CAMPO LLAMADO LOGO AL JSON Y LE AGREGAMOS EL NOMBRE DEL LOGO
         console.log(cursoNuevo);
         cursoNuevo.save(); //GUARDAMOS LOS DATOS EN LA BD
@@ -222,7 +222,7 @@ router.get('/administrarCursos/eliminar', async (req, res) => {
     
     try {
         const id= req.query.idEliminar;
-        //console.log(id);
+        
         await Product.remove({_id:id});
         req.flash('mensajeEliminado','El curso se elimino correctamente.');//ENVIAMOS UN MENSAJE DE RETROALIMENTACION
         //RECARGAMOS LA PAGINA PARA VER EL CAMBIO
