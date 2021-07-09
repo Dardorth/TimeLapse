@@ -43,42 +43,42 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
 });
 
 // Ruta comprar productos
-router.get('/perfil/:cart', async (req, res) => {
-    products = req.params.cart;
+// router.get('/perfil/:cart', async (req, res) => {
+//     products = req.params.cart;
     
-    array = [];
-    array = products.split(',');
+//     array = [];
+//     array = products.split(',');
 
-    console.log('***********Resultado');
-    // console.log(req.user.id);
-    try {
-        let ids = '';
-        array.forEach(async item => {
-            // ids son los doc de los cursos
-            ids = await product.find({name:item});
-            // recorro los atributos del doc.
-            ids.forEach(async x =>{
-                await user.updateOne(
-                    { _id: req.user.id},
-                    {
-                        $push: {
-                            cursos: {
-                                $each: [ { id_curso: x._id } ]
-                            }
-                        }
-                    }
-                 )
-                 console.log(x);
-            });
-        });
+//     console.log('***********Resultado');
+//     // console.log(req.user.id);
+//     try {
+//         let ids = '';
+//         array.forEach(async item => {
+//             // ids son los doc de los cursos
+//             ids = await product.find({name:item});
+//             // recorro los atributos del doc.
+//             ids.forEach(async x =>{
+//                 await user.updateOne(
+//                     { _id: req.user.id},
+//                     {
+//                         $push: {
+//                             cursos: {
+//                                 $each: [ { id_curso: x._id } ]
+//                             }
+//                         }
+//                     }
+//                  )
+//                  console.log(x);
+//             });
+//         });
 
-        res.redirect('/perfil');
+//         res.redirect('/perfil');
 
 
-    } catch (err) {
-        console.log(err);
-    }
-});
+//     } catch (err) {
+//         console.log(err);
+//     }
+// });
 
 // Ruta view editar perfil
 router.get('/editarPerfil',(req, res) => { //QUITE EL AUTENTICACION
