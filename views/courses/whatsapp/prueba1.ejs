@@ -21,36 +21,52 @@
                             adipisicing elit. Voluptas, dolore! Sequi magnam ab similique est eum alias quod
                             nemo nulla, nam numquam excepturi pariatur ad sapiente modi.</p>
                     </div>
+                    <div class="col-12 d-flex justify-content-end wow fadeInUp" data-wow-delay=".1s">
+                        <form action="/rehacerProgreso/<%= name %> " method="post">
+                            <button type="submit" class="btn btn-sm"><small>Rehacer pruebas</small></button>
+                        </form>
+                    </div>
                     <div class="col-4 text-center py-5 wow fadeInLeft border-dark border-right" data-wow-delay=".4s">
                         <h1>Paso 1</h1>
-                        <div id="p1_btn1" class="button d-flex justify-content-center mt-3">
-                            <button class="btn-video" style="font-size: 12px;" data-bs-toggle="modal"
-                                data-bs-target="#test">Realizar</button>
-                        </div>
-                        <img id="p1_check1" class="d-none" src="/images/tests/whatsapp/check.png" width="100px" height="100px" alt="">
+                        <% if (progress >= 1) { %>
+                            <img src="/images/tests/whatsapp/check.png" width="100px" height="100px" alt="">
+                        <% } else { %>
+                            <div class="button d-flex justify-content-center mt-3">
+                                <button class="btn-video" style="font-size: 12px;" data-bs-toggle="modal"
+                                    data-bs-target="#test1">Realizar</button>
+                            </div>
+                        <% } %>
                     </div>
                     <div class="col-4 text-center py-5 wow fadeInDown" data-wow-delay=".4s">
                         <h1>Paso 2</h1>
-                        <div class="button d-flex justify-content-center mt-3">
-                            <button class="btn-video" style="font-size: 12px;" data-toggle="modal"
-                                data-target="#exampleModal">Realizar</button>
-                        </div>
+                        <% if (progress >= 2) { %>
+                            <img src="/images/tests/whatsapp/check.png" width="100px" height="100px" alt="">
+                        <% } else { %>
+                            <div class="button d-flex justify-content-center mt-3">
+                                <button class="btn-video" style="font-size: 12px;" data-bs-toggle="modal"
+                                    data-bs-target="#test2">Realizar</button>
+                            </div>
+                        <% } %>
                     </div>
                     <div class="col-4 text-center py-5 wow fadeInRight border-dark border-left" data-wow-delay=".4s">
                         <h1>Paso 3</h1>
-                        <div class="button d-flex justify-content-center mt-3" data-toggle="modal"
-                            data-target="#exampleModal">
-                            <button class="btn-video" style="font-size: 12px;">Realizar</button>
-                        </div>
+                        <% if (progress >= 3) { %>
+                            <img src="/images/tests/whatsapp/check.png" width="100px" height="100px" alt="">
+                        <% } else { %>
+                            <div class="button d-flex justify-content-center mt-3">
+                                <button class="btn-video" style="font-size: 12px;" data-bs-toggle="modal"
+                                    data-bs-target="#test3">Realizar</button>
+                            </div>
+                        <% } %>
                     </div>
                 </div>
 
                 <div class="col-12 mt-5">
                     <div class="pagination center wow fadeInRigh mt-5" data-wow-delay=".1s">
                         <ul class="pagination-list border">
-                            <li><a href="/curso-whatsapp"><i class="fas fa-angle-left"></i></a></li>
-                            <li><a href="/curso-whatsapp">1</a></li>
-                            <li class="active"><a href="/curso-whatsapp-p1">2</a></li>
+                            <li><a href="/curso/<%= name %>"><i class="fas fa-angle-left"></i></a></li>
+                            <li><a href="/curso/<%= name %>">1</a></li>
+                            <li class="active"><a href="/curso-p1/<%= name %>">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#">4</a></li>
                             <li><a href="#"><i class="fas fa-angle-right"></i></a></li>
@@ -60,7 +76,7 @@
             </div>
 
             <!-- Start Modal Test -->
-            <div class="modal fade" id="test" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="test1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content p-5">
                         <div class="modal-body">
@@ -68,7 +84,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6 col-s-6 wow fadeInUp">
                                     <div class="">
-                                        <img src="images/products/logo-whatsapp.png" alt=""
+                                        <img src="/images/products/logo-whatsapp.png" alt=""
                                             style="width: 100%; height: 100%;">
                                     </div>
                                 </div>
@@ -83,7 +99,8 @@
                                         <h6 class="text-primary">¿Qué opción seleccionas para crear un contacto?</h6>
                                         <i class="fas fa-long-arrow-alt-down mt-1 text-primary"></i>
                                     </div>
-                                    <form id="p1_p1" action="/curso-whatsapp-p1" method="GET">
+                                    <form action="/progresion/<%= name %>" method="POST">
+                                        <input type="hidden" value="1" name="progress">
                                         <div class="row">
                                             <div class="col-4">
                                                 <button type="button" style="border-style: none;">
@@ -91,8 +108,7 @@
                                                     class=""
                                                     src="/images/tests/whatsapp/1.jpeg"
                                                     alt="imagen"
-                                                    width="100px" height="100px"
-                                                    style="cursor: pointer;">
+                                                    width="100px" height="100px">
                                                 </button>
                                             </div>
                                             <div class="col-4">
@@ -101,8 +117,7 @@
                                                     class=""
                                                     src="/images/tests/whatsapp/2.jpeg"
                                                     alt="imagen"
-                                                    width="100px" height="100px"
-                                                    style="cursor: pointer;">
+                                                    width="100px" height="100px">
                                                 </button>
                                             </div>
                                             <div class="col-4">
@@ -111,8 +126,7 @@
                                                     class=""
                                                     src="/images/tests/whatsapp/3.jpeg"
                                                     alt="imagen"
-                                                    width="100px" height="100px"
-                                                    style="cursor: pointer;">
+                                                    width="100px" height="100px">
                                                 </button>
                                             </div>
                                             <div class="col-12">

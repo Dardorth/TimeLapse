@@ -1,9 +1,9 @@
 const express = require('express');
 const product = require('../models/product');
 const user = require('../models/user');
-const router = express.Router();
 const multer = require('multer');
 const bcrypt = require('bcrypt');
+const router = express.Router();
 
 // Ruta perfil usuario
 router.get('/perfil', isAuthenticated, async (req, res) => {
@@ -54,16 +54,18 @@ router.get('/perfil/:cart', async (req, res) => {
     try {
         let ids = '';
         array.forEach(async item => {
+            // ids son los doc de los cursos
             ids = await product.find({name:item});
+            // recorro los atributos del doc.
             ids.forEach(async x =>{
                 await user.updateOne(
                     { _id: req.user.id},
                     {
-                      $push: {
-                        cursos: {
-                           $each: [ { id_curso: x._id } ]
+                        $push: {
+                            cursos: {
+                                $each: [ { id_curso: x._id } ]
+                            }
                         }
-                      }
                     }
                  )
                  console.log(x);
@@ -159,7 +161,7 @@ router.post('/editarFoto/:id',upload.single('profile'), async (req, res) => {
 
 });
 
-
+// Ruta mi progreso
 router.get('/miProgreso',  isAuthenticated, async (req, res) => {
 
     try {

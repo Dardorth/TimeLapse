@@ -37,10 +37,10 @@
 //SCRIPT PARA PREVISUALIZAR LA FOTO SELECIONADA DEL USUARIO AL EDITAR PERFIL 
         $("#photo").change(function () {
           // Código a ejecutar cuando se detecta un cambio de archivO
-          readImageEdit(this);
+          readImageEditProfile(this);
         });
 
-        function readImageEdit (input) {
+        function readImageEditProfile (input) {
           if (input.files && input.files[0]) {
           var reader = new FileReader();
           reader.onload = function (e) {

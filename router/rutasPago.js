@@ -165,7 +165,7 @@ router.get('/success', (req, res) => {
                             {
                             $push: {
                                 cursos: {
-                                $each: [ { id_curso: x._id } ]
+                                $each: [ { id_curso : x._id, progress : 0} ]
                                 }
                             }
                             }
