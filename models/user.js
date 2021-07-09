@@ -24,7 +24,7 @@ const userSchema = new Schema({
         require: true
     },
     cursos: {
-        type: Object
+        type: Array
     },
     role: {
         type: String,
