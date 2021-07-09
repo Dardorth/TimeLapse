@@ -11,14 +11,22 @@ router.get('/', (req, res) => {
 
 // Rutas de tienda
 router.get('/tienda', async (req, res) => {
-
+    let search = {};
     try {
-        const cursosRedesSociales = await product.find({category:'redes sociales'}); 
-        const cursosOfimatica = await product.find({category: 'ofimatica'});
+
+        if(req.query.curso != null && req.query.curso !== ''){
+            search.name = new RegExp(req.query.curso, 'i')
+        }
+        console.log(search);
+        const cursos = await product.find(search); 
+        //const cursosRedesSociales = await product.find({category:'redes sociales'}); 
+        //const cursosOfimatica = await product.find({category: 'ofimatica'});
 
         res.render('pages/tienda',{
-            cursosRedesSociales,
-            cursosOfimatica
+            cursos: cursos,
+            search: req.query
+            /*cursosRedesSociales,
+            cursosOfimatica*/
         });
     } catch (err) {
         console.log(err);

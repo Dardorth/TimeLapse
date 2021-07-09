@@ -16,10 +16,12 @@
                 <div class="col-lg-6 col-md-12" style="margin-top: 35px;">
                     <div class="container-fluid">
                         <div class="d-flex" style="float:right;">
-                            <input class="form-control me-2" id="buscador" type="search"
-                                placeholder="Escriba el nombre del curso" aria-label="Search"
-                                style="width : 400px; height : 10px">
-                            <button class="btn btn-outline-primary" id="btnBuscar">Buscar</button>
+                            <form action="/tienda" method="GET" id="buscar">
+                                <input class="form-control me-2" id="buscador" type="search"
+                                    placeholder="Escriba el nombre del curso" aria-label="Search"
+                                    style="width : 400px; height : 10px" name="curso" value="<%= search.curso%>">
+                            </form>
+                            <button class="btn btn-outline-primary" id="btnBuscar" form="buscar" type="submit">Buscar</button>
                         </div>
                     </div>
                 </div>
@@ -33,8 +35,9 @@
 
             <div class="single-head">
                 <div class="row">
-                    <% if (cursosOfimatica) { %>
-                        <% cursosOfimatica.forEach(curso=> { %>
+                    <% if (cursos) { %>
+                        <% cursos.forEach(curso=> { %>
+                            <% if(curso.category == "ofimatica"){ %> 
                             <div class="col-lg-3 col-md-6 col-12 mb-5">
                                 <div class="single-service wow fadeInUp" data-wow-delay=".2s">
                                     <h5 class="text-center"><%= curso.name %></h5>
@@ -53,6 +56,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <% } %> 
                         <% }) %>
                     <% } %>
                 </div>
@@ -70,8 +74,9 @@
                 <img class="service-patern wow fadeInLeft" data-wow-delay=".5s" src="images/service/service-patern.png"
                     alt="#">
                 <div class="row">
-                    <% if (cursosRedesSociales) { %>
-                        <% cursosRedesSociales.forEach(curso=> { %>
+                    <% if (cursos) { %>
+                        <% cursos.forEach(curso=> { %>
+                            <% if(curso.category == "redes sociales"){ %> 
                             <div class="col-lg-3 col-md-6 col-12 mb-5">
                                 <div class="single-service wow fadeInUp" data-wow-delay=".2s">
                                     <h5 class="text-center"><%= curso.name %></h5>
@@ -90,6 +95,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <% } %>
                             <% }) %>
                          <% } %>
                 </div>
