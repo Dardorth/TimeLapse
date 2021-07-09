@@ -68,5 +68,7 @@ app.use('/', require('./router/rutasLoginRegistro'));
 //Rutas Pago
 app.use('/', require('./router/rutasPago'));
 
+app.use('/', require('./API/routes'));
+
 
 app.listen(port, () => console.log('el servidor está corriendo en el puerto', port));
