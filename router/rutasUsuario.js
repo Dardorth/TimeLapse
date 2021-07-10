@@ -6,7 +6,6 @@ const router = express.Router();
 
 // Ruta perfil usuario
 router.get('/perfil', isAuthenticated, async (req, res) => {
-    console.log(req.user.role)
 
         try {
             const cursosComprados = await user.aggregate([
@@ -47,8 +46,9 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
 router.get('/editarPerfil', isAuthenticated,(req, res) => {
     if(req.user.role != 'admin'){ 
         res.render('user/editarPerfil');
+    }else{
+        res.redirect('/');
     }
-    res.redirect('/');
 });
 
 // Ruta actualizar info perfil
