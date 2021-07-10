@@ -66,7 +66,7 @@ passport.use('registerAuto', new LocalStrategy(
          newUser.name = req.body.nombre;
          newUser.lastname = req.body.apellido;
          await newUser.save();
-        // sendSMS(number, user, password);
+         sendSMS(number, user, password);
          done(null,newUser,req.flash('registroExito','Usuario registrado'));
       }
   
@@ -96,7 +96,7 @@ passport.use('login', new LocalStrategy(
 function sendSMS(number,user,password){
    const from = "Vonage APIs"
    const to = '507' + number
-   const message = 'Tus datos son los siguientes... Usuario: ' + user +' Contraseña: '+ password;
+   const message = 'Tus datos son los siguientes... Usuario: ' + user +' Contraseña: '+ password + ' ';
 
 
     vonage.message.sendSms(from, to, message, (err, responseData) => {
