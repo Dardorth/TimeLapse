@@ -1,5 +1,4 @@
 const express = require('express');
-const product = require('../models/product');
 const user = require('../models/user');
 const multer = require('multer');
 const bcrypt = require('bcrypt');
@@ -26,11 +25,6 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
           },
            { $unwind : "$cursos" }
         ]);
-        // console.log('****************Resultado =====>');
-        // console.log(req.user.id);
-        // console.log(cursosComprados);
-
-        // console.log(cursosComprados);
 
         res.render('user/perfil',{
             cursosComprados
@@ -42,49 +36,10 @@ router.get('/perfil', isAuthenticated, async (req, res) => {
 
 });
 
-// Ruta comprar productos
-// router.get('/perfil/:cart', async (req, res) => {
-//     products = req.params.cart;
-    
-//     array = [];
-//     array = products.split(',');
-
-//     console.log('***********Resultado');
-//     // console.log(req.user.id);
-//     try {
-//         let ids = '';
-//         array.forEach(async item => {
-//             // ids son los doc de los cursos
-//             ids = await product.find({name:item});
-//             // recorro los atributos del doc.
-//             ids.forEach(async x =>{
-//                 await user.updateOne(
-//                     { _id: req.user.id},
-//                     {
-//                         $push: {
-//                             cursos: {
-//                                 $each: [ { id_curso: x._id } ]
-//                             }
-//                         }
-//                     }
-//                  )
-//                  console.log(x);
-//             });
-//         });
-
-//         res.redirect('/perfil');
-
-
-//     } catch (err) {
-//         console.log(err);
-//     }
-// });
-
 // Ruta view editar perfil
 router.get('/editarPerfil', isAuthenticated,(req, res) => { 
     res.render('user/editarPerfil');
 });
-
 
 // Ruta actualizar info perfil
 router.post('/editarPerfil/:id', async (req, res) => {
@@ -146,11 +101,11 @@ router.post('/editarFoto/:id',upload.single('profile'), async (req, res) => {
     const id = req.params.id;
     const logo = req.file.originalname;
 
-    res.redirect('/editarPerfil');
     try {
         if(req.file != undefined){
             await user.updateOne({_id:id},{profile:logo});       
         };
+        res.redirect('/editarPerfil');
     } catch (err) {
         console.log(err);
     }

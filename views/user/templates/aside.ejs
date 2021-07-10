@@ -1,19 +1,13 @@
 <aside class="col-lg-3 col-md-4 col-12 d-flex justify-content-center mb-5">
     <div class="sidebar ml-2 border-1 border-right">
         <div class="mb-3 text-center">
-            <%if(user){%>
-                <form action="editarFoto/<%= user.id %>" enctype="multipart/form-data">
-                    <div class="image-profile">
-                        <%if(user){%>
-                            <img class="profile" id="foto" src="images/profiles/<%= user.profile %> " alt="">
-                        <% }else{ %>
-                            <img class="profile" src="images/profiles/profile-default.png" alt="">
-                        <% } %>
-                        <input type="file" id="profile-image">
-                        <label for="profile-image" id="btn-profile" class="overlay-profile"><i class="fas fa-camera fa-2x mt-1"></i></label>
-                    </div>
-                </form>
-            <% } %>
+            <div class="image-profile">
+                <%if(user){%>
+                    <img class="profile" id="foto" src="images/profiles/<%= user.profile %> " alt="">
+                <% }else{ %>
+                    <img class="profile" src="images/profiles/profile-default.png" alt="">
+                <% } %>
+            </div>
             <p class="mt-4">Hola, <span class="text-primary font-weight-bold">
                 <%if(user){%>
                     <%= user.name +' '+ user.lastname%>

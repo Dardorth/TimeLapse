@@ -1,8 +1,6 @@
 const express = require('express');
 const product = require('../models/product');
-// const user = require('../models/user');
 const router = express.Router();
-// let cartShop = [];
 
 // Rutas de inicio
 router.get('/', (req, res) => {
@@ -34,7 +32,6 @@ router.get('/tienda/:name', async (req, res) => {
 
     try {
         const productName = await product.find({name:req.params.name});
-        console.log('****************Resultado =====>');
 
         productName.forEach(element => {
             productDetails = element
@@ -51,23 +48,6 @@ router.get('/tienda/:name', async (req, res) => {
 router.get('/carrito', (req, res) => {
     res.render('pages/carrito'/* ,{cartShop} */);
 });
-
-
-// Rutas de carrito -- añadir al carrito
-// router.get('/carrito/:name', async (req, res) => {
-
-//     try {
-//         const addProduct = await product.find({name:req.params.name});
-//         cartShop.push(addProduct);
-//         console.log('****************Resultado =====>');
-//         console.log(cartShop);
-
-//         res.render('pages/carrito',{cartShop});
-//     } catch (err) {
-//         console.log(err);
-//     }
-
-// });
 
 router.get('/checkout', (req, res) => {
     res.render('pages/checkout');

@@ -1,25 +1,4 @@
-const payProduct = ()=>{
-
-    const productsCart = [];
-
-    cart.forEach(item => {
-        productsCart.push(item.title);
-    });
-
-    // console.log(cart);
-
-    // cart.forEach(product => {
-
-    // });
-
-
-    // console.log(productsCart);
-
-    // location.href = `/perfil/${productsCart}`;
-
-    // renderCart();
-}
-
+// Limpiar el carrito al comprar productos.
 const renderCart = ()=>{
     if(localStorage.getItem('cart')){
         let cart = JSON.parse(localStorage.getItem('cart'));

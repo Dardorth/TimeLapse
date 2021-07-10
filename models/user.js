@@ -31,10 +31,6 @@ const userSchema = new Schema({
         default: 'client'
     }
 })
-/* const userSchema = new Schema({
-    user: String,
-    password: String
-}) */
 
 //Encriptar contraseña
 userSchema.methods.encrypthPassword = (password) =>{
