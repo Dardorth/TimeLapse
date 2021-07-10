@@ -41,10 +41,14 @@
                         <h1>Paso 2</h1>
                         <% if (progress >= 2) { %>
                             <img src="/images/tests/whatsapp/check.png" width="100px" height="100px" alt="">
+                        <% } else if (progress >= 1) { %>
+                            <div class="button d-flex justify-content-center mt-3">
+                                <button id="xds" class="btn-video" style="font-size: 12px;" data-bs-toggle="modal"
+                                    data-bs-target="#test2">Realizar</button>
+                            </div>
                         <% } else { %>
                             <div class="button d-flex justify-content-center mt-3">
-                                <button class="btn-video" style="font-size: 12px;" data-bs-toggle="modal"
-                                    data-bs-target="#test2">Realizar</button>
+                                <small style="font-size: 12px;">Completa el paso 1</small>
                             </div>
                         <% } %>
                     </div>
@@ -52,10 +56,14 @@
                         <h1>Paso 3</h1>
                         <% if (progress >= 3) { %>
                             <img src="/images/tests/whatsapp/check.png" width="100px" height="100px" alt="">
-                        <% } else { %>
+                        <% } else if (progress >= 2) { %>
                             <div class="button d-flex justify-content-center mt-3">
                                 <button class="btn-video" style="font-size: 12px;" data-bs-toggle="modal"
                                     data-bs-target="#test3">Realizar</button>
+                            </div>
+                        <% } else { %>
+                            <div class="button d-flex justify-content-center mt-3">
+                                <small style="font-size: 12px;">Completa el paso 2</small>
                             </div>
                         <% } %>
                     </div>
@@ -75,7 +83,7 @@
                 </div>
             </div>
 
-            <!-- Start Modal Test -->
+            <!-- Start Modal Test 1 -->
             <div class="modal fade" id="test1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content p-5">
@@ -140,7 +148,142 @@
                     </div>
                 </div>
             </div>
-            <!-- End Modal Test -->
+            <!-- End Modal Test 1 -->
+
+            <!-- Start Modal Test 2 -->
+            <div class="modal fade" id="test2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content p-5">
+                        <div class="modal-body">
+                            <button type="button" class="btn btn-clos float-right" data-bs-dismiss="modal" aria-label="Close">X</button>
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-s-6 wow fadeInUp">
+                                    <div class="">
+                                        <img src="/images/products/logo-whatsapp.png" alt=""
+                                            style="width: 100%; height: 100%;">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-s-6">
+                                    <div class="mb-3 wow fadeInUp text-center" data-wow-delay=".1s">
+                                        <h3>Prueba número 2</h3>
+                                        <small>Clickea la opción que creas correcta, esto ayudará a registrar tu progreso, y además demostrará que sí estas avanzando. ¡Vamos!.</small>
+                                    </div>
+                                    <hr class="w-50 mx-auto">
+
+                                    <div class="text-center p-4 widget">
+                                        <h6 class="text-primary">¿Qué opción seleccionas para crear un contacto?</h6>
+                                        <i class="fas fa-long-arrow-alt-down mt-1 text-primary"></i>
+                                    </div>
+                                    <form action="/progresion/<%= name %>" method="POST">
+                                        <input type="hidden" value="2" name="progress">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <button type="button" style="border-style: none;">
+                                                    <img id="p2_i1"
+                                                    class=""
+                                                    src="/images/tests/whatsapp/4.jpeg"
+                                                    alt="imagen"
+                                                    width="100px" height="100px">
+                                                </button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="submit" style="border-style: none;">
+                                                    <img id="p2_i2"
+                                                    class=""
+                                                    src="/images/tests/whatsapp/5.jpeg"
+                                                    alt="imagen"
+                                                    width="100px" height="100px">
+                                                </button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="button" style="border-style: none;">
+                                                    <img id="p2_i3"
+                                                    class=""
+                                                    src="/images/tests/whatsapp/6.jpeg"
+                                                    alt="imagen"
+                                                    width="100px" height="100px">
+                                                </button>
+                                            </div>
+                                            <div class="col-12">
+                                                <small id="p2_res" class="d-flex justify-content-center font-weight-bold m-3"></small>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal Test 2 -->
+
+
+            <!-- Start Modal Test 3 -->
+            <div class="modal fade" id="test3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content p-5">
+                        <div class="modal-body">
+                            <button type="button" class="btn btn-clos float-right" data-bs-dismiss="modal" aria-label="Close">X</button>
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-s-6 wow fadeInUp">
+                                    <div class="">
+                                        <img src="/images/products/logo-whatsapp.png" alt=""
+                                            style="width: 100%; height: 100%;">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-s-6">
+                                    <div class="mb-3 wow fadeInUp text-center" data-wow-delay=".1s">
+                                        <h3>Prueba número 3</h3>
+                                        <small>Clickea la opción que creas correcta, esto ayudará a registrar tu progreso, y además demostrará que sí estas avanzando. ¡Vamos!.</small>
+                                    </div>
+                                    <hr class="w-50 mx-auto">
+
+                                    <div class="text-center p-4 widget">
+                                        <h6 class="text-primary">¿Qué opción seleccionas para crear un contacto?</h6>
+                                        <i class="fas fa-long-arrow-alt-down mt-1 text-primary"></i>
+                                    </div>
+                                    <form action="/progresion/<%= name %>" method="POST">
+                                        <input type="hidden" value="3" name="progress">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <button type="button" style="border-style: none;">
+                                                    <img id="p3_i1"
+                                                    class=""
+                                                    src="/images/tests/whatsapp/7.jpeg"
+                                                    alt="imagen"
+                                                    width="100px" height="100px">
+                                                </button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="button" style="border-style: none;">
+                                                    <img id="p3_i2"
+                                                    class=""
+                                                    src="/images/tests/whatsapp/8.jpeg"
+                                                    alt="imagen"
+                                                    width="100px" height="100px">
+                                                </button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="submit" style="border-style: none;">
+                                                    <img id="p3_i3"
+                                                    class=""
+                                                    src="/images/tests/whatsapp/9.jpeg"
+                                                    alt="imagen"
+                                                    width="100px" height="100px">
+                                                </button>
+                                            </div>
+                                            <div class="col-12">
+                                                <small id="p3_res" class="d-flex justify-content-center font-weight-bold m-3"></small>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal Test 3 -->
 
         </div>
     </div>
