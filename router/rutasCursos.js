@@ -8,7 +8,12 @@ router.get('/curso/:name', isAuthenticated, (req, res) => {
 
     try {
         const name = req.params.name;
-        res.render('courses/whatsapp/seccion1',{name});
+        //Pequeña validacion para que un ADMIN no ingrese a esta ruta.
+        if(req.user.role != 'admin'){ 
+            res.render('courses/whatsapp/seccion1',{name});
+        }else{
+            res.redirect('/');
+        }
 
     } catch (err) {
         console.log(err);
@@ -35,7 +40,13 @@ router.get('/curso-p1/:name', isAuthenticated, async (req, res) => {
                 progress = element.progress;
             }
         });
-        res.render('courses/whatsapp/prueba1',{name,progress});
+
+        //Pequeña validacion para que un ADMIN no ingrese a esta ruta.
+        if(req.user.role != 'admin'){ 
+            res.render('courses/whatsapp/prueba1',{name,progress});
+        }else{
+            res.redirect('/');
+        }
 
     } catch (err) {
         console.log(err);

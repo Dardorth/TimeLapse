@@ -26,9 +26,15 @@ router.get('/panelControl',isAuthenticated, async (req, res) => {
         const panelPrincipal = await Product.find({}); 
 
         //ENVIO LA INFORMACION DE LOS CURSOS A administrarCursos
+        //Pequeña validacion para que un CLIENTE no ingrese a esta ruta.
+        if(req.user.role != 'client'){ 
             res.render('admin/panelControl',{
                 panelPrincipal
-        });
+            });
+        }else{
+            res.redirect('/');
+        }
+
         } catch (err) {
             console.log(err);
         }
@@ -43,9 +49,15 @@ router.get('/usuariosRegistrados', isAuthenticated, async(req, res) => {
         const usuariosRegistrados = await Users.find({}); 
 
         //ENVIO LA INFORMACION DE LOS CURSOS A administrarCursos
+        //Pequeña validacion para que un CLIENTE no ingrese a esta ruta.
+        if(req.user.role != 'client'){ 
             res.render('admin/usuariosRegistrados',{
                 usuariosRegistrados
-        });
+            });
+        }else{
+            res.redirect('/');
+        }
+
         } catch (err) {
             console.log(err);
         }
@@ -118,7 +130,13 @@ router.get('/ganancias', isAuthenticated, async (req, res) => {
         sales_by_product.push(product);
         
     }
-    res.render('admin/ganancias',{stats,sales_per_month,sales_by_product});
+    //Pequeña validacion para que un CLIENTE no ingrese a esta ruta.
+    if(req.user.role != 'client'){ 
+        res.render('admin/ganancias',{stats,sales_per_month,sales_by_product});
+    }
+    else{
+        res.redirect('/');
+    }
 
     } catch (error) {
         console.log(error);
@@ -132,9 +150,15 @@ router.get('/administrarCursos', isAuthenticated, async (req, res) => {
         const administrarCursos = await Product.find({}); 
 
         //ENVIO LA INFORMACION DE LOS CURSOS A administrarCursos
+        //Pequeña validacion para que un CLIENTE no ingrese a esta ruta.
+        if(req.user.role != 'client'){ 
             res.render('admin/administrarCursos',{
                 administrarCursos
-        });
+            });
+        }else{
+            res.redirect('/');
+        }
+
         } catch (err) {
             console.log(err);
         }

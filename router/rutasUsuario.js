@@ -6,39 +6,49 @@ const router = express.Router();
 
 // Ruta perfil usuario
 router.get('/perfil', isAuthenticated, async (req, res) => {
+    console.log(req.user.role)
 
-    try {
-        const cursosComprados = await user.aggregate([
-           {
-               $lookup:
-               {
-                from: 'products',
-                localField: 'cursos.id_curso',
-                foreignField: '_id',
-                as: 'cursos'
-              }
-           },
-           {
-            $match: {
-             user: req.user.user
+        try {
+            const cursosComprados = await user.aggregate([
+            {
+                $lookup:
+                {
+                    from: 'products',
+                    localField: 'cursos.id_curso',
+                    foreignField: '_id',
+                    as: 'cursos'
+                }
+            },
+            {
+                $match: {
+                user: req.user.user
+                }
+            },
+            { $unwind : "$cursos" }
+            ]);
+        //Pequeña validacion para que un ADMIN no ingrese a esta ruta.
+            if(req.user.role != 'admin'){
+                res.render('user/perfil',{
+                    cursosComprados
+                });
+            }else{
+                res.redirect('/');
             }
-          },
-           { $unwind : "$cursos" }
-        ]);
 
-        res.render('user/perfil',{
-            cursosComprados
-        });
+        } catch (err) {
+            console.log(err);
+        }
 
-    } catch (err) {
-        console.log(err);
-    }
 
 });
 
 // Ruta view editar perfil
-router.get('/editarPerfil', isAuthenticated,(req, res) => { 
-    res.render('user/editarPerfil');
+//Pequeña validacion para que un ADMIN no ingrese a esta ruta.
+router.get('/editarPerfil', isAuthenticated,(req, res) => {
+    if(req.user.role != 'admin'){ 
+        res.render('user/editarPerfil');
+    }
+    res.redirect('/');
 });
 
 // Ruta actualizar info perfil
@@ -114,31 +124,37 @@ router.post('/editarFoto/:id',upload.single('profile'), async (req, res) => {
 
 // Ruta mi progreso
 router.get('/miProgreso',  isAuthenticated, async (req, res) => {
+    
+        try {
+            const cursosComprados = await user.aggregate([
+            {
+                $lookup:
+                {
+                    from: 'products',
+                    localField: 'cursos.id_curso',
+                    foreignField: '_id',
+                    as: 'cursos'
+                }
+            },
+            {
+                $match: {
+                user: req.user.user
+                }
+            },
+            { $unwind : "$cursos" }
+            ]);
 
-    try {
-        const cursosComprados = await user.aggregate([
-           {
-               $lookup:
-               {
-                from: 'products',
-                localField: 'cursos.id_curso',
-                foreignField: '_id',
-                as: 'cursos'
-              }
-           },
-           {
-            $match: {
-             user: req.user.user
+            //Pequeña validacion para que un ADMIN no ingrese a esta ruta.
+            if(req.user.role != 'admin'){ 
+                res.render('user/progreso',{
+                    cursosComprados
+                });
+            }else{
+                res.redirect('/');
             }
-          },
-           { $unwind : "$cursos" }
-        ]);
-        res.render('user/progreso',{
-            cursosComprados
-        });
 
-    } catch (err) {
-        console.log(err);
+        } catch (err) {
+            console.log(err);
     }
 
 });
