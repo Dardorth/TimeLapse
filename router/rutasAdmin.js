@@ -46,7 +46,7 @@ router.get('/usuariosRegistrados', isAuthenticated, async(req, res) => {
 
     try {
         //LLAMO A TODOS LOS CURSOS SIN FILTRAR
-        const usuariosRegistrados = await Users.find({}); 
+        const usuariosRegistrados = await Users.find({role: "client"}); 
 
         //ENVIO LA INFORMACION DE LOS CURSOS A administrarCursos
         //Pequeña validacion para que un CLIENTE no ingrese a esta ruta.
