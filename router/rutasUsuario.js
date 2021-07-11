@@ -143,11 +143,25 @@ router.get('/miProgreso',  isAuthenticated, async (req, res) => {
             },
             { $unwind : "$cursos" }
             ]);
+            var cursos = []
+            for (let i = 0; i < cursosComprados.length; i++) {
+                var progress = (req.user.cursos[i].progress/10)*100;
+                var rank = defineRank(progress);
+
+                cursos.push({
+                    "name": cursosComprados[i].cursos.name,
+                    "logo": cursosComprados[i].cursos.logo,
+                    "progress": progress,
+                    "rankName": rank.name,
+                    "rankLogo": rank.logo,
+                    "missing": 10 - req.user.cursos[i].progress
+                })
+            }
 
             //Pequeña validacion para que un ADMIN no ingrese a esta ruta.
             if(req.user.role != 'admin'){ 
                 res.render('user/progreso',{
-                    cursosComprados
+                    cursos
                 });
             }else{
                 res.redirect('/');
@@ -166,4 +180,19 @@ function isAuthenticated(req,res,next){
     res.redirect('/');
 }
 
+function defineRank(progress){
+    
+    if(progress == 10){
+        return {
+            'name': 'Aprendiz',
+            'logo': 'novato.png'};
+    }else if(progress == 20){
+        return {
+            'name': 'Medio',
+            'logo': 'medio.png'};
+    }
+    return {
+        'name': 'Experto',
+        'logo': 'master.png'};
+}
 module.exports = router;
