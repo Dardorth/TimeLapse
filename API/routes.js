@@ -7,8 +7,11 @@ const Users = require('../models/user');
 router.get('/API/cursos', async (req, res) => {
     
     try {
-        const cursos = await Product.find({});
-        console.log(cursos[0].price)
+        const cursos = await Product.find({}).select({ 
+            "name": 1,
+            "price":1,
+            "_id": 0
+        });
         
             res.send({cursos});
         } catch (err) {
