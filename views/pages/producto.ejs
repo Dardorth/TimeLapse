@@ -77,7 +77,7 @@
                         <img src="/images/products/<%= productDetails.logo %> " alt="imagen" style="width: 400px; height: 400px;">
                     </div>
                     <div class="button d-flex justify-content-center wow fadeInRight mt-5" data-wow-delay=".4s">
-                        <a class="btn btn-add" href="/carrito">Añadir a carrito</a>
+                        <a class="btn btn-add" onclick="M.toast({html: '<%= productDetails.name %> añadido'})">Añadir a carrito</a>
                     </div>
                 </div>
                 <!-- Start cart -->
