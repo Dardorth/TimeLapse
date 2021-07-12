@@ -23,11 +23,6 @@ for (let i = 0; i < btnAdd.length; i++) {
     
     product.dataset.id = i+1;
     product.addEventListener('click', e =>{
-
-        if (cart.length >= 0) {
-            notification.classList.remove('d-none');
-            notification.innerHTML = cart.length + 1;
-        }
         
         if (e.target.closest('.single-service')) {
             addToCart_Store(e.target.closest('.single-service'));
@@ -87,6 +82,11 @@ const addNewProduct = newProduct =>{
             if(cart[i].title === newProduct.title){
                 return;
             }
+        }
+
+        if (cart.length >= 0) {
+            notification.classList.remove('d-none');
+            notification.innerHTML = cart.length + 1;
         }
     }
 
@@ -203,7 +203,7 @@ const removeProduct = e =>{
     }
 
     notification.innerHTML = cart.length;
-    
+
     if (cart.length < 1) {
         notification.classList.add('d-none');  
     }
