@@ -2,12 +2,17 @@ const btnAdd = document.querySelectorAll('.btn-add');
 const items = document.getElementById('items');
 const toPay = document.getElementById('toPay');
 const section = document.querySelector('.cartShop');
+const notification = document.getElementById('notification');
 let cart = [];
 
 // Get JSON from LocalStorage if it exists
 window.onload = ()=>{
     if(localStorage.getItem('cart')){
         cart = JSON.parse(localStorage.getItem('cart'));
+        if (cart.length > 0) {
+            notification.classList.remove('d-none');
+            notification.innerHTML = cart.length;
+        }
         setToCart();
     }
 }
@@ -18,6 +23,11 @@ for (let i = 0; i < btnAdd.length; i++) {
     
     product.dataset.id = i+1;
     product.addEventListener('click', e =>{
+
+        if (cart.length >= 0) {
+            notification.classList.remove('d-none');
+            notification.innerHTML = cart.length + 1;
+        }
         
         if (e.target.closest('.single-service')) {
             addToCart_Store(e.target.closest('.single-service'));
@@ -190,5 +200,11 @@ const removeProduct = e =>{
             cart.splice(i,1);
             setToCart();
         }
+    }
+
+    notification.innerHTML = cart.length;
+    
+    if (cart.length < 1) {
+        notification.classList.add('d-none');  
     }
 }
