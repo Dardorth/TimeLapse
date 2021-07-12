@@ -53,7 +53,10 @@
                                         <% if (user.role === 'client') { %>
                                             <li class="nav-item header-item"><a href="/" id="inicio">Inicio</a></li>
                                             <li class="nav-item header-item"><a href="/tienda" id="tienda">Tienda</a></li>
-                                            <li class="nav-item header-item"><a href="/carrito" id="carrito">Carrito</a></li>
+                                            <li class="nav-item header-item">
+                                                <a href="/carrito" id="carrito">Carrito</a>
+                                                <span id="notification" class="notification d-none"></span>
+                                            </li>
                                             <li class="nav-item header-item"><a href="/sobreNosotros" id="nosotros">¿Quiénes
                                                 somos?</a></li>
                                             <li class="nav-item header-item">
