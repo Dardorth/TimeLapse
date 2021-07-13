@@ -148,6 +148,7 @@ router.get('/miProgreso',  isAuthenticated, async (req, res) => {
                 var progress = (req.user.cursos[i].progress/10)*100;
                 var rank = defineRank(progress);
 
+                if(req.user.cursos[i].id_curso == cursosComprados[i].cursos._id ){}
                 cursos.push({
                     "name": cursosComprados[i].cursos.name,
                     "logo": cursosComprados[i].cursos.logo,
