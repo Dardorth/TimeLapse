@@ -133,7 +133,7 @@ router.get('/miProgreso',  isAuthenticated, async (req, res) => {
                     from: 'products',
                     localField: 'cursos.id_curso',
                     foreignField: '_id',
-                    as: 'cursos'
+                    as: 'cursosComprados'
                 }
             },
             {
@@ -143,20 +143,24 @@ router.get('/miProgreso',  isAuthenticated, async (req, res) => {
             },
             { $unwind : "$cursos" }
             ]);
-            var cursos = []
+            var cursos = [];
+ 
             for (let i = 0; i < cursosComprados.length; i++) {
                 var progress = (req.user.cursos[i].progress/10)*100;
                 var rank = defineRank(progress);
+               
+                var logoAndName = findProductLogoAndName(cursosComprados[i].cursosComprados,req.user.cursos[i].id_curso)
 
-                if(req.user.cursos[i].id_curso == cursosComprados[i].cursos._id ){}
-                cursos.push({
-                    "name": cursosComprados[i].cursos.name,
-                    "logo": cursosComprados[i].cursos.logo,
-                    "progress": progress,
-                    "rankName": rank.name,
-                    "rankLogo": rank.logo,
-                    "missing": 10 - req.user.cursos[i].progress
-                })
+                    cursos.push({
+                        "id":req.user.cursos[i].id_curso,
+                        "name": logoAndName.name,
+                        "logo": logoAndName.logo,
+                        "progress": progress,
+                        "rankName": rank.name,
+                        "rankLogo": rank.logo,
+                        "missing": 10 - req.user.cursos[i].progress
+                    })
+                
             }
 
             //Pequeña validacion para que un ADMIN no ingrese a esta ruta.
@@ -183,7 +187,7 @@ function isAuthenticated(req,res,next){
 
 function defineRank(progress){
     
-    if(progress == 10){
+    if(progress <= 10){
         return {
             'name': 'Aprendiz',
             'logo': 'novato.png'};
@@ -196,4 +200,22 @@ function defineRank(progress){
         'name': 'Experto',
         'logo': 'master.png'};
 }
+
+function findProductLogoAndName(cursosTienda,id){
+    
+    var logoAndName = {};
+
+    cursosTienda.forEach(curso => {
+        if(JSON.stringify(curso._id) == JSON.stringify(id)){
+            logoAndName = {
+                name: curso.name,
+                logo: curso.logo
+            }
+        }
+    });
+
+    return logoAndName
+}
+
+
 module.exports = router;
